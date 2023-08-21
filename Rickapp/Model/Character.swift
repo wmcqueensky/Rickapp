@@ -7,27 +7,33 @@
 
 import Foundation
 
-struct Character: Decodable {
+struct Character {
     let name: String
     let status: String
     let species: String
     let location: Location
     let origin: Origin
     let image: String
-    
-    enum CodingKeys: String, CodingKey {
-        case name, status, species, location, origin, image = "image"
+}
+
+extension Character: Decodable {
+    enum CharacterCodingKeys: String, CodingKey {
+        case name
+        case status
+        case species
+        case location
+        case origin
+        case image = "image"
     }
-}
-
-struct Location: Decodable {
-    let name: String
-}
-
-struct Origin: Decodable {
-    let name: String
-}
-
-struct CharacterResponse: Decodable {
-    let results: [Character]
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CharacterCodingKeys.self)
+        
+        name = try container.decode(String.self, forKey: .name)
+        status = try container.decode(String.self, forKey: .status)
+        species = try container.decode(String.self, forKey: .species)
+        location = try container.decode(Location.self, forKey: .location)
+        origin = try container.decode(Origin.self, forKey: .origin)
+        image = try container.decode(String.self, forKey: .image)
+    }
 }
