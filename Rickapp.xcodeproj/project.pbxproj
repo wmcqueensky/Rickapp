@@ -18,6 +18,10 @@
 		F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFC2A90284A0003F841 /* SnapKit */; };
 		F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFF2A902C9F0003F841 /* Kingfisher */; };
 		F3A94C032A9032010003F841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A94C022A9032010003F841 /* Assets.xcassets */; };
+		F3C9B2832A934C3F008AC1FF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2822A934C3F008AC1FF /* CombineMoya */; };
+		F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2842A934C3F008AC1FF /* Moya */; };
+		F3C9B2872A934C3F008AC1FF /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2862A934C3F008AC1FF /* ReactiveMoya */; };
+		F3C9B2892A934C3F008AC1FF /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2882A934C3F008AC1FF /* RxMoya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +62,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C9B2892A934C3F008AC1FF /* RxMoya in Frameworks */,
 				F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */,
 				F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */,
+				F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */,
+				F3C9B2872A934C3F008AC1FF /* ReactiveMoya in Frameworks */,
+				F3C9B2832A934C3F008AC1FF /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +198,10 @@
 			packageProductDependencies = (
 				F3A94BFC2A90284A0003F841 /* SnapKit */,
 				F3A94BFF2A902C9F0003F841 /* Kingfisher */,
+				F3C9B2822A934C3F008AC1FF /* CombineMoya */,
+				F3C9B2842A934C3F008AC1FF /* Moya */,
+				F3C9B2862A934C3F008AC1FF /* ReactiveMoya */,
+				F3C9B2882A934C3F008AC1FF /* RxMoya */,
 			);
 			productName = Rickapp;
 			productReference = F3A94BC22A8FA60C0003F841 /* Rickapp.app */;
@@ -266,6 +278,7 @@
 			packageReferences = (
 				F3A94BFB2A90284A0003F841 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F3A94BFE2A902C9F0003F841 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = F3A94BC32A8FA60C0003F841 /* Products */;
 			projectDirPath = "";
@@ -662,6 +675,14 @@
 				minimumVersion = 7.6.2;
 			};
 		};
+		F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya#installation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -674,6 +695,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F3A94BFE2A902C9F0003F841 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3C9B2822A934C3F008AC1FF /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		F3C9B2842A934C3F008AC1FF /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		F3C9B2862A934C3F008AC1FF /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = ReactiveMoya;
+		};
+		F3C9B2882A934C3F008AC1FF /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
