@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F37C9DB12A93CDF60073F58F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37C9DB02A93CDF60073F58F /* Assets.xcassets */; };
 		F392C3EA2A9356CD004F8CB1 /* CharacterResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3E92A9356CD004F8CB1 /* CharacterResults.swift */; };
 		F392C3EC2A935A9B004F8CB1 /* CharacterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3EB2A935A9B004F8CB1 /* CharacterAPI.swift */; };
 		F392C3EE2A9367F3004F8CB1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3ED2A9367F3004F8CB1 /* NetworkManager.swift */; };
@@ -17,37 +18,17 @@
 		F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */; };
 		F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */; };
 		F3A94BD22A8FA60E0003F841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */; };
-		F3A94BDD2A8FA60E0003F841 /* RickappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BDC2A8FA60E0003F841 /* RickappTests.swift */; };
-		F3A94BE72A8FA60E0003F841 /* RickappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BE62A8FA60E0003F841 /* RickappUITests.swift */; };
-		F3A94BE92A8FA60E0003F841 /* RickappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BE82A8FA60E0003F841 /* RickappUITestsLaunchTests.swift */; };
 		F3A94BF92A8FBD850003F841 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BF82A8FBD850003F841 /* Character.swift */; };
 		F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFC2A90284A0003F841 /* SnapKit */; };
 		F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFF2A902C9F0003F841 /* Kingfisher */; };
-		F3A94C032A9032010003F841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A94C022A9032010003F841 /* Assets.xcassets */; };
 		F3C9B2832A934C3F008AC1FF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2822A934C3F008AC1FF /* CombineMoya */; };
 		F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2842A934C3F008AC1FF /* Moya */; };
 		F3C9B2872A934C3F008AC1FF /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2862A934C3F008AC1FF /* ReactiveMoya */; };
 		F3C9B2892A934C3F008AC1FF /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2882A934C3F008AC1FF /* RxMoya */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F3A94BD92A8FA60E0003F841 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F3A94BBA2A8FA60C0003F841 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3A94BC12A8FA60C0003F841;
-			remoteInfo = Rickapp;
-		};
-		F3A94BE32A8FA60E0003F841 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F3A94BBA2A8FA60C0003F841 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F3A94BC12A8FA60C0003F841;
-			remoteInfo = Rickapp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		F37C9DB02A93CDF60073F58F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
 		F392C3E92A9356CD004F8CB1 /* CharacterResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResults.swift; sourceTree = "<group>"; };
 		F392C3EB2A935A9B004F8CB1 /* CharacterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterAPI.swift; sourceTree = "<group>"; };
 		F392C3ED2A9367F3004F8CB1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -60,13 +41,7 @@
 		F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		F3A94BD12A8FA60E0003F841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A94BD32A8FA60E0003F841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3A94BD82A8FA60E0003F841 /* RickappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3A94BDC2A8FA60E0003F841 /* RickappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickappTests.swift; sourceTree = "<group>"; };
-		F3A94BE22A8FA60E0003F841 /* RickappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F3A94BE62A8FA60E0003F841 /* RickappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickappUITests.swift; sourceTree = "<group>"; };
-		F3A94BE82A8FA60E0003F841 /* RickappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickappUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F3A94BF82A8FBD850003F841 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		F3A94C022A9032010003F841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../Downloads/AppIcons-4/Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,20 +58,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F3A94BD52A8FA60E0003F841 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F3A94BDF2A8FA60E0003F841 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -104,8 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				F3A94BC42A8FA60C0003F841 /* Rickapp */,
-				F3A94BDB2A8FA60E0003F841 /* RickappTests */,
-				F3A94BE52A8FA60E0003F841 /* RickappUITests */,
 				F3A94BC32A8FA60C0003F841 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				F3A94BC22A8FA60C0003F841 /* Rickapp.app */,
-				F3A94BD82A8FA60E0003F841 /* RickappTests.xctest */,
-				F3A94BE22A8FA60E0003F841 /* RickappUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,29 +82,10 @@
 			children = (
 				F3A94C012A902DA50003F841 /* App files */,
 				F3A94BF52A8FBB130003F841 /* Model */,
-				F3A94BF72A8FBB970003F841 /* ViewModels */,
 				F3A94BFA2A8FC1C90003F841 /* ViewControllers */,
-				F3A94BF62A8FBB250003F841 /* Views */,
 				F3A94BD32A8FA60E0003F841 /* Info.plist */,
 			);
 			path = Rickapp;
-			sourceTree = "<group>";
-		};
-		F3A94BDB2A8FA60E0003F841 /* RickappTests */ = {
-			isa = PBXGroup;
-			children = (
-				F3A94BDC2A8FA60E0003F841 /* RickappTests.swift */,
-			);
-			path = RickappTests;
-			sourceTree = "<group>";
-		};
-		F3A94BE52A8FA60E0003F841 /* RickappUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F3A94BE62A8FA60E0003F841 /* RickappUITests.swift */,
-				F3A94BE82A8FA60E0003F841 /* RickappUITestsLaunchTests.swift */,
-			);
-			path = RickappUITests;
 			sourceTree = "<group>";
 		};
 		F3A94BF52A8FBB130003F841 /* Model */ = {
@@ -161,20 +99,6 @@
 				F392C3F12A9373B1004F8CB1 /* Location.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		F3A94BF62A8FBB250003F841 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		F3A94BF72A8FBB970003F841 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		F3A94BFA2A8FC1C90003F841 /* ViewControllers */ = {
@@ -191,8 +115,8 @@
 				F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */,
 				F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */,
 				F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */,
-				F3A94C022A9032010003F841 /* Assets.xcassets */,
 				F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */,
+				F37C9DB02A93CDF60073F58F /* Assets.xcassets */,
 			);
 			path = "App files";
 			sourceTree = "<group>";
@@ -225,42 +149,6 @@
 			productReference = F3A94BC22A8FA60C0003F841 /* Rickapp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F3A94BD72A8FA60E0003F841 /* RickappTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F3A94BEF2A8FA60E0003F841 /* Build configuration list for PBXNativeTarget "RickappTests" */;
-			buildPhases = (
-				F3A94BD42A8FA60E0003F841 /* Sources */,
-				F3A94BD52A8FA60E0003F841 /* Frameworks */,
-				F3A94BD62A8FA60E0003F841 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F3A94BDA2A8FA60E0003F841 /* PBXTargetDependency */,
-			);
-			name = RickappTests;
-			productName = RickappTests;
-			productReference = F3A94BD82A8FA60E0003F841 /* RickappTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		F3A94BE12A8FA60E0003F841 /* RickappUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F3A94BF22A8FA60E0003F841 /* Build configuration list for PBXNativeTarget "RickappUITests" */;
-			buildPhases = (
-				F3A94BDE2A8FA60E0003F841 /* Sources */,
-				F3A94BDF2A8FA60E0003F841 /* Frameworks */,
-				F3A94BE02A8FA60E0003F841 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F3A94BE42A8FA60E0003F841 /* PBXTargetDependency */,
-			);
-			name = RickappUITests;
-			productName = RickappUITests;
-			productReference = F3A94BE22A8FA60E0003F841 /* RickappUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -273,14 +161,6 @@
 				TargetAttributes = {
 					F3A94BC12A8FA60C0003F841 = {
 						CreatedOnToolsVersion = 14.3.1;
-					};
-					F3A94BD72A8FA60E0003F841 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = F3A94BC12A8FA60C0003F841;
-					};
-					F3A94BE12A8FA60E0003F841 = {
-						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = F3A94BC12A8FA60C0003F841;
 					};
 				};
 			};
@@ -303,8 +183,6 @@
 			projectRoot = "";
 			targets = (
 				F3A94BC12A8FA60C0003F841 /* Rickapp */,
-				F3A94BD72A8FA60E0003F841 /* RickappTests */,
-				F3A94BE12A8FA60E0003F841 /* RickappUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -314,22 +192,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3A94C032A9032010003F841 /* Assets.xcassets in Resources */,
+				F37C9DB12A93CDF60073F58F /* Assets.xcassets in Resources */,
 				F3A94BD22A8FA60E0003F841 /* LaunchScreen.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F3A94BD62A8FA60E0003F841 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F3A94BE02A8FA60E0003F841 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,37 +217,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F3A94BD42A8FA60E0003F841 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F3A94BDD2A8FA60E0003F841 /* RickappTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F3A94BDE2A8FA60E0003F841 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F3A94BE72A8FA60E0003F841 /* RickappUITests.swift in Sources */,
-				F3A94BE92A8FA60E0003F841 /* RickappUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F3A94BDA2A8FA60E0003F841 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3A94BC12A8FA60C0003F841 /* Rickapp */;
-			targetProxy = F3A94BD92A8FA60E0003F841 /* PBXContainerItemProxy */;
-		};
-		F3A94BE42A8FA60E0003F841 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F3A94BC12A8FA60C0003F841 /* Rickapp */;
-			targetProxy = F3A94BE32A8FA60E0003F841 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */ = {
@@ -565,82 +399,6 @@
 			};
 			name = Release;
 		};
-		F3A94BF02A8FA60E0003F841 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8BA2VGH9B3;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mokwinskiwojciech.RickappTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rickapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Rickapp";
-			};
-			name = Debug;
-		};
-		F3A94BF12A8FA60E0003F841 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8BA2VGH9B3;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mokwinskiwojciech.RickappTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rickapp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Rickapp";
-			};
-			name = Release;
-		};
-		F3A94BF32A8FA60E0003F841 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8BA2VGH9B3;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mokwinskiwojciech.RickappUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Rickapp;
-			};
-			name = Debug;
-		};
-		F3A94BF42A8FA60E0003F841 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8BA2VGH9B3;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mokwinskiwojciech.RickappUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Rickapp;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -658,24 +416,6 @@
 			buildConfigurations = (
 				F3A94BED2A8FA60E0003F841 /* Debug */,
 				F3A94BEE2A8FA60E0003F841 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F3A94BEF2A8FA60E0003F841 /* Build configuration list for PBXNativeTarget "RickappTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F3A94BF02A8FA60E0003F841 /* Debug */,
-				F3A94BF12A8FA60E0003F841 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F3A94BF22A8FA60E0003F841 /* Build configuration list for PBXNativeTarget "RickappUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F3A94BF32A8FA60E0003F841 /* Debug */,
-				F3A94BF42A8FA60E0003F841 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
