@@ -78,11 +78,11 @@ class CharacterTableViewCell: UITableViewCell {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView).offset(12)
+            make.leading.equalTo(characterStackView.snp.leading).offset(12)
         }
         
         statusStackView.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView).offset(12)
+            make.leading.equalTo(characterStackView.snp.leading).offset(12)
             make.height.equalTo(13)
         }
         
@@ -91,19 +91,20 @@ class CharacterTableViewCell: UITableViewCell {
         }
         
         locationLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView).offset(12)
+            make.leading.equalTo(characterStackView.snp.leading).offset(12)
         }
         
         actualLocationLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView).offset(12)
+            make.leading.equalTo(characterStackView.snp.leading).offset(12)
         }
         
         originLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView).offset(12)
+            make.leading.equalTo(characterStackView.snp.leading).offset(12)
         }
         
         actualOriginLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView).offset(12)
+            make.leading.equalTo(characterStackView.snp.leading).offset(12)
+            make.bottom.equalTo(characterStackView.snp.bottom).offset(20)
         }
     }
 }
