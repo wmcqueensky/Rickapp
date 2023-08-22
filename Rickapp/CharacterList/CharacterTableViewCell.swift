@@ -44,19 +44,50 @@ class CharacterTableViewCell: UITableViewCell {
         
         actualOriginLabel.textColor = .white
         
-        characterStackView.backgroundColor = .darkGray
+        characterStackView.backgroundColor = .cellGray
         characterStackView.axis = .vertical
-        characterStackView.spacing = 10
+        characterStackView.spacing = 3
         characterStackView.layer.cornerRadius = 10
         characterStackView.clipsToBounds = true
         characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel])
+        characterStackView.setCustomSpacing(7, after: characterImageView)
         
-        self.contentView.addSubview(characterStackView)
+        isUserInteractionEnabled = false
+        backgroundColor = .backgroundGray
+        contentView.addSubview(characterStackView)
     }
     
     func setupConstraints() {
         characterStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 15, left: 28, bottom: 15, right: 28))
+        }
+        
+        characterImageView.snp.makeConstraints { make in
+            make.width.equalTo(characterStackView)
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.left.equalTo(characterStackView.snp.left).offset(12)
+        }
+        
+        statusLabel.snp.makeConstraints { make in
+            make.left.equalTo(characterStackView.snp.left).offset(12)
+        }
+        
+        locationLabel.snp.makeConstraints { make in
+            make.left.equalTo(characterStackView.snp.left).offset(12)
+        }
+        
+        actualLocationLabel.snp.makeConstraints { make in
+            make.left.equalTo(characterStackView.snp.left).offset(12)
+        }
+        
+        originLabel.snp.makeConstraints { make in
+            make.left.equalTo(characterStackView.snp.left).offset(12)
+        }
+        
+        actualOriginLabel.snp.makeConstraints { make in
+            make.left.equalTo(characterStackView.snp.left).offset(12)
         }
     }
 }
