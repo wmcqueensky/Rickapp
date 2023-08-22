@@ -14,6 +14,7 @@
 		F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */; };
 		F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E8F2A949677003D722E /* UIColor+Ext.swift */; };
 		F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E922A949F3C003D722E /* CharacterListViewModel.swift */; };
+		F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */; };
 		F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */; };
 		F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */; };
 		F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */; };
@@ -35,6 +36,7 @@
 		F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		F39E9E8F2A949677003D722E /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		F39E9E922A949F3C003D722E /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
+		F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		F3A94BC22A8FA60C0003F841 /* Rickapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rickapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */,
 				F39E9E922A949F3C003D722E /* CharacterListViewModel.swift */,
+				F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */,
 			);
 			path = CharacterList;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				F392C3EA2A9356CD004F8CB1 /* CharacterResults.swift in Sources */,
 				F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */,
 				F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */,
+				F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */,
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
 				F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */,
 				F3A94BF92A8FBD850003F841 /* Character.swift in Sources */,
