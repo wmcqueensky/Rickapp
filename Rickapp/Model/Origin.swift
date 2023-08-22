@@ -8,5 +8,5 @@
 import Foundation
 
 struct Origin: Codable {
-    let name: String
+    let name: String?
 }

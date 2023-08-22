@@ -8,14 +8,10 @@
 import Foundation
 
 struct Character: Codable {
-    let name: String
-    let status: String
-    let species: String
-    let location: Location
-    let origin: Origin
-    let image: String
-
-    enum CodingKeys: String, CodingKey {
-        case name, status, species, location, origin, image = "image"
-    }
+    let name: String?
+    let status: String?
+    let species: String?
+    let location: Location?
+    let origin: Origin?
+    let image: String?
 }
