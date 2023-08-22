@@ -31,7 +31,6 @@ class CharacterListViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.rowHeight = 500
         tableView.backgroundColor = .backgroundGray
         
         view.addSubview(titleLabel)
