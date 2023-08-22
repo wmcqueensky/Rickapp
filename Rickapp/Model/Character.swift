@@ -1,17 +1,21 @@
-////
-////  CharacterCard.swift
-////  Rickapp
-////
-////  Created by Goodylabs on 18/08/2023.
-////
 //
-//import Foundation
+//  CharacterCard.swift
+//  Rickapp
 //
-//struct Charactwer {
-//    let name: String?
-//    let status: String?
-//    let species: String?
-//    //let location: Location?
-//    //let origin: Origin?
-//    let image: String?
-//}
+//  Created by Goodylabs on 18/08/2023.
+//
+
+import Foundation
+
+struct Character: Codable {
+    let name: String
+    let status: String
+    let species: String
+    let location: Location
+    let origin: Origin
+    let image: String
+
+    enum CodingKeys: String, CodingKey {
+        case name, status, species, location, origin, image = "image"
+    }
+}

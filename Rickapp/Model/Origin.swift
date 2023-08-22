@@ -1,12 +1,12 @@
-////
-////  Origin.swift
-////  Rickapp
-////
-////  Created by Goodylabs on 21/08/2023.
-////
 //
-//import Foundation
+//  Origin.swift
+//  Rickapp
 //
-//struct Origin: Decodable {
-//let name: String?
-//}
+//  Created by Goodylabs on 21/08/2023.
+//
+
+import Foundation
+
+struct Origin: Codable {
+let name: String
+}
