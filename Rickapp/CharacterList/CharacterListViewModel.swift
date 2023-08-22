@@ -6,7 +6,32 @@
 //
 
 import Foundation
+import UIKit
 
-class CharacterListViewModel {
+class CharacterListViewModel: UIViewController {
+    let baseURL = "https://rickandmortyapi.com/api/character"
     
+    var characters: [Character] = []
+    
+    func setupData() {
+        guard let url = URL(string: baseURL) else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Error fetching data: \(error)")
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let response = try JSONDecoder().decode(CharacterResponse.self, from: data)
+                    self.characters = response.results ?? []
+                } catch {
+                    print("Error decoding data: \(error)")
+                }
+            }
+        }.resume()
+    }
 }

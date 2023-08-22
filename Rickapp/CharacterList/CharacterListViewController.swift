@@ -9,18 +9,15 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CharacterListViewController: UIViewController, UITableViewDelegate {
-    let baseURL = "https://rickandmortyapi.com/api/character"
+class CharacterListViewController: CharacterListViewModel {
     let titleLabel = UILabel()
     let tableView = UITableView()
-    
-    var characters: [Character] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupData()
         setUpConstraints()
-        fetchCharacterData()
     }
     
     func setupViews() {
@@ -48,40 +45,15 @@ class CharacterListViewController: UIViewController, UITableViewDelegate {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
-    func fetchCharacterData() {
-        guard let url = URL(string: baseURL) else {
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                print("Error fetching data: \(error)")
-                return
-            }
-            
-            if let data = data {
-                do {
-                    let response = try JSONDecoder().decode(CharacterResponse.self, from: data)
-                    self.characters = response.results ?? []
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    print("Error decoding data: \(error)")
-                }
-            }
-        }.resume()
-    }
 }
 
-extension CharacterListViewController: UITableViewDataSource {
+extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? CharacterTableViewCell else { return UITableViewCell() }
         
         let character = characters[indexPath.row]
