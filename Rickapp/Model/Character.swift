@@ -8,16 +8,16 @@
 import Foundation
 
 struct Character: Codable {
-    let name: String?
-    let status: String?
-    let species: String?
-    let location: Location?
-    let origin: Origin?
-    let image: String?
+    var name: String?
+    var status: String?
+    var species: String?
+    var location: Location?
+    var origin: Origin?
+    var image: String?
 }
 
 import Foundation
 
 struct CharacterResponse: Codable {
-    let results: [Character]?
+    var results: [Character]?
 }
