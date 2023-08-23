@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class CharacterListViewModel: UIViewController {
-    let baseURL = "https://rickandmortyapi.com/api/character"
+    private let baseURL = "https://rickandmortyapi.com/api/character"
     
-    var characters: [Character] = []
+    internal var characters: [Character] = []
     
     func setupData() {
         guard let url = URL(string: baseURL) else {
