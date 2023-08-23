@@ -28,7 +28,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
     
     override func bindToViewModel() {
-        viewModel.$characters
+        viewModel.$characters 
             .receive(on: DispatchQueue.main)
             .sink { [weak self] characters in
                 self?.tableView.reloadData()
