@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CharacterListViewController: BaseViewController<CharacterListViewModel>, UIScrollViewDelegate {
+class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     private let navigationBar = UINavigationBar()
     private let tableView = UITableView()
     

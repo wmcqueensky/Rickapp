@@ -15,7 +15,6 @@ class CharacterTableViewCell: UITableViewCell {
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
-    private var statusWrappingView = UIView()
     private let statusStackView = UIStackView()
     private let locationLabel = UILabel()
     private let originLabel = UILabel()
@@ -46,12 +45,11 @@ class CharacterTableViewCell: UITableViewCell {
         statusLabel.textColor = .white
         
         statusView.layer.cornerRadius = 5
-        
-        statusWrappingView.addSubview(statusView)
-        
+                
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
-        statusStackView.addArrangedSubviews([statusWrappingView, statusLabel])
+        statusStackView.addArrangedSubviews([statusView, statusLabel])
+        statusStackView.alignment = .center
         
         locationLabel.text = "Last known location:"
         locationLabel.textColor = .gray
@@ -66,6 +64,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterImageView.layer.cornerRadius = 10
         characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         characterImageView.clipsToBounds = true
+        characterImageView.contentMode = .scaleAspectFill
         
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
@@ -79,9 +78,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterStackView.setCustomSpacing(23, after: statusStackView)
         characterStackView.setCustomSpacing(23, after: actualLocationLabel)
         characterStackView.setCustomSpacing(16, after: actualOriginLabel)
-        characterStackView.alignment = .leading
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 0, right:15)
-        
         
         isUserInteractionEnabled = false
         backgroundColor = .backgroundGray
@@ -103,16 +100,11 @@ class CharacterTableViewCell: UITableViewCell {
         }
         
         statusView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
             make.width.height.equalTo(10)
-        }
-        
-        statusWrappingView.snp.makeConstraints { make in
-            make.width.equalTo(10)
         }
     }
     
-    func setupCellContent() {
+    private func setupCellContent() {
         characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
         nameLabel.text = character.name
         statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
