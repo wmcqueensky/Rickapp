@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class BaseViewController<T: BaseViewModel>: UIViewController, UIScrollViewDelegate {
+class BaseViewController<T: BaseViewModel>: UIViewController {
     var viewModel: T!
     
     override func viewDidLoad() {
