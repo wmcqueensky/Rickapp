@@ -80,6 +80,8 @@ class CharacterTableViewCell: UITableViewCell {
         characterStackView.setCustomSpacing(23, after: actualLocationLabel)
         characterStackView.setCustomSpacing(16, after: actualOriginLabel)
         characterStackView.alignment = .leading
+        characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 0, right:15)
+        
         
         isUserInteractionEnabled = false
         backgroundColor = .backgroundGray
