@@ -33,6 +33,7 @@
 		F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2842A934C3F008AC1FF /* Moya */; };
 		F3C9B2872A934C3F008AC1FF /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2862A934C3F008AC1FF /* ReactiveMoya */; };
 		F3C9B2892A934C3F008AC1FF /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2882A934C3F008AC1FF /* RxMoya */; };
+		F3F85CF72A97703A00142443 /* TargetType+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F85CF62A97703A00142443 /* TargetType+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		F3A94BD12A8FA60E0003F841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A94BD32A8FA60E0003F841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A94BF82A8FBD850003F841 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		F3F85CF62A97703A00142443 /* TargetType+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */,
 				F39E9E8F2A949677003D722E /* UIColor+Ext.swift */,
+				F3F85CF62A97703A00142443 /* TargetType+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
 				F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */,
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
+				F3F85CF72A97703A00142443 /* TargetType+Ext.swift in Sources */,
 				F3A94BF92A8FBD850003F841 /* Character.swift in Sources */,
 				F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */,
 				F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */,

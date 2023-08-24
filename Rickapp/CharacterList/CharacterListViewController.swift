@@ -12,6 +12,15 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     private let titleLabel = UILabel()
     private let tableView = UITableView()
     
+    init(viewModel: CharacterListViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func setupViews() {
         titleLabel.text = "Rickapp"
         titleLabel.textColor = .white
@@ -40,9 +49,8 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     
     override func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.width.equalTo(view)
+            make.leading.trailing.equalTo(view)
         }
         
         tableView.snp.makeConstraints { make in
