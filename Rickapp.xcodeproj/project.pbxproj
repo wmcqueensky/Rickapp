@@ -151,6 +151,7 @@
 		F3A94BC42A8FA60C0003F841 /* Rickapp */ = {
 			isa = PBXGroup;
 			children = (
+				F3CA00A82A9CF26A003F219D /* BaseElements */,
 				F3A94BD32A8FA60E0003F841 /* Info.plist */,
 				F390EA812A9BF87E00DC4903 /* CharacterCard */,
 				F39E9E8E2A94964B003D722E /* Extensions */,
@@ -159,7 +160,6 @@
 				F3A94C012A902DA50003F841 /* App files */,
 				F3A94BF52A8FBB130003F841 /* Model */,
 				F3A94BFA2A8FC1C90003F841 /* CharacterList */,
-				F3A496212A96294D00BE8298 /* BaseView */,
 			);
 			path = Rickapp;
 			sourceTree = "<group>";
@@ -192,6 +192,14 @@
 				F37C9DB02A93CDF60073F58F /* Assets.xcassets */,
 			);
 			path = "App files";
+			sourceTree = "<group>";
+		};
+		F3CA00A82A9CF26A003F219D /* BaseElements */ = {
+			isa = PBXGroup;
+			children = (
+				F3A496212A96294D00BE8298 /* BaseView */,
+			);
+			path = BaseElements;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -8,13 +8,12 @@
 import Foundation
 
 struct CharacterList: Codable {
-    var info: CharacterListInfo?
+    var info: Info?
     var results: [Character]?
 }
 
-struct CharacterListInfo: Codable {
+struct Info: Codable {
     var count: Int?
     var pages: Int?
     var next: String?
-    var prev: String?
 }

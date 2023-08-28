@@ -11,15 +11,6 @@ import SnapKit
 class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     private let tableView = UITableView()
     
-//    init(viewModel: CharacterListViewModel) {
-//        super.init(nibName: nil, bundle: nil)
-//        self.viewModel = viewModel
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func setupViews() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -51,6 +42,17 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
 }
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let character = viewModel.characterList.results?[indexPath.row] else {
+            return
+        }
+        
+        let characterCardRoute = MainRoutes.card(character: character)
+        AppNavigator.shared.navigate(to: characterCardRoute, with: .push, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let rowCount = viewModel.characterList.results?.count ?? 0
         let triggerIndex = rowCount - 3
