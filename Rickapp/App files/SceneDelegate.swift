@@ -16,8 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         let characterListViewModel = CharacterListViewModel()
+        let characterCardViewModel = CharacterCardViewModel()
             
-        window?.rootViewController = CharacterListViewController(viewModel: characterListViewModel)
+        window?.rootViewController = CharacterCardViewController(viewModel: characterCardViewModel)
         window?.makeKeyAndVisible()
         window?.makeKeyAndVisible()
     }

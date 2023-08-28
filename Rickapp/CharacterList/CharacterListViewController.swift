@@ -2,7 +2,7 @@
 //  CharacterListViewController.swift
 //  Rickapp
 //
-//  Created by Goodylabs on 18/08/2023.
+//  Created by Wojciech Mokwiński on 18/08/2023.
 //
 
 import UIKit
@@ -35,8 +35,9 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     override func bindToViewModel() {
         super.bindToViewModel()
         
-        viewModel.charactersPublisher
+        viewModel.fetchCharacters
             .sink { [weak self] characters in
+                self?.viewModel.characterList.results = characters
                 self?.tableView.reloadData()
             }
             .store(in: &viewModel.cancellables)
@@ -58,22 +59,23 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rowCount = viewModel.characterList.results?.count ?? 0
+        let triggerIndex = rowCount - 3
         
-        if indexPath.row >= viewModel.characters.count - 3 {
-            viewModel.isLoadingNextPage = true
-            viewModel.getNextPage()
+        if indexPath.row >= triggerIndex {
+            viewModel.getNextCharactersPage()
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.characters.count
+        return viewModel.characterList.results?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        cell.character = viewModel.characters[indexPath.row]
+        cell.character = (viewModel.characterList.results?[indexPath.row])!
         
         return cell
     }
