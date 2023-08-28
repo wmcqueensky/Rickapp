@@ -13,11 +13,12 @@ enum CardResource: TargetType {
     case character
     case nextCharactersPage(url: String)
     
-    
     var path: String {
         switch self {
-        case .character, .nextCharactersPage:
+        case .character:
             return "/character"
+        default:
+            return ""
         }
     }
     

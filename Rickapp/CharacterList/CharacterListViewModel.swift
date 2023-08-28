@@ -9,11 +9,10 @@ import Foundation
 import Combine
 
 class CharacterListViewModel: BaseViewModel {
+    private var isLoadingNextPage = false
+    private var nextPage: String?
     var fetchCharacters = PassthroughSubject<[Character], Never>()
     var characterList = CharacterList()
-    
-    var nextPage: String?
-    var isLoading = false
     
     override func bindToData() {
         super.bindToData()
@@ -31,26 +30,17 @@ class CharacterListViewModel: BaseViewModel {
     }
     
     func getNextCharactersPage() {
-        guard !isLoading, let nextPage = nextPage else { return }
-        print("Fetching characters from next page: \(nextPage)")
-        
-        isLoading = true
-        
+        guard !isLoadingNextPage, let nextPage = nextPage else { return }
+        isLoadingNextPage = true
+        if nextPage.isEmpty { return }
         CardService.shared.getNextCharactersPage(url: nextPage)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("Error fetching characters: \(error)")
-                }
-            }, receiveValue: { [weak self] characterList in
+            .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 guard let self = self else { return }
                 self.characterList.results?.append(contentsOf: characterList.results ?? [])
                 self.nextPage = characterList.info?.next ?? ""
                 self.fetchCharacters.send(self.characterList.results ?? [])
-                print("Fetched \(characterList.results?.count ?? 0) new characters")
-            })
+                self.isLoadingNextPage = false
+            }
             .store(in: &cancellables)
     }
     
