@@ -138,7 +138,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         characterImageView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view)
             make.top.equalTo(scrollView)
-            make.height.equalTo(450)
+            make.height.equalTo(characterImageView.snp.width).multipliedBy(1.1)
         }
         
         characterStackView.snp.makeConstraints { make in
