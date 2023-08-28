@@ -19,4 +19,8 @@ class CardService: BaseNetworkService<CardResource> {
     func getNextCharactersPage(url: String) -> AnyPublisher<CharacterList, Error> {
         return request(for: .nextCharactersPage(url: url))
     }
+    
+    func getCharacterById(_ characterId: Int) -> AnyPublisher<Character, Error> {
+        return request(for: .getCharacterById(characterId: characterId))
+    }
 }

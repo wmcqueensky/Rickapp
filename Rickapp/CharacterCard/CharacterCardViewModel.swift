@@ -11,16 +11,11 @@ import Combine
 class CharacterCardViewModel: BaseViewModel {
     var fetchCharacter = PassthroughSubject<Character, Never>()
     
-    override func bindToData() {
-        super.bindToData()
-        CardService.shared.getCharacters()
-            .sink(receiveCompletion: { _ in }) { [weak self] characterList in
-                self?.fetchCharacter.send((characterList.results?.first)!)
+    func fetchCharacterById(_ characterId: Int) {
+        CardService.shared.getCharacterById(characterId)
+            .sink(receiveCompletion: { _ in }) { [weak self] character in
+                self?.fetchCharacter.send(character)
             }
             .store(in: &cancellables)
-    }
-    
-    func fetchSelectedCharacter(_ character: Character) {
-        fetchCharacter.send(character)
     }
 }

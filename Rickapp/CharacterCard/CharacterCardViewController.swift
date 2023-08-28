@@ -41,7 +41,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         
         statusLabel.textColor = .white
         statusLabel.font = .systemFont(ofSize: 20)
-
+        
         statusView.layer.cornerRadius = 5
         
         statusStackView.axis = .horizontal
@@ -59,39 +59,39 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         originLabel.text = "First seen in:"
         originLabel.textColor = .gray
         originLabel.font = .systemFont(ofSize: 20)
-
+        
         actualOriginLabel.textColor = .white
         actualOriginLabel.font = .systemFont(ofSize: 20)
-
+        
         typeLabel.text = "Type:"
         typeLabel.textColor = .gray
         typeLabel.font = .systemFont(ofSize: 20)
-
+        
         actualTypeLabel.textColor = .white
         actualTypeLabel.font = .systemFont(ofSize: 20)
-
+        
         genderLabel.text = "Gender:"
         genderLabel.textColor = .gray
         genderLabel.font = .systemFont(ofSize: 20)
-
+        
         actualGenderLabel.textColor = .white
         actualGenderLabel.font = .systemFont(ofSize: 20)
-
+        
         speciesLabel.text = "Species:"
         speciesLabel.textColor = .gray
         speciesLabel.font = .systemFont(ofSize: 20)
-
+        
         actualSpeciesLabel.textColor = .white
         actualSpeciesLabel.font = .systemFont(ofSize: 20)
-
+        
         episodesLabel.text = "Episodes:"
         episodesLabel.textColor = .gray
         episodesLabel.font = .systemFont(ofSize: 20)
-
+        
         actualEpisodesLabel.textColor = .white
         actualEpisodesLabel.numberOfLines = 0
         actualEpisodesLabel.font = .systemFont(ofSize: 25)
-
+        
         characterImageView.layer.cornerRadius = 10
         characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         characterImageView.clipsToBounds = true
