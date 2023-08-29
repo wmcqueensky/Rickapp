@@ -90,7 +90,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         super.bindToViewModel()
         viewModel.characterPublisher
             .sink { [weak self] character in
-                self?.setupData()
+                self?.setupData(character)
             }
             .store(in: &viewModel.cancellables)
         
@@ -118,17 +118,17 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         }
     }
     
-    override func setupData() {
-        characterImageView.kf.setImage(with: URL(string: viewModel.character.image ?? ""))
-        nameLabel.text = viewModel.character.name
-        statusLabel.text = (viewModel.character.status ?? "") + " - " + (viewModel.character.species ?? "")
-        actualLocationLabel.text = viewModel.character.location?.name ?? ""
-        actualOriginLabel.text = viewModel.character.origin?.name ?? ""
-        actualTypeLabel.text = viewModel.character.type ?? ""
-        actualGenderLabel.text = viewModel.character.gender ?? ""
-        actualSpeciesLabel.text = viewModel.character.species ?? ""
+    private func setupData(_ character: Character) {
+        characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
+        nameLabel.text = character.name
+        statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
+        actualLocationLabel.text = character.location?.name ?? ""
+        actualOriginLabel.text = character.origin?.name ?? ""
+        actualTypeLabel.text = character.type ?? ""
+        actualGenderLabel.text = character.gender ?? ""
+        actualSpeciesLabel.text = character.species ?? ""
         
-        let episodeNumbers = viewModel.character.episode?.map { $0.components(separatedBy: "/").last ?? "" } ?? []
+        let episodeNumbers = character.episode?.map { $0.components(separatedBy: "/").last ?? "" } ?? []
         let episodeText = episodeNumbers.isEmpty ? "N/A" : episodeNumbers.joined(separator: ", ")
         
         let formattedEpisodes = episodeNumbers.map { "Episode: \($0)" }
@@ -136,7 +136,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         
         actualEpisodesLabel.text = formattedEpisodeText
         
-        switch viewModel.character.status {
+        switch character.status {
         case "Alive":
             statusView.backgroundColor = .green
         case "Dead":
