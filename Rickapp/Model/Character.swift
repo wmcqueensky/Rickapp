@@ -7,6 +7,17 @@
 
 import Foundation
 
+struct CharacterList: Codable {
+    var info: Info?
+    var results: [Character]?
+}
+
+struct Info: Codable {
+    var count: Int?
+    var pages: Int?
+    var next: String?
+}
+
 struct Character: Codable {
     var id: Int?
     var name: String?
@@ -20,10 +31,6 @@ struct Character: Codable {
     var episode: [String]?
     var url: String?
     var created: String?
-}
-
-struct Location: Codable {
-    var name: String?
 }
 
 struct Origin: Codable {

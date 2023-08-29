@@ -72,6 +72,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterStackView.setCustomSpacings(23, [statusStackView, actualLocationLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 0, right:15)
         
+        selectionStyle = .none
         backgroundColor = .backgroundGray
         addSubview(characterImageView)
         addSubview(characterStackView)
@@ -97,7 +98,7 @@ class CharacterTableViewCell: UITableViewCell {
     
     private func setupCellContent() {
         characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
-        nameLabel.text = character.name
+        nameLabel.text = character.name ?? ""
         statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
         actualLocationLabel.text = character.location?.name ?? ""
         actualOriginLabel.text = character.origin?.name ?? ""
