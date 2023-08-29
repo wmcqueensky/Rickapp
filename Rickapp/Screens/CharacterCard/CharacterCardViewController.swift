@@ -30,19 +30,23 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let episodesLabel = UILabel()
     private let actualEpisodesLabel = UILabel()
     private let scrollView = UIScrollView()
-    private var character = Character()
+    private var character = Character()//
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configurePushNavigationBar()
+        navigationController?.setNavigationBarHidden(scrollView.contentOffset.y > 0, animated: false)
+    }
     
     override func setupViews() {
-        configurePushNavigationBar(backButton: .getImage(.backButton))
-        
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
-        nameLabel.numberOfLines = 2
         
         statusLabel.textColor = .white
-        statusLabel.font = .systemFont(ofSize: 20)
+        statusLabel.setFontForLabels([statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
+        statusLabel.setTextColorForLabels([statusLabel, actualLocationLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel, actualEpisodesLabel], color: .white)
         
-        statusView.layer.cornerRadius = 5
+        statusView.layer.cornerRadius = 6
         
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
@@ -50,72 +54,32 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         statusStackView.alignment = .center
         
         locationLabel.text = "Last known location:"
-        locationLabel.textColor = .gray
-        locationLabel.font = .systemFont(ofSize: 20)
-        
-        actualLocationLabel.textColor = .white
-        actualLocationLabel.font = .systemFont(ofSize: 20)
-        
+                
         originLabel.text = "First seen in:"
-        originLabel.textColor = .gray
-        originLabel.font = .systemFont(ofSize: 20)
-        
-        actualOriginLabel.textColor = .white
-        actualOriginLabel.font = .systemFont(ofSize: 20)
-        
+                
         typeLabel.text = "Type:"
-        typeLabel.textColor = .gray
-        typeLabel.font = .systemFont(ofSize: 20)
-        
-        actualTypeLabel.textColor = .white
-        actualTypeLabel.font = .systemFont(ofSize: 20)
-        
+                
         genderLabel.text = "Gender:"
-        genderLabel.textColor = .gray
-        genderLabel.font = .systemFont(ofSize: 20)
-        
-        actualGenderLabel.textColor = .white
-        actualGenderLabel.font = .systemFont(ofSize: 20)
-        
+                
         speciesLabel.text = "Species:"
-        speciesLabel.textColor = .gray
-        speciesLabel.font = .systemFont(ofSize: 20)
-        
-        actualSpeciesLabel.textColor = .white
-        actualSpeciesLabel.font = .systemFont(ofSize: 20)
-        
+                
         episodesLabel.text = "Episodes:"
-        episodesLabel.textColor = .gray
-        episodesLabel.font = .systemFont(ofSize: 20)
+        episodesLabel.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodesLabel], color: .gray)
         
-        actualEpisodesLabel.textColor = .white
-        actualEpisodesLabel.numberOfLines = 0
         actualEpisodesLabel.font = .systemFont(ofSize: 25)
+        actualEpisodesLabel.numberOfLines = 0
         
-        characterImageView.layer.cornerRadius = 10
-        characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        characterImageView.clipsToBounds = true
         characterImageView.contentMode = .scaleAspectFill
         
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.backgroundColor = .darkGray
-        characterStackView.layer.cornerRadius = 10
-        characterStackView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        characterStackView.clipsToBounds = true
-        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel, actualEpisodesLabel,UIView()])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel, actualEpisodesLabel])
         characterStackView.setCustomSpacing(9, after: characterImageView)
-        characterStackView.setCustomSpacing(20, after: statusStackView)
-        characterStackView.setCustomSpacing(20, after: actualLocationLabel)
-        characterStackView.setCustomSpacing(20, after: actualOriginLabel)
-        characterStackView.setCustomSpacing(20, after: actualTypeLabel)
-        characterStackView.setCustomSpacing(20, after: actualGenderLabel)
-        characterStackView.setCustomSpacing(20, after: actualSpeciesLabel)
-        characterStackView.setCustomSpacing(16, after: actualEpisodesLabel)
-        characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 0, right:15)
+        characterStackView.setCustomSpacings(20, [statusStackView, actualLocationLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
+        characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         
-        view.backgroundColor = .backgroundGray
+        view.backgroundColor = .darkGray
         
         scrollView.showsVerticalScrollIndicator = false
         scrollView.addSubview(characterImageView)
@@ -138,7 +102,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         characterImageView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view)
             make.top.equalTo(scrollView)
-            make.height.equalTo(characterImageView.snp.width).multipliedBy(1.1)
+            make.height.equalTo(characterImageView.snp.width)
         }
         
         characterStackView.snp.makeConstraints { make in
@@ -148,8 +112,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         }
         
         scrollView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(view)
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
         statusView.snp.makeConstraints { make in

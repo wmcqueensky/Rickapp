@@ -34,9 +34,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     
     override func setupConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
@@ -65,7 +63,7 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        cell.character = (viewModel.characterList.results?[indexPath.row])!
+        cell.character = (viewModel.characterList.results?[indexPath.row])!//
         
         return cell
     }
