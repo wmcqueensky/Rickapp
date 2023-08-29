@@ -62,7 +62,7 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        cell.character = (viewModel.characterList.results?[indexPath.row])!//
+        cell.character = viewModel.characterList.results?[indexPath.row] ?? Character()
         
         return cell
     }
