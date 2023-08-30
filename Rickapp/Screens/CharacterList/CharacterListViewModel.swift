@@ -11,15 +11,15 @@ import Combine
 class CharacterListViewModel: BaseViewModel {
     private var isLoadingNextPage = false
     private var nextPage: String?
-    var characters = PassthroughSubject<[Character], Never>()
-    var characterList = CharacterList()
-    
+    var charactersPublisher = PassthroughSubject<[Character], Never>()
+    var characters: [Character]? = []
+
     override func bindToData() {
         super.bindToData()
         CardService.shared.getCharacters()
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 self?.nextPage = characterList.info?.next ?? ""
-                self?.characters.send(characterList.results ?? [])
+                self?.charactersPublisher.send(characterList.results ?? [])
             }
             .store(in: &cancellables)
     }
@@ -31,9 +31,9 @@ class CharacterListViewModel: BaseViewModel {
         CardService.shared.getNextCharactersPage(url: nextPage)
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 guard let self = self else { return }
-                self.characterList.results?.append(contentsOf: characterList.results ?? [])
+                self.characters?.append(contentsOf: characterList.results ?? [])
                 self.nextPage = characterList.info?.next ?? ""
-                self.characters.send(self.characterList.results ?? [])
+                self.charactersPublisher.send(self.characters ?? [])
                 self.isLoadingNextPage = false
             }
             .store(in: &cancellables)
