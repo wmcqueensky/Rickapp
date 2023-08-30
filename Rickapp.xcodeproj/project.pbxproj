@@ -109,8 +109,8 @@
 				F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */,
 				F39E9E8F2A949677003D722E /* UIColor+Ext.swift */,
 				F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */,
-				F3F85CF62A97703A00142443 /* TargetType+Ext.swift */,
 				F3C74B3A2A9F48500008DC9F /* UIView+Ext.swift */,
+				F3F85CF62A97703A00142443 /* TargetType+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

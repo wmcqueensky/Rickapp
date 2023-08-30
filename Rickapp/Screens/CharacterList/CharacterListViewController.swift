@@ -40,26 +40,26 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
-        guard let characterId = viewModel.characters?[indexPath.row].id else { return }
+        guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
         viewModel.getCharacterById(characterId)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let rowCount = viewModel.characters?.count ?? 0
-        if indexPath.row >= rowCount - 3 {
+        let rowCount = viewModel.charactersPublisher.value.count
+        if indexPath.row == rowCount - 3 {
             viewModel.getNextCharactersPage()
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.characters?.count ?? 0
+        return viewModel.charactersPublisher.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        cell.character = viewModel.characters?[indexPath.row] ?? Character()
+        cell.character = viewModel.charactersPublisher.value[indexPath.row]
         
         return cell
     }

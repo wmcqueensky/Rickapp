@@ -11,30 +11,31 @@ import Combine
 class CharacterListViewModel: BaseViewModel {
     private var isLoadingNextPage = false
     private var nextPage: String?
-    var charactersPublisher = PassthroughSubject<[Character], Never>()
-    var characters: [Character]? = []
+    private var previousPage: String?
+    var charactersPublisher = CurrentValueSubject<[Character], Never>([])
+//    var characters: [Character]? = []
 
     override func bindToData() {
         super.bindToData()
         CardService.shared.getCharacters()
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 self?.nextPage = characterList.info?.next ?? ""
-                self?.characters = characterList.results ?? []
-                self?.charactersPublisher.send(self?.characters ?? [])
+                self?.charactersPublisher.send(characterList.results ?? [])
             }
             .store(in: &cancellables)
     }
     
     func getNextCharactersPage() {
         guard !isLoadingNextPage, let nextPage = nextPage else { return }
-        isLoadingNextPage = true
         if nextPage.isEmpty { return }
+        isLoadingNextPage = true
         CardService.shared.getNextCharactersPage(url: nextPage)
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 guard let self = self else { return }
-                self.characters?.append(contentsOf: characterList.results ?? [])
+                let existingCharacters = self.charactersPublisher.value
+                let newCharacters = characterList.results ?? []
+                self.charactersPublisher.send(existingCharacters + newCharacters)
                 self.nextPage = characterList.info?.next ?? ""
-                self.charactersPublisher.send(self.characters ?? [])
                 self.isLoadingNextPage = false
             }
             .store(in: &cancellables)
