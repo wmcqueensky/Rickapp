@@ -31,12 +31,6 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let actualEpisodesLabel = UILabel()
     private let scrollView = UIScrollView()
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configurePushNavigationBar()
-        navigationController?.setNavigationBarHidden(scrollView.contentOffset.y > 0, animated: false)
-    }
-    
     override func setupViews() {
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
