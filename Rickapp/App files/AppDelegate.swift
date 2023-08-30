@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func configureNavigationBar() {
         let navigationBarAppearance = UINavigationBarAppearance()
         let backButtonAppearance = UIBarButtonItemAppearance()
-        let backButtonImage = UIImage.getImage(.backButton).withRenderingMode(.alwaysTemplate)
+        let backButtonImage = UIImage.getImage(.backIcon).withRenderingMode(.alwaysTemplate)
 
         backButtonAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
         

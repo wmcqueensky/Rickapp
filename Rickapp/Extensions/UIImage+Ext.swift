@@ -2,7 +2,9 @@ import Foundation
 import UIKit
 
 enum ImageNamePredifined: String {
-    case backButton = "backButton"
+    case backIcon = "backIcon"
+    case heartIconSelected = "heartIconSelected"
+    case heartIconUnselected = "heartIconUnselected"
 }
 
 extension UIImage {
