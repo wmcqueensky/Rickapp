@@ -52,8 +52,8 @@ class CharacterTableViewCell: UITableViewCell {
                 
         originLabel.text = "First seen in:"
         
-        originLabel.setTextColorForLabels([locationLabel, originLabel], color: .gray)
-        actualOriginLabel.setTextColorForLabels([nameLabel, statusLabel, actualLocationLabel, actualOriginLabel], color: .white)
+        setTextColorForLabels([locationLabel, originLabel], color: .gray)
+        setTextColorForLabels([nameLabel, statusLabel, actualLocationLabel, actualOriginLabel], color: .white)
                 
         characterImageView.layer.cornerRadius = 10
         characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
