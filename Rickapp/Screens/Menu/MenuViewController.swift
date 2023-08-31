@@ -40,8 +40,7 @@ class MenuViewController: UITabBarController, UIGestureRecognizerDelegate {
 
     private func configureTabBarNavigationBar() {
         view.backgroundColor = .backgroundGray
-        
-    }
+    }//
 }
 
 
