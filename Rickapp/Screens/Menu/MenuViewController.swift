@@ -16,10 +16,6 @@ class MenuViewController: UITabBarController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBar.backgroundColor = .white
-        tabBar.isTranslucent = false
-        tabBar.barTintColor = .white
-        navigationController?.navigationBar.isHidden = false
         configureTabBarNavigationBar()
     }
     
@@ -28,7 +24,7 @@ class MenuViewController: UITabBarController, UIGestureRecognizerDelegate {
         let characterListViewController = CharacterListViewController()
         let characterListViewModel = CharacterListViewModel()
         characterListViewController.viewModel = characterListViewModel
-        characterListViewController.tabBarItem = UITabBarItem(title: "All", image: UIImage.getImage(.backIcon).withRenderingMode(.alwaysTemplate), tag: 0)
+        characterListViewController.tabBarItem = UITabBarItem(title: "All", image: UIImage.getImage(.characterListIcon).withRenderingMode(.alwaysTemplate), tag: 0)
 
         let favouriteListViewController = FavouriteListViewController()
         let favouriteListViewModel = FavouriteListViewModel()
@@ -39,8 +35,11 @@ class MenuViewController: UITabBarController, UIGestureRecognizerDelegate {
     }
 
     private func configureTabBarNavigationBar() {
-        view.backgroundColor = .backgroundGray
-    }//
+        tabBar.backgroundColor = .backgroundGray
+        tabBar.isTranslucent = false
+        tabBar.barTintColor = .backgroundGray
+        tabBar.tintColor = .white
+    }
 }
 
 
