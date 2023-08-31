@@ -9,12 +9,18 @@ import UIKit
 import SnapKit
 
 class FavouriteButton: BaseButton {
+    private let selectedImage = UIImage.getImage(.heartIconSelected)
+    private let unselectedImage = UIImage.getImage(.heartIconUnselected)
+    
+    override var isSelected: Bool {
+        didSet {
+            setImage(isSelected ? selectedImage : unselectedImage, for: .normal)
+        }
+    }
     
     override func setupViews() {
         super.setupViews()
-        self.setImage(UIImage.getImage(.heartIconUnselected), for: .normal)
-        self.setImage(UIImage.getImage(.heartIconSelected), for: .selected)
-        self.addTarget(self, action: #selector(FavouriteButtonTapped), for: .touchUpInside)
+        setImage(isSelected ? selectedImage : unselectedImage, for: .normal)
     }
     
     override func setupConstraints() {
@@ -22,10 +28,6 @@ class FavouriteButton: BaseButton {
         self.snp.makeConstraints({ make in
             make.width.height.equalTo(40)
         })
-    }
-    
-    @objc func FavouriteButtonTapped() {
-        self.isSelected.toggle()
     }
 }
 

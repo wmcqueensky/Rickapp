@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class CharacterCardViewModel: BaseViewModel {
-    var characterPublisher = PassthroughSubject<Character, Never>()
+    var characterPublisher = CurrentValueSubject<Character, Never>(Character())
     
     func fetchCharacterById(_ characterId: Int) {
         CardService.shared.getCharacterById(characterId)
@@ -17,5 +17,13 @@ class CharacterCardViewModel: BaseViewModel {
                 self?.characterPublisher.send(character)
             }
             .store(in: &cancellables)
+    }
+    
+    func addToFavourites(_ character: Character) {
+        favourites.append(character)
+    }
+    
+    func removeFromFavourites(_ character: Character) {
+        favourites.removeAll { $0 == character }
     }
 }

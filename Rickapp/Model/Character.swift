@@ -18,7 +18,7 @@ struct Info: Codable {
     var next: String?
 }
 
-struct Character: Codable {
+struct Character: Codable, Equatable {
     var id: Int?
     var name: String?
     var status: String?
@@ -31,6 +31,10 @@ struct Character: Codable {
     var episode: [String]?
     var url: String?
     var created: String?
+    
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 struct Origin: Codable {

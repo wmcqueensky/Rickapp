@@ -12,7 +12,7 @@ import SnapKit
 class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
-    private let addToFavouritesButton = FavouriteButton()
+    private let favouriteButton = FavouriteButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -31,10 +31,31 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let actualEpisodesLabel = UILabel()
     private let scrollView = UIScrollView()
     
-    override func setupViews() {        
+    
+    override func bindToViewModel() {
+        super.bindToViewModel()
+        viewModel.characterPublisher
+            .sink { [weak self] character in
+                self?.setupData(character)
+                self?.favouriteButton.isSelected = self?.viewModel.favourites.contains(character) ?? false
+            }
+            .store(in: &viewModel.cancellables)
+        
+        viewModel.favourites
+            .sink { [weak self] _ in
+                if let character = self?.viewModel.characterPublisher.value {
+                    self?.favouriteButton.isSelected = self?.viewModel.favourites.contains(character) ?? false
+                }
+            }
+            .store(in: &viewModel.cancellables)
+    }
+    
+    override func setupViews() {
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 0
+        
+        favouriteButton.addTarget(self, action: #selector(FavouriteButtonTapped), for: .touchUpInside)
         
         statusLabel.textColor = .white
         
@@ -78,19 +99,9 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         
         scrollView.showsVerticalScrollIndicator = false
         scrollView.addSubview(characterImageView)
-        scrollView.addSubview(addToFavouritesButton)
+        scrollView.addSubview(favouriteButton)
         scrollView.addSubview(characterStackView)
         view.addSubview(scrollView)
-    }
-    
-    override func bindToViewModel() {
-        super.bindToViewModel()
-        viewModel.characterPublisher
-            .sink { [weak self] character in
-                self?.setupData(character)
-            }
-            .store(in: &viewModel.cancellables)
-        
     }
     
     override func setupConstraints() {
@@ -114,7 +125,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
             make.width.height.equalTo(12)
         }
         
-        addToFavouritesButton.snp.makeConstraints { make in
+        favouriteButton.snp.makeConstraints { make in
             make.top.equalTo(characterImageView).offset(10)
             make.trailing.equalTo(characterImageView).offset(-10)
         }
@@ -147,6 +158,17 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
             statusView.backgroundColor = .gray
         default:
             statusView.backgroundColor = .clear
+        }
+    }
+    
+    @objc func FavouriteButtonTapped() {
+        favouriteButton.isSelected.toggle()
+        if let character = viewModel.characterPublisher.value {
+            if favouriteButton.isSelected {
+                viewModel.addToFavourites(character)
+            } else {
+                viewModel.removeFromFavourites(character)
+            }
         }
     }
 }
