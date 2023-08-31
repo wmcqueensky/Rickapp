@@ -5,7 +5,6 @@
 //  Created by Wojciech Mokwiński on 27/08/2023.
 //
 
-
 import UIKit
 import Kingfisher
 import SnapKit
@@ -13,7 +12,7 @@ import SnapKit
 class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
-    private let addToFavouritesButton = AddToFavouritesButton()
+    private let addToFavouritesButton = FavouriteButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -32,21 +31,13 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let actualEpisodesLabel = UILabel()
     private let scrollView = UIScrollView()
     
-    override func setupViews() {
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizer))
-//        tapGesture.delegate = self
-//
-//        addToFavouritesButton.addGestureRecognizer(tapGesture)
-        
-        addToFavouritesButton.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
-        addToFavouritesButton.addTarget(self, action: #selector(addToFavouritesButtonTapped), for: .touchUpInside)
-        
+    override func setupViews() {        
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 0
-                
+        
         statusLabel.textColor = .white
-
+        
         statusView.layer.cornerRadius = 6
         
         statusStackView.axis = .horizontal
@@ -74,7 +65,6 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         actualEpisodesLabel.numberOfLines = 0
         
         characterImageView.contentMode = .scaleAspectFill
-        characterImageView.addSubview(addToFavouritesButton)
         
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
@@ -88,6 +78,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         
         scrollView.showsVerticalScrollIndicator = false
         scrollView.addSubview(characterImageView)
+        scrollView.addSubview(addToFavouritesButton)
         scrollView.addSubview(characterStackView)
         view.addSubview(scrollView)
     }
@@ -124,8 +115,8 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         }
         
         addToFavouritesButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(characterImageView).offset(10)
+            make.trailing.equalTo(characterImageView).offset(-10)
         }
     }
     
@@ -158,20 +149,4 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
             statusView.backgroundColor = .clear
         }
     }
-    
-    @objc func addToFavouritesButtonTapped() {
-        print("Selected")
-        addToFavouritesButton.isSelected.toggle()
-    }
-    
-//    @objc private func tapGestureRecognizer(_ recognizer: UITapGestureRecognizer) {
-//        print("Tapped")
-//    }
 }
-
-//extension CharacterCardViewController: UIGestureRecognizerDelegate {
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        return touch.view == gestureRecognizer.view
-//    }
-//}
-

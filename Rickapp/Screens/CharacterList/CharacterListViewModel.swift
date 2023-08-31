@@ -11,7 +11,6 @@ import Combine
 class CharacterListViewModel: BaseViewModel {
     private var isLoadingNextPage = false
     private var nextPage: String?
-    private var previousPage: String?
     var charactersPublisher = CurrentValueSubject<[Character], Never>([])
 
     override func bindToData() {
