@@ -128,7 +128,6 @@ class CharacterTableViewCell: UITableViewCell {
     
     @objc private func addToFavouritesButtonTapped() {
         addToFavouritesButton.isSelected.toggle()
-        // Add your logic here to handle the button click
     }
 }
 

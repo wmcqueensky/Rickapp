@@ -9,15 +9,11 @@ import UIKit
 import SnapKit
 
 class AddToFavouritesButton: BaseButton {
-    private let customImageView = UIImageView()
     
     override func setupViews() {
         super.setupViews()
-        addTarget(self, action: #selector(addToFavouritesButtonTapped), for: .touchUpInside)
-        self.setBackgroundImage(UIImage.getImage(.heartIconUnselected), for: .normal)
-        self.setBackgroundImage(UIImage.getImage(.heartIconSelected), for: .selected)
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addToFavouritesButtonTapped)))
+        self.setImage(UIImage.getImage(.heartIconUnselected), for: .normal)
+        self.setImage(UIImage.getImage(.heartIconSelected), for: .selected)
     }
     
     override func setupConstraints() {
@@ -25,11 +21,6 @@ class AddToFavouritesButton: BaseButton {
         self.snp.makeConstraints({ make in
             make.width.height.equalTo(40)
         })
-    }
-    
-    @objc private func addToFavouritesButtonTapped() {
-        self.isSelected.toggle()
-        self.isHighlighted = !self.isHighlighted
     }
 }
 
