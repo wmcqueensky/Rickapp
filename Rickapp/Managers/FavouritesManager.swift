@@ -17,6 +17,7 @@ class FavouritesManager {
         }
         set {
             UserDefaults.standard.set(newValue, forKey: "favoriteCharacterIds")
+            NotificationCenter.default.post(name: .favouritesUpdated, object: nil)
         }
     }
     
@@ -29,4 +30,8 @@ class FavouritesManager {
             favourites.remove(at: index)
         }
     }
+}
+
+extension Notification.Name {
+    static let favouritesUpdated = Notification.Name("FavouritesUpdated")
 }

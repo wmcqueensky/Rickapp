@@ -159,8 +159,5 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         favouriteButton.isSelected ?
         FavouritesManager.shared.addToFavourites(viewModel.characterPublisher.value.id ?? 0) :
         FavouritesManager.shared.removeFromFavourites(viewModel.characterPublisher.value.id ?? 0)
-        print(FavouritesManager.shared.favourites)
-        let idsString = FavouritesManager.shared.favourites.map(String.init).joined(separator: ",")
-        print(idsString)
     }
 }

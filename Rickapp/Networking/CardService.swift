@@ -16,12 +16,18 @@ class CardService: BaseNetworkService<CardResource> {
         return request(for: .character)
     }
     
-    func getCharactersById(_ characterIds: [Int]) -> AnyPublisher<[Character], Error> {
-        return request(for: .getCharactersById(characterIds: characterIds))
-    }
-    
     func getNextCharactersPage(url: String) -> AnyPublisher<CharacterList, Error> {
         return request(for: .nextCharactersPage(url: url))
+    }
+    
+    func getFavouritesById(characterIds: [Int]) -> AnyPublisher<[Character], Error> {
+        let requests = characterIds.map { characterId in
+            return getCharacterById(characterId)
+        }
+        
+        return Publishers.MergeMany(requests)
+            .collect()
+            .eraseToAnyPublisher()
     }
     
     func getCharacterById(_ characterId: Int) -> AnyPublisher<Character, Error> {

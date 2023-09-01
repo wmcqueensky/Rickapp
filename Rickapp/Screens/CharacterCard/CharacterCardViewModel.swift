@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class CharacterCardViewModel: BaseViewModel {
+    var characterPublisher = CurrentValueSubject<Character, Never>(Character())
     
     init(_ characterId: Int) {
         super.init()//

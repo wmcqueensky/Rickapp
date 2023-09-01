@@ -11,6 +11,20 @@ import SnapKit
 class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     private let tableView = UITableView()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFavouritesUpdated), name: .favouritesUpdated, object: nil)
+    }
+    
+    override func bindToViewModel() {
+            viewModel.favouritesPublisher
+                .sink { [weak self] characters in
+                    self?.tableView.reloadData()
+                }
+                .store(in: &viewModel.cancellables)
+
+    }
+    
     override func setupViews() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -21,18 +35,19 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
         view.addSubview(tableView)
     }
     
-    override func bindToViewModel() {
-        viewModel.favouritesPublisher
-            .sink { [weak self] characters in
-                self?.tableView.reloadData()
-            }
-            .store(in: &viewModel.cancellables)
-    }
-    
     override func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    @objc func handleFavouritesUpdated() {
+        viewModel.reloadFavourites()
+        tableView.reloadData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .favouritesUpdated, object: nil)
     }
 }
 

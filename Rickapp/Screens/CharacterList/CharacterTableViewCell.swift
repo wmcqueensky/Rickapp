@@ -12,6 +12,7 @@ import Kingfisher
 class CharacterTableViewCell: UITableViewCell {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
+    private let favouriteButton = FavouriteButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
