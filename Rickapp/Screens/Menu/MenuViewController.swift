@@ -24,12 +24,12 @@ class MenuViewController: UITabBarController {
         let characterListViewController = CharacterListViewController()
         let characterListViewModel = CharacterListViewModel()
         characterListViewController.viewModel = characterListViewModel
-        characterListViewController.tabBarItem = UITabBarItem(title: "All", image: UIImage.getImage(.characterListIcon).withRenderingMode(.alwaysTemplate), tag: 0)
+        characterListViewController.tabBarItem = UITabBarItem(title: "All", image: UIImage.getImage(.characterListIcon), tag: 0)
 
         let favouriteListViewController = FavouriteListViewController()
         let favouriteListViewModel = FavouriteListViewModel()
         favouriteListViewController.viewModel = favouriteListViewModel
-        favouriteListViewController.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage.getImage(.heartIconUnselected).withRenderingMode(.alwaysTemplate), tag: 1)
+        favouriteListViewController.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage.getImage(.heartIconUnselected), tag: 1)
         
         self.viewControllers = [characterListViewController, favouriteListViewController]
     }

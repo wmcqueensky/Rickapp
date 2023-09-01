@@ -10,8 +10,8 @@ import Combine
 
 class CharacterListViewModel: BaseViewModel {
     private var isLoadingNextPage = false
-    private var nextPage: String?
     var charactersPublisher = CurrentValueSubject<[Character], Never>([])
+    private var nextPage: String?
 
     override func bindToData() {
         super.bindToData()
