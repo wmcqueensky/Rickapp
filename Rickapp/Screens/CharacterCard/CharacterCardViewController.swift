@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+import Combine
 import SnapKit
 
 class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
@@ -37,15 +37,6 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         viewModel.characterPublisher
             .sink { [weak self] character in
                 self?.setupData(character)
-                self?.favouriteButton.isSelected = self?.viewModel.favourites.contains(character) ?? false
-            }
-            .store(in: &viewModel.cancellables)
-        
-        viewModel.favourites
-            .sink { [weak self] _ in
-                if let character = self?.viewModel.characterPublisher.value {
-                    self?.favouriteButton.isSelected = self?.viewModel.favourites.contains(character) ?? false
-                }
             }
             .store(in: &viewModel.cancellables)
     }
@@ -159,16 +150,13 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         default:
             statusView.backgroundColor = .clear
         }
+        
+        favouriteButton.isSelected = BaseViewModel.favourites.value.contains(character)
     }
     
     @objc func FavouriteButtonTapped() {
         favouriteButton.isSelected.toggle()
-        if let character = viewModel.characterPublisher.value {
-            if favouriteButton.isSelected {
-                viewModel.addToFavourites(character)
-            } else {
-                viewModel.removeFromFavourites(character)
-            }
-        }
+        
+        favouriteButton.isSelected ? viewModel.addToFavourites(viewModel.characterPublisher.value) : viewModel.removeFromFavourites(viewModel.characterPublisher.value)
     }
 }

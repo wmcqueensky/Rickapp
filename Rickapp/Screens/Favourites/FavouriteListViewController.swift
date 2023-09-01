@@ -23,6 +23,11 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     
     override func bindToViewModel() {
         super.bindToViewModel()
+        BaseViewModel.favourites
+            .sink { [weak self] favourites in
+                self?.tableView.reloadData()
+            }
+            .store(in: &viewModel.cancellables)
     }
     
     override func setupConstraints() {
@@ -34,20 +39,20 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
 
 extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
+        guard let characterId = BaseViewModel.favourites.value[indexPath.row].id else { return }
         viewModel.getCharacterById(characterId)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.charactersPublisher.value.count
+        return BaseViewModel.favourites.value.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
-
-        cell.character = viewModel.charactersPublisher.value[indexPath.row]
-
+        
+        cell.character = BaseViewModel.favourites.value[indexPath.row]
+        
         return cell
     }
 }
