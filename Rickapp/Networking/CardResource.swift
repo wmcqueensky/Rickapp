@@ -22,7 +22,7 @@ enum CardResource: TargetType {
         case .getCharacterById(let characterId):
             return "/character/\(characterId)"
         case .getCharactersById(let characterIds):
-            let idsString = characterIds.map(String.init).joined(separator: ",")
+            let idsString = characterIds.map{ String($0) }.joined(separator: ",")
             return "/character/\(idsString)"
         default:
             return ""
