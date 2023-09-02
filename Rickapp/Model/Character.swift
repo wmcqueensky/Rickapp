@@ -39,4 +39,5 @@ struct Character: Codable, Equatable {
 
 struct Origin: Codable {
     var name: String?
+    var url: String?
 }

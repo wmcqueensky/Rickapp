@@ -15,7 +15,7 @@ class CharacterListViewModel: BaseViewModel {
 
     override func bindToData() {
         super.bindToData()
-        CardService.shared.getCharacters()
+        CharacterService.shared.getCharacters()
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 self?.nextPage = characterList.info?.next ?? ""
                 self?.charactersPublisher.send(characterList.results ?? [])
@@ -27,7 +27,7 @@ class CharacterListViewModel: BaseViewModel {
         guard !isLoadingNextPage, let nextPage = nextPage else { return }
         if nextPage.isEmpty { return }
         isLoadingNextPage = true
-        CardService.shared.getNextCharactersPage(url: nextPage)
+        CharacterService.shared.getNextCharactersPage(url: nextPage)
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 guard let self = self else { return }
                 let existingCharacters = self.charactersPublisher.value

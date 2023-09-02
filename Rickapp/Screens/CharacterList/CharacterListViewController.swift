@@ -11,6 +11,10 @@ import SnapKit
 class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     private let tableView = UITableView()
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func setupViews() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -60,7 +64,7 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
-        
+            
         return cell
     }
 }

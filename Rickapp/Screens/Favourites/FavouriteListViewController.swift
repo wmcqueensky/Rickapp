@@ -11,6 +11,10 @@ import SnapKit
 class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     private let tableView = UITableView()
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(handleFavouritesUpdated), name: .favouritesUpdated, object: nil)

@@ -42,6 +42,8 @@ class CharacterTableViewCell: UITableViewCell {
         nameLabel.font = .boldSystemFont(ofSize: 30)
         nameLabel.numberOfLines = 0
         
+        favouriteButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
+        
         statusView.layer.cornerRadius = 5
         
         statusStackView.axis = .horizontal
@@ -75,8 +77,9 @@ class CharacterTableViewCell: UITableViewCell {
         
         selectionStyle = .none
         backgroundColor = .backgroundGray
-        addSubview(characterImageView)
-        addSubview(characterStackView)
+        contentView.addSubview(characterImageView)
+        contentView.addSubview(favouriteButton)
+        contentView.addSubview(characterStackView)
     }
     
     private func setupConstraints() {
@@ -90,6 +93,11 @@ class CharacterTableViewCell: UITableViewCell {
             make.top.equalTo(characterImageView.snp.bottom)
             make.leading.trailing.equalToSuperview().inset(15)
             make.bottom.equalToSuperview().inset(18)
+        }
+        
+        favouriteButton.snp.makeConstraints { make in
+            make.top.equalTo(characterImageView).offset(10)
+            make.trailing.equalTo(characterImageView).offset(-10)
         }
         
         statusView.snp.makeConstraints { make in
@@ -114,6 +122,14 @@ class CharacterTableViewCell: UITableViewCell {
         default:
             statusView.backgroundColor = .clear
         }
+        favouriteButton.isSelected = FavouritesManager.shared.favourites.contains(character.id ?? 0)
+    }
+    
+    @objc private func favouriteButtonTapped() {
+        favouriteButton.isSelected.toggle()
+        favouriteButton.isSelected ?
+        FavouritesManager.shared.addToFavourites(character.id ?? 0) :
+        FavouritesManager.shared.removeFromFavourites(character.id ?? 0)
     }
 }
 

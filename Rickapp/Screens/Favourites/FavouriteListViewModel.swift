@@ -16,7 +16,7 @@ class FavouriteListViewModel: BaseViewModel {
     }
     
     func reloadFavourites() {        
-        CardService.shared.getFavouritesById(characterIds: FavouritesManager.shared.favourites)
+        CharacterService.shared.getFavouritesById(characterIds: FavouritesManager.shared.favourites)
                 .sink(receiveCompletion: { _ in }) { [weak self] characters in
                     self?.favouritesPublisher.send(characters)
                 }

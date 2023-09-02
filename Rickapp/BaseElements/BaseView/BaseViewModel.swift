@@ -12,7 +12,7 @@ class BaseViewModel: NSObject {
     var cancellables: Set<AnyCancellable> = []
     
     func getCharacterById(_ characterId: Int) {
-        AppNavigator.shared.navigate(to: MainRoutes.card(characterId: characterId), with: .push, animated: true)
+        AppNavigator.shared.navigate(to: MainRoutes.details(characterId: characterId), with: .push, animated: true)
     }
     
     func bindToData() {}
