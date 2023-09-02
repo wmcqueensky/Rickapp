@@ -15,5 +15,9 @@ class BaseViewModel: NSObject {
         AppNavigator.shared.navigate(to: MainRoutes.details(characterId: characterId), with: .push, animated: true)
     }
     
+    func locationButtonTapped(_ locationUrl: String) {
+        AppNavigator.shared.navigate(to: MainRoutes.location(url: locationUrl), with: .push, animated: true)
+    }
+    
     func bindToData() {}
 }

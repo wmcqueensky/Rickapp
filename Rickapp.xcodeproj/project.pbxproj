@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F3665A232AA379F000B6EC92 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3665A222AA379F000B6EC92 /* LocationDetailsViewController.swift */; };
 		F3665A252AA37A0000B6EC92 /* LocationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3665A242AA37A0000B6EC92 /* LocationDetailsViewModel.swift */; };
+		F3665A292AA3AC0E00B6EC92 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3665A282AA3AC0E00B6EC92 /* LocationButton.swift */; };
 		F37C9DB12A93CDF60073F58F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37C9DB02A93CDF60073F58F /* Assets.xcassets */; };
 		F390EA832A9BF8BE00DC4903 /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA822A9BF8BE00DC4903 /* CharacterDetailsViewController.swift */; };
 		F390EA852A9BF8D300DC4903 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA842A9BF8D300DC4903 /* CharacterDetailsViewModel.swift */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		F3665A222AA379F000B6EC92 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		F3665A242AA37A0000B6EC92 /* LocationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewModel.swift; sourceTree = "<group>"; };
+		F3665A282AA3AC0E00B6EC92 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		F37C9DB02A93CDF60073F58F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
 		F390EA822A9BF8BE00DC4903 /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		F390EA842A9BF8D300DC4903 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */,
+				F3665A282AA3AC0E00B6EC92 /* LocationButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
 				F3928B172A9FE9FD0097E6E2 /* FavouriteButton.swift in Sources */,
+				F3665A292AA3AC0E00B6EC92 /* LocationButton.swift in Sources */,
 				F3F85CF72A97703A00142443 /* TargetType+Ext.swift in Sources */,
 				F3A94BF92A8FBD850003F841 /* Character.swift in Sources */,
 				F3CA00A12A9CDC80003F219D /* UIImage+Ext.swift in Sources */,
