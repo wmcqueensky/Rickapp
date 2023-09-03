@@ -11,8 +11,7 @@ import Moya
 enum CharacterResource: TargetType {
     
     case character
-    case nextCharactersPage(url: String)
-    case getLocation(url: String)
+    case getElementbyUrl(url: String)
     case getCharacterById(characterId: Int)
     case getFavouritesById(characterIds: [Int])
     
@@ -29,9 +28,7 @@ enum CharacterResource: TargetType {
     
     var baseURL: URL {
         switch self {
-        case .getLocation(let url):
-            return URL(string: url)!
-        case .nextCharactersPage(let url):
+        case .getElementbyUrl(let url):
             return URL(string: url)!
         default:
             let baseUrlString = Bundle.main.object(forInfoDictionaryKey: "Base URL") as? String ?? ""
@@ -41,14 +38,14 @@ enum CharacterResource: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .character, .nextCharactersPage, .getCharacterById, .getFavouritesById, .getLocation:
+        case .character, .getCharacterById, .getFavouritesById, .getElementbyUrl:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .character, .nextCharactersPage, .getCharacterById, .getFavouritesById, .getLocation:
+        case .character, .getCharacterById, .getFavouritesById, .getElementbyUrl:
             return .requestPlain
         }
     }

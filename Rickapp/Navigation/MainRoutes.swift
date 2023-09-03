@@ -11,6 +11,7 @@ import UIKit
 enum MainRoutes: Route {
     case details(characterId: Int)
     case location(url: String)
+    case episode(url: String)
     case menu
     
     var screen: UIViewController {
@@ -21,6 +22,8 @@ enum MainRoutes: Route {
             return buildMenuViewController()
         case .location(let url):
             return buildLocationDetailsViewController(locationUrl: url)
+        case .episode(let url):
+            return buildEpisodeDetailsViewController(episodeUrl: url)
         }
     }
     
@@ -34,6 +37,13 @@ enum MainRoutes: Route {
     private func buildLocationDetailsViewController(locationUrl: String) -> UIViewController {
         let controller = LocationDetailsViewController()
         let viewModel = LocationDetailsViewModel(locationUrl)
+        controller.viewModel = viewModel
+        return controller
+    }
+    
+    private func buildEpisodeDetailsViewController(episodeUrl: String) -> UIViewController {
+        let controller = EpisodeDetailsViewController()
+        let viewModel = EpisodeDetailsViewModel(episodeUrl)
         controller.viewModel = viewModel
         return controller
     }
