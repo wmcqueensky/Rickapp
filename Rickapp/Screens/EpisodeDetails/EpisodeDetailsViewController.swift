@@ -48,7 +48,6 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
         episodeStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         episodeStackView.addArrangedSubviews([nameLabel, airDateLabel, actualAirDateLabel, episodeNumberLabel, actualEpisodeNumberLabel, charactersLabel, actualCharactersLabel])
         
-        
         view.backgroundColor = .darkGray
         
         scrollView.showsVerticalScrollIndicator = false
@@ -70,7 +69,7 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
     private func setupData(_ episode: Episode) {
         nameLabel.text = episode.name ?? ""
         actualAirDateLabel.text = episode.airDate ?? ""
-        actualEpisodeNumberLabel.text = episode.episodeNumber ?? ""
+        actualEpisodeNumberLabel.text = episode.episode ?? ""
         
         let residentsNumbers = episode.characters?.map { $0.components(separatedBy: "/").last ?? "" } ?? []
         let residentsText = residentsNumbers.isEmpty ? "N/A" : residentsNumbers.joined(separator: ", ")

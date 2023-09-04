@@ -36,6 +36,7 @@
 		F3C74B422A9F662B0008DC9F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B412A9F662B0008DC9F /* BaseButton.swift */; };
 		F3C74B4A2A9F7AF30008DC9F /* FavouriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B492A9F7AF30008DC9F /* FavouriteListViewController.swift */; };
 		F3C74B4C2A9F7B030008DC9F /* FavouriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B4B2A9F7B030008DC9F /* FavouriteListViewModel.swift */; };
+		F3C7CFFE2AA68C7100F76AC5 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */; };
 		F3C9B2832A934C3F008AC1FF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2822A934C3F008AC1FF /* CombineMoya */; };
 		F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2842A934C3F008AC1FF /* Moya */; };
 		F3C9B2872A934C3F008AC1FF /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2862A934C3F008AC1FF /* ReactiveMoya */; };
@@ -80,6 +81,7 @@
 		F3C74B412A9F662B0008DC9F /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		F3C74B492A9F7AF30008DC9F /* FavouriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewController.swift; sourceTree = "<group>"; };
 		F3C74B4B2A9F7B030008DC9F /* FavouriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewModel.swift; sourceTree = "<group>"; };
+		F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 		F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F3CA00A22A9CE242003F219D /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		F3CA00A42A9CE2CD003F219D /* MainRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoutes.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */,
+				F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				F3C74B422A9F662B0008DC9F /* BaseButton.swift in Sources */,
 				F3C74B4A2A9F7AF30008DC9F /* FavouriteListViewController.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
+				F3C7CFFE2AA68C7100F76AC5 /* LocationButton.swift in Sources */,
 				F3C74B3B2A9F48500008DC9F /* UIView+Ext.swift in Sources */,
 				F39B894D2A9E218300C2EE81 /* Location.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,

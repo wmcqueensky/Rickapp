@@ -10,7 +10,7 @@ import Combine
 
 class CharacterDetailsViewModel: BaseViewModel {
     var characterPublisher = CurrentValueSubject<Character, Never>(Character())
-    var id = 0
+    var id: Int = 0
     
     override func bindToData() {
         fetchCharacterById(id)
@@ -24,7 +24,11 @@ class CharacterDetailsViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
     
-    func locationButtonsTapped(_ locationUrl: String) {
+    func locationButtonTapped(_ locationUrl: String) {
         AppNavigator.shared.navigate(to: MainRoutes.location(url: locationUrl), with: .push, animated: true)
+    }
+    
+    func episodeButtonTapped(_ episodeUrl: String) {
+        AppNavigator.shared.navigate(to: MainRoutes.episode(url: episodeUrl), with: .push, animated: true)
     }
 }

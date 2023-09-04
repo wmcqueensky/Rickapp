@@ -11,7 +11,7 @@ struct Episode: Codable {
     var id: Int?
     var name: String?
     var airDate: String?
-    var episodeNumber: String?
+    var episode: String?
     var characters: [String]?
     var url: String?
 }
