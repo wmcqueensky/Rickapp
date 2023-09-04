@@ -10,10 +10,10 @@ import Combine
 
 class LocationDetailsViewModel: BaseViewModel {
     var locationPublisher = CurrentValueSubject<Location, Never>(Location())
+    var url = ""
     
-    init(_ locationUrl: String) {
-        super.init()
-        self.fetchLocation(locationUrl)
+    override func bindToData() {
+        fetchLocation(url)
     }
     
     func fetchLocation(_ locationUrl: String) {

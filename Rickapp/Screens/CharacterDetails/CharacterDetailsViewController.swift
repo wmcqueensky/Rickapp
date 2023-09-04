@@ -145,9 +145,8 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
                 episodeButton.titleLabel?.font = .systemFont(ofSize: 20)
                 episodeButton.setTitleColor(.white, for: .normal)
                 episodeButton.contentHorizontalAlignment = .left
-                episodeButton.addTarget(self, action: #selector(episodeButtonTapped(_:)), for: .touchUpInside)
+                episodeButton.addTarget(self, action: #selector(episodeButtonTapped), for: .touchUpInside)
                 
-                episodeButtons.append(episodeButton)
                 episodeButtonStackView.addArrangedSubview(episodeButton)
             }
         }
@@ -209,9 +208,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         }
     }
     
-    @objc private func episodeButtonTapped(_ sender: UIButton) {
-        if let episodeTitle = sender.titleLabel?.text {
-            print("Tapped Episode: \(episodeTitle)")
-        }
+    @objc private func episodeButtonTapped() {
+        
     }
 }

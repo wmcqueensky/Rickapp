@@ -29,16 +29,19 @@ class CharacterService: BaseNetworkService<CharacterResource> {
     }
     
     func getCharacterById(_ characterId: Int) -> AnyPublisher<Character, Error> {
-        return request(for: .getCharacterById(characterId: characterId))
+        return request(for: .getSingleCharacterById(characterId: characterId))
     }
     
     func getFavouritesById(characterIds: [Int]) -> AnyPublisher<[Character], Error> {
-        let requests = characterIds.map { characterId in
-            return getCharacterById(characterId)
+        if FavouritesManager.shared.favourites.count < 2 {
+            let requests = characterIds.map { characterId in
+                return getCharacterById(characterId)
+            }
+            
+            return Publishers.MergeMany(requests)
+                .collect()
+                .eraseToAnyPublisher()
         }
-        
-        return Publishers.MergeMany(requests)
-            .collect()
-            .eraseToAnyPublisher()
+        return request(for: .getManyCharactersById(characterIds: characterIds))
     }
 }

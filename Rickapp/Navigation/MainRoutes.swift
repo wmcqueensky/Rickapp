@@ -29,21 +29,24 @@ enum MainRoutes: Route {
     
     private func buildCharacterDetailsViewController(characterId: Int) -> UIViewController {
         let controller = CharacterDetailsViewController()
-        let viewModel = CharacterDetailsViewModel(characterId)
+        let viewModel = CharacterDetailsViewModel()
+        viewModel.id = characterId
         controller.viewModel = viewModel
         return controller
     }
     
     private func buildLocationDetailsViewController(locationUrl: String) -> UIViewController {
         let controller = LocationDetailsViewController()
-        let viewModel = LocationDetailsViewModel(locationUrl)
+        let viewModel = LocationDetailsViewModel()
+        viewModel.url = locationUrl
         controller.viewModel = viewModel
         return controller
     }
     
     private func buildEpisodeDetailsViewController(episodeUrl: String) -> UIViewController {
         let controller = EpisodeDetailsViewController()
-        let viewModel = EpisodeDetailsViewModel(episodeUrl)
+        let viewModel = EpisodeDetailsViewModel()
+        viewModel.url = episodeUrl
         controller.viewModel = viewModel
         return controller
     }

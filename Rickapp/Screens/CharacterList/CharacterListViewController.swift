@@ -42,8 +42,9 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
 }
 
-extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
+extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate, CharacterTableViewCellDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
         viewModel.getCharacterById(characterId)
     }
@@ -64,7 +65,20 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
-            
+        cell.delegate = self
+        
         return cell
+    }
+    
+    func didTapFavouriteButton(for cell: CharacterTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let character = viewModel.charactersPublisher.value[indexPath.row]
+        
+        if cell.favouriteButton.isSelected {
+            FavouritesManager.shared.removeFromFavourites(character.id ?? 0)
+        } else {
+            FavouritesManager.shared.addToFavourites(character.id ?? 0)
+        }
+        tableView.reloadData()
     }
 }

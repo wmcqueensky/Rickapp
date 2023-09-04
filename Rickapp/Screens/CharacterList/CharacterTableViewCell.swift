@@ -9,10 +9,15 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+protocol CharacterTableViewCellDelegate: AnyObject {
+    func didTapFavouriteButton(for cell: CharacterTableViewCell)
+}
+
 class CharacterTableViewCell: UITableViewCell {
+    weak var delegate: CharacterTableViewCellDelegate?
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
-    private let favouriteButton = FavouriteButton()
+    let favouriteButton = FavouriteButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -126,10 +131,7 @@ class CharacterTableViewCell: UITableViewCell {
     }
     
     @objc private func favouriteButtonTapped() {
-        favouriteButton.isSelected.toggle()
-        favouriteButton.isSelected ?
-        FavouritesManager.shared.addToFavourites(character.id ?? 0) :
-        FavouritesManager.shared.removeFromFavourites(character.id ?? 0)
+        delegate?.didTapFavouriteButton(for: self)
     }
 }
 

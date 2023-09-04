@@ -12,6 +12,7 @@ class FavouriteListViewModel: BaseViewModel {
     var favouritesPublisher = CurrentValueSubject<[Character], Never>([])
     
     override func bindToData() {
+        super.bindToData()
         reloadFavourites()
     }
     
