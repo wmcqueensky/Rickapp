@@ -31,6 +31,7 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
     }
     
     override func setupViews() {
+        super.setupViews()
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 0
         
@@ -56,6 +57,7 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
     }
     
     override func setupConstraints() {
+        super.setupConstraints()
         episodeStackView.snp.makeConstraints { make in
             make.verticalEdges.equalTo(scrollView)
             make.horizontalEdges.equalTo(view)
@@ -70,13 +72,7 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
         nameLabel.text = episode.name ?? ""
         actualAirDateLabel.text = episode.airDate ?? ""
         actualEpisodeNumberLabel.text = episode.episode ?? ""
+    
         
-        let residentsNumbers = episode.characters?.map { $0.components(separatedBy: "/").last ?? "" } ?? []
-        let residentsText = residentsNumbers.isEmpty ? "N/A" : residentsNumbers.joined(separator: ", ")
-        
-        let formattedResidents = residentsNumbers.map { "Resident: \($0)" }
-        let formattedResidentText = formattedResidents.joined(separator: "\n")
-        
-        actualCharactersLabel.text = formattedResidentText
     }
 }

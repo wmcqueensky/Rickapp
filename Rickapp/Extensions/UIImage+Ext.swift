@@ -4,8 +4,7 @@ import UIKit
 enum ImageNamePredifined: String {
     case backIcon = "backIcon"
     case arrowIcon = "arrowIcon"
-    case heartIconSelected = "heartIconSelected"
-    case heartIconUnselected = "heartIconUnselected"
+    case heartIcon = "heartIcon"
     case characterListIcon = "characterListIcon"
 }
 

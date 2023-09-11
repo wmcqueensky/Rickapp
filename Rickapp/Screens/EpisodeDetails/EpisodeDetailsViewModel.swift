@@ -9,10 +9,11 @@ import Foundation
 import Combine
 
 class EpisodeDetailsViewModel: BaseViewModel {
-    var episodePublisher = CurrentValueSubject<Episode, Never>(Episode())
+    var episodePublisher = PassthroughSubject<Episode, Never>()
     var url = ""
     
     override func bindToData() {
+        super.bindToData()
         fetchLocation(url)
     }
     

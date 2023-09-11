@@ -16,6 +16,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
     
     override func setupViews() {
+        super.setupViews()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
@@ -36,6 +37,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
     
     override func setupConstraints() {
+        super.setupConstraints()
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
@@ -63,8 +65,11 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
+        let characterId = viewModel.charactersPublisher.value[indexPath.row].id
+        let isSelected = FavouritesManager.shared.favourites.contains(characterId ?? 0)
         
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
+        cell.setFavouriteButtonSelected(isSelected)
         cell.delegate = self
         
         return cell
@@ -74,11 +79,14 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let character = viewModel.charactersPublisher.value[indexPath.row]
         
-        if cell.favouriteButton.isSelected {
+        
+        if cell.isFavouriteButtonSelected() {
             FavouritesManager.shared.removeFromFavourites(character.id ?? 0)
         } else {
             FavouritesManager.shared.addToFavourites(character.id ?? 0)
         }
+        
+        cell.setFavouriteButtonSelected(!cell.isFavouriteButtonSelected())
         tableView.reloadData()
     }
 }

@@ -33,15 +33,20 @@ class CharacterService: BaseNetworkService<CharacterResource> {
     }
     
     func getFavouritesById(characterIds: [Int]) -> AnyPublisher<[Character], Error> {
-        if FavouritesManager.shared.favourites.count < 2 {
-            let requests = characterIds.map { characterId in
-                return getCharacterById(characterId)
-            }
-            
-            return Publishers.MergeMany(requests)
-                .collect()
-                .eraseToAnyPublisher()
+        let favouriteCount = FavouritesManager.shared.favourites.count
+        
+        if favouriteCount == 0 {
+            return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
         }
+        
+        if favouriteCount == 1 {
+            if let characterId = characterIds.first {
+                return getCharacterById(characterId)
+                    .map { [$0] }
+                    .eraseToAnyPublisher()
+            }
+        }
+        
         return request(for: .getManyCharactersById(characterIds: characterIds))
     }
 }

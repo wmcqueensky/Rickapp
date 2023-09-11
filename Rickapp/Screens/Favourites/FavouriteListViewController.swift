@@ -12,6 +12,7 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     private let tableView = UITableView()
     
     override func bindToViewModel() {
+        super.bindToViewModel()
         viewModel.favouritesPublisher
             .sink { [weak self] characters in
                 self?.tableView.reloadData()
@@ -58,8 +59,10 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
+        let characterId = viewModel.favouritesPublisher.value[indexPath.row].id
         
         cell.character = viewModel.favouritesPublisher.value[indexPath.row]
+        cell.setFavouriteButtonSelected(FavouritesManager.shared.favourites.contains(characterId ?? 0))
         cell.delegate = self
         
         return cell
@@ -69,11 +72,14 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let character = viewModel.favouritesPublisher.value[indexPath.row]
         
-        if cell.favouriteButton.isSelected {
+        if cell.isFavouriteButtonSelected() {
             FavouritesManager.shared.removeFromFavourites(character.id ?? 0)
         } else {
             FavouritesManager.shared.addToFavourites(character.id ?? 0)
         }
+        
+        cell.setFavouriteButtonSelected(!cell.isFavouriteButtonSelected())
+        
         tableView.reloadData()
     }
 }

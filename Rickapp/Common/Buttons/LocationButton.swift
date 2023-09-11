@@ -10,6 +10,7 @@ import UIKit
 class LocationButton: BaseButton {
     
     override func setupViews() {
+        super.setupViews()
         contentHorizontalAlignment = .left
         titleLabel?.font = .systemFont(ofSize: 20)
         setImage(UIImage.getImage(.arrowIcon), for: .normal)

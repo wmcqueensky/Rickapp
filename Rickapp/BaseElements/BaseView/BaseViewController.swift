@@ -24,7 +24,6 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
         bindToViewModel()
         viewModel.bindToData()
         setupData()
-        
     }
     
     func setupData() {}
