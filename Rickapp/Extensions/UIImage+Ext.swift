@@ -6,6 +6,7 @@ enum ImageNamePredifined: String {
     case arrowIcon = "arrowIcon"
     case heartIcon = "heartIcon"
     case characterListIcon = "characterListIcon"
+    case atomIcon = "atomIcon"
 }
 
 extension UIImage {

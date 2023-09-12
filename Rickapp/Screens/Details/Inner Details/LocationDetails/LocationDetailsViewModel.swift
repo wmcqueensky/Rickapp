@@ -17,10 +17,11 @@ class LocationDetailsViewModel: BaseViewModel {
         fetchLocation(url)
     }
     
-    func fetchLocation(_ locationUrl: String) {
+    private func fetchLocation(_ locationUrl: String) {
         CharacterService.shared.getLocation(url: locationUrl)
             .sink(receiveCompletion: { _ in} ) { [weak self] location in
                 self?.locationPublisher.send(location)
+                self?.fetchCharacters(location.residents ?? [])
             }
             .store(in: &cancellables)
     }

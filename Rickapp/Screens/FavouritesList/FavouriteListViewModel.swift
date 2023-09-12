@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 class FavouriteListViewModel: BaseViewModel {
-    var favouritesPublisher = CurrentValueSubject<[Character], Never>([])
     
     override func bindToData() {
         super.bindToData()
@@ -19,7 +18,7 @@ class FavouriteListViewModel: BaseViewModel {
     func reloadFavourites() {        
         CharacterService.shared.getFavouritesById(characterIds: FavouritesManager.shared.favourites)
                 .sink(receiveCompletion: { _ in }) { [weak self] characters in
-                    self?.favouritesPublisher.send(characters)
+                    self?.charactersPublisher.send(characters)
                 }
                 .store(in: &cancellables)
     }

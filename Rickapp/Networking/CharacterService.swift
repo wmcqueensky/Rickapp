@@ -28,18 +28,21 @@ class CharacterService: BaseNetworkService<CharacterResource> {
         return request(for: .getElementbyUrl(url: url))
     }
     
+    func getCharacterByUrl(url: String) -> AnyPublisher<Character, Error> {
+        return request(for: .getElementbyUrl(url: url))
+    }
+    
     func getCharacterById(_ characterId: Int) -> AnyPublisher<Character, Error> {
         return request(for: .getSingleCharacterById(characterId: characterId))
     }
     
     func getFavouritesById(characterIds: [Int]) -> AnyPublisher<[Character], Error> {
-        let favouriteCount = FavouritesManager.shared.favourites.count
         
-        if favouriteCount == 0 {
+        if characterIds.count == 0 {
             return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
         }
         
-        if favouriteCount == 1 {
+        if characterIds.count == 1 {
             if let characterId = characterIds.first {
                 return getCharacterById(characterId)
                     .map { [$0] }
@@ -48,5 +51,20 @@ class CharacterService: BaseNetworkService<CharacterResource> {
         }
         
         return request(for: .getManyCharactersById(characterIds: characterIds))
+    }
+    
+    func getCharacterByUrls(characterUrls: [String]) -> AnyPublisher<[Character], Error> {
+        if characterUrls.count == 0 {
+            return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
+        }
+
+        if characterUrls.count == 1 {
+            if let characterUrl = characterUrls.first {
+                return getCharacterByUrl(url: characterUrl)
+                    .map { [$0] }
+                    .eraseToAnyPublisher()
+            }
+        }
+        return request(for: .getManyCharactersByUrl(characterUrls: characterUrls))
     }
 }
