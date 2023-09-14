@@ -50,14 +50,16 @@ class CharacterService: BaseNetworkService<CharacterResource> {
             }
         }
         
-        return request(for: .getManyCharactersById(characterIds: characterIds))
+        let idsString = characterIds.map{ String($0) }.joined(separator: ",")
+        return request(for: .getManyCharactersById(characterIds: idsString))
     }
     
     func getCharacterByUrls(characterUrls: [String]) -> AnyPublisher<[Character], Error> {
+        
         if characterUrls.count == 0 {
             return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
         }
-
+        
         if characterUrls.count == 1 {
             if let characterUrl = characterUrls.first {
                 return getCharacterByUrl(url: characterUrl)
@@ -65,6 +67,15 @@ class CharacterService: BaseNetworkService<CharacterResource> {
                     .eraseToAnyPublisher()
             }
         }
-        return request(for: .getManyCharactersByUrl(characterUrls: characterUrls))
+        
+        let characterNumbers = characterUrls.compactMap { urlString in
+            if let characterNumber = urlString.split(separator: "/").last {
+                return String(characterNumber)
+            }
+            return nil
+        }
+        let idsString = characterNumbers.joined(separator: ",")
+        
+        return request(for: .getManyCharactersById(characterIds: idsString))
     }
 }

@@ -8,16 +8,16 @@
 import Foundation
 import Combine
 
-class EpisodeDetailsViewModel: BaseViewModel {
+class EpisodeDetailsViewModel: BaseListViewModel {
     var episodePublisher = CurrentValueSubject<Episode, Never>(Episode())
     var url = ""
     
     override func bindToData() {
         super.bindToData()
-        fetchLocation(url)
+        fetchEpisode(url)
     }
     
-    private func fetchLocation(_ episodeUrl: String) {
+    private func fetchEpisode(_ episodeUrl: String) {
         CharacterService.shared.getEpisode(url: episodeUrl)
             .sink(receiveCompletion: { _ in } ) { [weak self] episode in
                 self?.episodePublisher.send(episode)

@@ -11,7 +11,7 @@ import SnapKit
 
 class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel> {
     private let informationStackView = UIStackView()
-    private let charactersStackView = UIStackView()
+    private let tableView = UITableView()
     private let nameLabel = UILabel()
     private let typeLabel = UILabel()
     private let actualTypeLabel = UILabel()
@@ -19,7 +19,7 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
     private let actualDimensionLabel = UILabel()
     private let residentsLabel = UILabel()
     private let actualResidentsLabel = UILabel()
-    private let scrollView = UIScrollView()
+    private let backgroundImageView = UIImageView(image: UIImage.getImage(.starsImage))
     
     override func bindToViewModel() {
         super.bindToViewModel()
@@ -31,7 +31,7 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
         
         viewModel.charactersPublisher
             .sink { [weak self] characters in
-                self?.populateStackWithData(characters)
+                self?.tableView.reloadData()
             }
             .store(in: &viewModel.cancellables)
     }
@@ -49,20 +49,26 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
         view.setTextColorForLabels([nameLabel, actualTypeLabel, actualDimensionLabel, actualResidentsLabel], color: .white)
         view.setFontForLabels([typeLabel, actualTypeLabel, dimensionLabel, actualDimensionLabel, residentsLabel, actualResidentsLabel], font: .boldSystemFont(ofSize: 24))
         
+        backgroundImageView.contentMode = .scaleAspectFill
+        
+        //        informationStackView.addSubview(backgroundImageView)
         informationStackView.backgroundColor = .darkGray
         informationStackView.axis = .vertical
         informationStackView.spacing = 3
         informationStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         informationStackView.addArrangedSubviews([nameLabel, typeLabel, actualTypeLabel, dimensionLabel, actualDimensionLabel, residentsLabel, actualResidentsLabel])
         
-        charactersStackView.axis = .vertical
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CharacterCircleViewCell.self, forCellReuseIdentifier: String(describing: CharacterCircleViewCell.self))
+        tableView.backgroundColor = .darkGray
+        tableView.showsVerticalScrollIndicator = false
+
+        //        view.addSubview(backgroundImageView)
+        //        view.sendSubviewToBack(backgroundImageView)
         
         view.backgroundColor = .darkGray
-        
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.addSubview(charactersStackView)
-        view.addSubview(informationStackView)
-        view.addSubview(scrollView)
+        view.addSubview(tableView)
     }
     
     override func setupConstraints() {
@@ -70,17 +76,12 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
         informationStackView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(scrollView.snp.top)
         }
         
-        charactersStackView.snp.makeConstraints { make in
+        tableView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.verticalEdges.equalTo(scrollView)
-        }
-        
-        scrollView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view)
+            make.top.equalTo(informationStackView.snp.bottom)
         }
     }
     
@@ -89,23 +90,35 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
         actualTypeLabel.text = location.type ?? ""
         actualDimensionLabel.text = location.dimension ?? ""
     }
+}
+
+extension LocationDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     
-    private func populateStackWithData(_ characters: [Character]) {
-        for character in characters {
-            let characterButton = UIButton()
-            
-//            characterButton.setTitle(character.name, for: .normal)
-//            characterButton.kf.setImage(with: URL(string: character.image ?? ""), for: .normal)
-//            characterButton.imageView?.contentMode = .scaleAspectFill
-//            characterButton.imageView?.layer.cornerRadius = characterButton.frame.height / 2
-//            characterButton.imageView?.layer.masksToBounds = true
-//            characterButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: -characterButton.imageView!.frame.width, bottom: -characterButton.imageView!.frame.height, right: 0)
-            characterButton.addTarget(self, action: #selector(characterButtonTapped(_:)), for: .touchUpInside)
-            charactersStackView.addArrangedSubview(characterButton)
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
+        viewModel.getCharacterById(characterId)
     }
     
-    @objc private func characterButtonTapped(_ sender: PlanetButton) {
-        viewModel.getCharacterById(1)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.charactersPublisher.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterCircleViewCell.self)) as? CharacterCircleViewCell else { return UITableViewCell() }
+        
+        cell.character = viewModel.charactersPublisher.value[indexPath.row]
+        
+        switch indexPath.row % 4 {
+        case 0:
+            cell.alignment = .centre
+        case 1:
+            cell.alignment = .right
+        case 2:
+            cell.alignment = .centre
+        default:
+            cell.alignment = .left
+        }
+        
+        return cell
     }
 }

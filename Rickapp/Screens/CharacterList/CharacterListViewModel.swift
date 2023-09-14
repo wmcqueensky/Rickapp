@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class CharacterListViewModel: BaseViewModel {
+class CharacterListViewModel: BaseListViewModel {
     private var isLoadingNextPage = false
     private var nextPage: String?
 

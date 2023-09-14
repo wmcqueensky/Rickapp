@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-class LocationDetailsViewModel: BaseViewModel {
-    var locationPublisher = PassthroughSubject<Location, Never>()
+class LocationDetailsViewModel: BaseListViewModel {
+    var locationPublisher = CurrentValueSubject<Location, Never>(Location())
     var url = ""
     
     override func bindToData() {

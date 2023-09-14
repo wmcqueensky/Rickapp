@@ -19,7 +19,6 @@ class FavouriteButton: BaseButton {
         let heartImageView = UIImageView(image: UIImage.getImage(.heartIcon))
         heartImageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         heartImageView.center = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        heartImageView.isUserInteractionEnabled = false
         
         addSubview(heartImageView)
 

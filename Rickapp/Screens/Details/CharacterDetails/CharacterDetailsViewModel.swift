@@ -25,6 +25,12 @@ class CharacterDetailsViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
     
+    func manageFavourites(isSelected: Bool, characterId: Int) {
+        isSelected ?
+        FavouritesManager.shared.addToFavourites(characterId) :
+        FavouritesManager.shared.removeFromFavourites(characterId)
+    }
+    
     func locationButtonTapped(_ locationUrl: String) {
         AppNavigator.shared.navigate(to: MainRoutes.location(url: locationUrl), with: .push, animated: true)
     }
