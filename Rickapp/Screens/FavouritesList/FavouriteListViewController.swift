@@ -11,6 +11,10 @@ import SnapKit
 class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     private let tableView = UITableView()
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func bindToViewModel() {
         super.bindToViewModel()
         viewModel.charactersPublisher
@@ -74,6 +78,5 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let character = viewModel.charactersPublisher.value[indexPath.row]
         viewModel.toggleFavoriteStatus(for: character, isSelected: isSelected)
-        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

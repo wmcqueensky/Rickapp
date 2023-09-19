@@ -20,7 +20,7 @@ class CharacterTableViewCell: BaseTableViewCell {
     private let favouriteButton = FavouriteButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
-    private var statusView = UIView()
+    private var statusView = StatusView()
     private let statusStackView = UIStackView()
     private let locationLabel = UILabel()
     private let originLabel = UILabel()
@@ -40,14 +40,14 @@ class CharacterTableViewCell: BaseTableViewCell {
         
         favouriteButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
         
-        statusView.layer.cornerRadius = 5
+        statusView.style = .small
         
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
         statusStackView.addArrangedSubviews([statusView, statusLabel])
         statusStackView.alignment = .center
         
-        animateStatusView()
+        statusView.animate()
         
         locationLabel.text = "Last known location:"
         
@@ -98,10 +98,6 @@ class CharacterTableViewCell: BaseTableViewCell {
             make.top.equalTo(characterImageView).offset(10)
             make.trailing.equalTo(characterImageView).offset(-10)
         }
-        
-        statusView.snp.makeConstraints { make in
-            make.width.height.equalTo(10)
-        }
     }
     
     private func setupCellContent() {
@@ -124,27 +120,7 @@ class CharacterTableViewCell: BaseTableViewCell {
     }
     
     func animateStatusView() {
-        self.statusView.transform = .identity
-        self.statusView.alpha = 1
-        
-        if let backgroundColor = statusView.backgroundColor {
-            switch backgroundColor {
-            case .green:
-                UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                    self.statusView.alpha = 0.8
-                })
-            case .red:
-                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.transform = CGAffineTransform(scaleX: 1.0, y: 0.3)
-                    self.statusView.alpha = 0.8
-                })
-            default:
-                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.alpha = 0.1
-                })
-            }
-        }
+        statusView.animate()
     }
     
     func setFavouriteButtonSelection(_ isSelected: Bool) {

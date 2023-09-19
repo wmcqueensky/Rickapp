@@ -17,4 +17,16 @@ class EpisodeButton: BaseButton {
         tintColor = .white
         titleEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
     }
+    
+    func animateTap() {
+        UIView.animate(withDuration: 0.2) {
+            self.setTitleColor(.gray, for: .normal)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            UIView.animate(withDuration: 0.2) {
+                self.setTitleColor(.white, for: .normal)
+            }
+        }
+    }
 }
