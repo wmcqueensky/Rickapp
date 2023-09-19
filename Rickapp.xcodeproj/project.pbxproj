@@ -39,6 +39,7 @@
 		F3A94BF92A8FBD850003F841 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BF82A8FBD850003F841 /* Character.swift */; };
 		F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFC2A90284A0003F841 /* SnapKit */; };
 		F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFF2A902C9F0003F841 /* Kingfisher */; };
+		F3B21C042AB5EE4100BCAE10 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F3B21C032AB5EE4100BCAE10 /* Lottie */; };
 		F3C74B3B2A9F48500008DC9F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B3A2A9F48500008DC9F /* UIView+Ext.swift */; };
 		F3C74B3E2A9F66090008DC9F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B3D2A9F66090008DC9F /* MenuViewController.swift */; };
 		F3C74B422A9F662B0008DC9F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B412A9F662B0008DC9F /* BaseButton.swift */; };
@@ -112,6 +113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3C9B2892A934C3F008AC1FF /* RxMoya in Frameworks */,
+				F3B21C042AB5EE4100BCAE10 /* Lottie in Frameworks */,
 				F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */,
 				F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */,
 				F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */,
@@ -365,6 +367,7 @@
 				F3C9B2842A934C3F008AC1FF /* Moya */,
 				F3C9B2862A934C3F008AC1FF /* ReactiveMoya */,
 				F3C9B2882A934C3F008AC1FF /* RxMoya */,
+				F3B21C032AB5EE4100BCAE10 /* Lottie */,
 			);
 			productName = Rickapp;
 			productReference = F3A94BC22A8FA60C0003F841 /* Rickapp.app */;
@@ -398,6 +401,7 @@
 				F3A94BFB2A90284A0003F841 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F3A94BFE2A902C9F0003F841 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */,
+				F3B21C022AB5EE4100BCAE10 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = F3A94BC32A8FA60C0003F841 /* Products */;
 			projectDirPath = "";
@@ -691,6 +695,14 @@
 				minimumVersion = 7.6.2;
 			};
 		};
+		F3B21C022AB5EE4100BCAE10 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
 		F3C9B2812A934C3F008AC1FF /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya#installation";
@@ -711,6 +723,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F3A94BFE2A902C9F0003F841 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		F3B21C032AB5EE4100BCAE10 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3B21C022AB5EE4100BCAE10 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		F3C9B2822A934C3F008AC1FF /* CombineMoya */ = {
 			isa = XCSwiftPackageProductDependency;

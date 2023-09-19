@@ -7,6 +7,8 @@ enum ImageNamePredifined: String {
     case heartIcon = "heartIcon"
     case characterListIcon = "characterListIcon"
     case atomIcon = "atomIcon"
+    case scrollUpIcon = "scrollUpIcon"
+    case galaxyImage = "galaxyImage"
     case starsImage = "starsImage"
 }
 

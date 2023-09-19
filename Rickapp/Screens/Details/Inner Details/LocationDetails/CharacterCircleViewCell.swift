@@ -1,5 +1,5 @@
 //
-//  CharacterCollectionViewCell.swift
+//  CharacterCircleViewCell.swift
 //  Rickapp
 //
 //  Created by Wojciech Mokwiński on 13/09/2023.
@@ -41,9 +41,10 @@ class CharacterCircleViewCell: BaseTableViewCell {
         characterImageView.layer.cornerRadius = 75
         characterImageView.contentMode = .scaleAspectFill
         characterImageView.clipsToBounds = true
+        characterImageView.layer.borderWidth = 0
         
         selectionStyle = .none
-        backgroundColor = .darkGray
+        backgroundColor = .clear
         contentView.addSubview(nameLabel)
         contentView.addSubview(characterImageView)
     }

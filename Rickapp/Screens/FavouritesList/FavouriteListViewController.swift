@@ -65,6 +65,7 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
         cell.setFavouriteButtonSelection(isSelected)
         cell.delegate = self
+        cell.animateStatusView()
         
         return cell
     }
@@ -72,9 +73,7 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
     func didTapFavouriteButton(for cell: CharacterTableViewCell, isSelected: Bool) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let character = viewModel.charactersPublisher.value[indexPath.row]
-        
         viewModel.toggleFavoriteStatus(for: character, isSelected: isSelected)
-        
         tableView.reloadRows(at: [indexPath], with: .none)
     }
 }
