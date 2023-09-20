@@ -6,43 +6,42 @@
 //
 
 import UIKit
+import SnapKit
 
 enum Style {
-    case big
-    case small
+    case alive
+    case dead
+    case unknown
 }
 
 class StatusView: BaseView {
     
-    var style: Style = .big {
+    var style: Style = .alive {
         didSet {
-            setupViews()
-            setupConstraints()
+            setupStyle()
         }
     }
     
     override func setupViews() {
         super.setupViews()
-        switch style {
-        case .big:
-            layer.cornerRadius = 6
-        case .small:
-            layer.cornerRadius = 5
-        }
+        layer.cornerRadius = 6
     }
     
     override func setupConstraints() {
         super.setupConstraints()
-        
+        self.snp.makeConstraints { make in
+            make.width.height.equalTo(12)
+        }
+    }
+    
+    private func setupStyle() {
         switch style {
-        case .big:
-            self.snp.makeConstraints { make in
-                make.width.height.equalTo(12)
-            }
-        case .small:
-            self.snp.makeConstraints { make in
-                make.width.height.equalTo(10)
-            }
+        case .alive:
+            backgroundColor = .green
+        case .dead:
+            backgroundColor = .red
+        case .unknown:
+            backgroundColor = .gray
         }
     }
     
@@ -50,20 +49,19 @@ class StatusView: BaseView {
     func animate() {
         transform = .identity
         alpha = 1
-
-        guard let backgroundColor = backgroundColor else { return }
-        switch backgroundColor {
-        case .green:
+        
+        switch style {
+        case .alive:
             UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
                 self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 self.alpha = 0.8
             })
-        case .red:
+        case .dead:
             UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
                 self.transform = CGAffineTransform(scaleX: 1.0, y: 0.3)
                 self.alpha = 0.8
             })
-        default:
+        case .unknown:
             UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
                 self.alpha = 0.1
             })
