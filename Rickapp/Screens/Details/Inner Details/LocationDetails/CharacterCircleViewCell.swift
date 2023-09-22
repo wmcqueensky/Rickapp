@@ -22,9 +22,10 @@ enum Alignment {
 class CharacterCircleViewCell: BaseTableViewCell {
     private let characterImageView = UIImageView()
     private let nameLabel = UILabel()
+    private let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
     
     weak var delegate: CharacterCircleViewCellDelegate?
-  
+    
     var character = Character() {
         didSet {
             setupCellContent()
@@ -44,6 +45,10 @@ class CharacterCircleViewCell: BaseTableViewCell {
         nameLabel.textColor = .white
         nameLabel.numberOfLines = 3
         
+        blurView.alpha = 0.7
+        blurView.layer.cornerRadius = 15
+        blurView.clipsToBounds = true
+        
         characterImageView.layer.cornerRadius = 75
         characterImageView.contentMode = .scaleAspectFill
         characterImageView.clipsToBounds = true
@@ -53,6 +58,7 @@ class CharacterCircleViewCell: BaseTableViewCell {
         
         selectionStyle = .none
         backgroundColor = .clear
+        contentView.addSubview(blurView)
         contentView.addSubview(nameLabel)
         contentView.addSubview(characterImageView)
     }
@@ -60,6 +66,10 @@ class CharacterCircleViewCell: BaseTableViewCell {
     override func setupConstraints() {
         super.setupConstraints()
         NSLayoutConstraint.deactivate(contentView.constraints)
+        
+        blurView.snp.makeConstraints { make in
+            make.edges.equalTo(nameLabel)
+        }
         
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(characterImageView.snp.bottom)
