@@ -19,13 +19,12 @@ class LocationInfoButton: BaseButton {
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .gray
         layer.cornerRadius = 10
         contentHorizontalAlignment = .left
         titleLabel?.font = .systemFont(ofSize: 20)
         setImage(UIImage.getImage(.rightArrowIcon), for: .normal)
         tintColor = .white
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0)
         imageEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
     }
     

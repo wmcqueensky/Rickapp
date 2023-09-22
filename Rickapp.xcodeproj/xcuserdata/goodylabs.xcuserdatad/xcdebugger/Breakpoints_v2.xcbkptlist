@@ -140,8 +140,8 @@
             filePath = "Rickapp/Screens/Details/CharacterDetails/CharacterDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "episodeButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>

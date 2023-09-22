@@ -14,8 +14,6 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private let characterImageView = UIImageView()
     private let statusStackView = UIStackView()
     private let episodeButtonStackView = UIStackView()
-    private var locationInfoButtonStackView = UIStackView()
-    private var originInfoButtonStackView = UIStackView()
     private let scrollView = UIScrollView()
     private var episodesNumbers = [String]()
     private var episodesUrls = [String]()
@@ -91,13 +89,11 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         locationInfoView.isHidden = true
         locationInfoView.addSubview(locationDetailsButton)
         locationDetailsButton.addTarget(self, action: #selector(locationDetailsButtonTapped(_:)), for: .touchUpInside)
-        locationInfoButtonStackView.addArrangedSubviews([locationInfoButton, UIView()])
         
         originInfoButton.addTarget(self, action: #selector(originInfoButtonTapped(_:)), for: .touchUpInside)
         originInfoView.isHidden = true
         originInfoView.addSubview(originDetailsButton)
         originDetailsButton.addTarget(self, action: #selector(originDetailsButtonTapped(_:)), for: .touchUpInside)
-        originInfoButtonStackView.addArrangedSubviews([originInfoButton, UIView()])
         
         view.setFontForLabels([statusLabel, locationLabel, originLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel], font: .systemFont(ofSize: 20))
         view.setTextColorForLabels([statusLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel], color: .white)
@@ -111,10 +107,10 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationInfoButtonStackView, locationInfoView, originLabel, originInfoButtonStackView, originInfoView,typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel, episodeButtonStackView])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationInfoButton, locationInfoView, originLabel, originInfoButton, originInfoView,typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel, episodeButtonStackView])
         characterStackView.setCustomSpacing(9, after: characterImageView)
         characterStackView.setCustomSpacing(12, after: episodeLabel)
-        characterStackView.setCustomSpacings(20, [statusStackView, locationInfoButtonStackView, originInfoButtonStackView, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
+        characterStackView.setCustomSpacings(20, [statusStackView, locationInfoButton, originInfoButton, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         
         view.backgroundColor = .darkGray
