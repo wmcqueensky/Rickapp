@@ -92,11 +92,6 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
 
 extension LocationDetailsViewController: UITableViewDataSource, UITableViewDelegate, CharacterCircleViewCellDelegate {
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
-//        viewModel.getCharacterById(characterId)
-//    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.charactersPublisher.value.count
     }

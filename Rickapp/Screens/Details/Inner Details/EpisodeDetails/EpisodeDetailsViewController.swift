@@ -17,8 +17,12 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
     private let episodeNumberLabel = UILabel()
     private let actualEpisodeNumberLabel = UILabel()
     private let charactersLabel = UILabel()
-    private let scrollView = UIScrollView()
     private let tableView = UITableView()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
     override func bindToViewModel() {
         super.bindToViewModel()
@@ -37,12 +41,6 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
     
     override func setupViews() {
         super.setupViews()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(CharacterTileTableViewCell.self, forCellReuseIdentifier: String(describing: CharacterTileTableViewCell.self))
-        tableView.backgroundColor = .backgroundGray
-        tableView.showsVerticalScrollIndicator = false
-        
         nameLabel.font = .boldSystemFont(ofSize: 44)
         nameLabel.numberOfLines = 0
         
@@ -60,22 +58,28 @@ class EpisodeDetailsViewController: BaseViewController<EpisodeDetailsViewModel> 
         episodeStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         episodeStackView.addArrangedSubviews([nameLabel, airDateLabel, actualAirDateLabel, episodeNumberLabel, actualEpisodeNumberLabel, charactersLabel])
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(CharacterTileTableViewCell.self, forCellReuseIdentifier: String(describing: CharacterTileTableViewCell.self))
+        tableView.tableHeaderView = episodeStackView
+        tableView.backgroundColor = .backgroundGray
+        tableView.showsVerticalScrollIndicator = false
+        
+        
         view.backgroundColor = .darkGray
-        view.addSubview(episodeStackView)
         view.addSubview(tableView)
     }
     
     override func setupConstraints() {
         super.setupConstraints()
         episodeStackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.verticalEdges.equalTo(tableView)
             make.horizontalEdges.equalTo(view)
         }
         
         tableView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(view)
-            make.top.equalTo(episodeStackView.snp.bottom)
         }
     }
     
@@ -101,6 +105,8 @@ extension EpisodeDetailsViewController: UITableViewDataSource, UITableViewDelega
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTileTableViewCell.self)) as? CharacterTileTableViewCell else { return UITableViewCell() }
 
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
+        cell.animateStatusView()
+        cell.animateSpeciesImageView()
         
         return cell
     }
