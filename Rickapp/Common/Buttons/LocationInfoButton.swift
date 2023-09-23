@@ -8,6 +8,11 @@
 import UIKit
 import SnapKit
 
+enum LocationInfoButtonStyle {
+    case known
+    case unknown
+}
+
 class LocationInfoButton: BaseButton {
     
     override var isSelected: Bool {
@@ -17,15 +22,30 @@ class LocationInfoButton: BaseButton {
         }
     }
     
+    var style: LocationInfoButtonStyle = .known {
+        didSet {
+            setupStyle()
+        }
+    }
+    
     override func setupViews() {
         super.setupViews()
-        layer.cornerRadius = 10
         contentHorizontalAlignment = .left
         titleLabel?.font = .systemFont(ofSize: 20)
-        setImage(UIImage.getImage(.rightArrowIcon), for: .normal)
         tintColor = .white
-        titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0)
-        imageEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
+        setImage(UIImage.getImage(.rightArrowIcon), for: .normal)
+    }
+    
+    func setupStyle() {
+        switch style {
+        case .known:
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 0)
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
+        case .unknown:
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
+            isEnabled = false
+            setImage(.none, for: .normal)
+        }
     }
     
     override func setupConstraints() {
