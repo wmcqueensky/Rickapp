@@ -1,6 +1,6 @@
 # Rickapp
 
-This iOS app was created to learn and practice fundamental UIKit features, IOS development, Viper design pattern while using the [Rick and Morty API](https://rickandmortyapi.com).
+This iOS app was created to learn and practice fundamental UIKit features, IOS development, MVVM design pattern while using the [Rick and Morty API](https://rickandmortyapi.com).
 
 ## Photos
 <img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/171bad50-e5d0-4e77-ae4b-ce8868114779" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 28">
@@ -68,4 +68,4 @@ Make sure to install these dependencies using CocoaPods or Swift Package Manager
 
 ## Acknowledgments
 
-The Rick and Morty API (https://rickandmortyapi.com) for providing the data used in this app.
+The Rick and Morty API (https://rickandmortyapi.com) for provided the data used in this app.
