@@ -125,4 +125,3 @@ class CharacterTileTableViewCell: BaseTableViewCell {
         speciesImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
 }
-

@@ -67,8 +67,8 @@ class MenuViewController: UITabBarController, UITabBarControllerDelegate {
         characterListViewController.viewModel = characterListViewModel
         characterListViewController.tabBarItem = UITabBarItem(title: "All", image: UIImage.getImage(.characterListIcon), tag: 0)
         
-        let searchViewController = SearchViewController()
-        let searchViewModel = SearchViewModel()
+        let searchViewController = SearchFiltersViewController()
+        let searchViewModel = SearchFiltersViewModel()
         searchViewController.viewModel = searchViewModel
         searchViewController.tabBarItem = UITabBarItem(title: "Search", image: UIImage.getImage(.searchIcon), tag: 1)
         

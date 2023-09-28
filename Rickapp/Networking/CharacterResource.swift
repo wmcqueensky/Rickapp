@@ -10,7 +10,9 @@ import Moya
 
 enum CharacterResource: TargetType {
     
-    case character
+    case characters
+    case locations
+    case episodes
     case getElementbyUrl(url: String)
     case getSingleCharacterById(characterId: Int)
     case getManyCharactersById(characterIds: String)
@@ -18,8 +20,12 @@ enum CharacterResource: TargetType {
     
     var path: String {
         switch self {
-        case .character:
+        case .characters:
             return "/character"
+        case .locations:
+            return "/locations"
+        case .episodes:
+            return "/episodes"
         case .getSingleCharacterById(let characterId):
             return "/character/\(characterId)"
         case .getManyCharactersById(let characterIds):
@@ -41,14 +47,14 @@ enum CharacterResource: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .character, .getSingleCharacterById, .getManyCharactersById, .getFavouritesById, .getElementbyUrl:
+        case .characters, .locations, .episodes, .getSingleCharacterById, .getManyCharactersById, .getFavouritesById, .getElementbyUrl:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .character, .getSingleCharacterById, .getManyCharactersById, .getFavouritesById, .getElementbyUrl:
+        case .characters, .locations, .episodes, .getSingleCharacterById, .getManyCharactersById, .getFavouritesById, .getElementbyUrl:
             return .requestPlain
         }
     }
