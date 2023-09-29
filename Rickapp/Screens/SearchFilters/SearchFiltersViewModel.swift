@@ -11,17 +11,45 @@ import Moya
 
 class SearchFiltersViewModel: BaseListViewModel {
     var searchText = ""
+    let characterPublisher = CurrentValueSubject<[Character], Never>([])
+    let locationsPublisher = CurrentValueSubject<[Location], Never>([])
+    let episodesPublisher = CurrentValueSubject<[Episode], Never>([])
     
-    var statusFilters: [String] = ["Alive", "Dead", "unknown"]
-    var Tags: [String] = []
-    var lengthTags: [String] = []
-    var dateTags: [String] = []
-    
-    let selectedTags = CurrentValueSubject<[String], Never>([])
-    
+    var statusFilters: [String] = []
+    var speciesFilters: [String] = []
+    var typeFilters: [String] = []
+    var genderFilters: [String] = []
+    var locationFilters: [String] = []
+    var dateFilters: [String] = []
+        
     override func bindToData() {
         super.bindToData()
-        
+        getCharacters()
+        getLocations()
+    }
+    
+    func getCharacters() {
+        CharacterService.shared.getCharacters()
+            .sink(receiveCompletion: { _ in }) { [weak self] characters in
+                self?.characterPublisher.send(characters.results ?? [])
+            }
+            .store(in: &cancellables)
+    }
+    
+    func getLocations() {
+        CharacterService.shared.getLocations()
+            .sink(receiveCompletion: { _ in }) { [weak self] locationList in
+                self?.locationsPublisher.send(locationList.results ?? [])
+            }
+            .store(in: &cancellables)
+    }
+    
+    func getEpisodes() {
+        CharacterService.shared.getEpisodes()
+            .sink(receiveCompletion: { _ in }) { [weak self] episodesList in
+                self?.episodesPublisher.send(episodesList.results ?? [])
+            }
+            .store(in: &cancellables)
     }
     
     @objc func navigateToSearchController() {

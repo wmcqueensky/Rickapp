@@ -7,6 +7,16 @@
 
 import Foundation
 
+struct LocationList: Codable {
+    var info: Info?
+    var results: [Location]?
+}
+
+struct Origin: Codable {
+    var name: String?
+    var url: String?
+}
+
 struct Location: Codable {
     var id: Int?
     var name: String?

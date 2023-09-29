@@ -53,6 +53,14 @@ class FiltersCollectionView: BaseView {
             make.edges.equalTo(self)
         }
     }
+    
+    func reload(_ elements: [Location]) {
+        var tags: [String] = []
+        elements.forEach { element in
+            tags.append(element.name ?? "")
+        }
+        collectionView.reloadData()
+    }
 }
 
 extension FiltersCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -63,7 +71,6 @@ extension FiltersCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: FilterCollectionViewCell.self), for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell()}
-         
         
         return cell
     }

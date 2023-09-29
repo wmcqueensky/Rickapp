@@ -18,12 +18,6 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
     private let selectionImageView = UIImageView()
     private let stackView = UIStackView()
     
-    var tagElement = String() {
-        didSet {
-            customTitleLabel.text = tagElement
-        }
-    }
-    
     var cellSelected = false {
         didSet {
             setupSelection()
@@ -59,7 +53,7 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
         
         customTitleLabel.textAlignment = .center
         customTitleLabel.font = .systemFont(ofSize: 16)
-        customTitleLabel.textColor = .green
+        customTitleLabel.textColor = .white
         
         stackView.spacing = 10
         stackView.axis = .horizontal
@@ -97,5 +91,9 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
         selectionImageView.isHidden = !cellSelected
         backgroundColor = cellSelected ? (color ?? .white) : .clear
         customTitleLabel.textColor = cellSelected ? .gray : (color ?? titleColor ??  .white)
+    }
+    
+    func setupTag(_ tag: String) {
+        customTitleLabel.text = tag
     }
 }

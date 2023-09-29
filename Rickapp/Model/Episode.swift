@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct EpisodeList: Codable {
+    var info: Info?
+    var results: [Episode]?
+}
+
 struct Episode: Codable {
     var id: Int?
     var name: String?

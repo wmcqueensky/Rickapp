@@ -9,7 +9,6 @@ import Foundation
 import Moya
 
 enum CharacterResource: TargetType {
-    
     case characters
     case locations
     case episodes
@@ -23,9 +22,9 @@ enum CharacterResource: TargetType {
         case .characters:
             return "/character"
         case .locations:
-            return "/locations"
+            return "/location"
         case .episodes:
-            return "/episodes"
+            return "/episode"
         case .getSingleCharacterById(let characterId):
             return "/character/\(characterId)"
         case .getManyCharactersById(let characterIds):
