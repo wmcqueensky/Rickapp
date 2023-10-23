@@ -335,7 +335,6 @@
 				F3C74B432A9F7A4C0008DC9F /* Common */,
 				F39B89492A9E01B200C2EE81 /* Screens */,
 				F3CA00A82A9CF26A003F219D /* BaseElements */,
-				F3A94BD32A8FA60E0003F841 /* Info.plist */,
 				F39E9E8E2A94964B003D722E /* Extensions */,
 				F3A496292A96347500BE8298 /* Networking */,
 				F3A496262A9633EC00BE8298 /* Navigation */,
@@ -367,6 +366,7 @@
 		F3A94C012A902DA50003F841 /* App files */ = {
 			isa = PBXGroup;
 			children = (
+				F3A94BD32A8FA60E0003F841 /* Info.plist */,
 				F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */,
 				F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */,
 				F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */,
@@ -730,7 +730,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BA2VGH9B3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Rickapp/Info.plist;
+				INFOPLIST_FILE = "Rickapp/App Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Rickapp;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -757,7 +759,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8BA2VGH9B3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Rickapp/Info.plist;
+				INFOPLIST_FILE = "Rickapp/App Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Rickapp;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
