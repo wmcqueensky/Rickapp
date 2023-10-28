@@ -55,15 +55,23 @@ class FiltersCollectionView: BaseView {
     }
     
     func reload(_ elements: [Location]) {
-        var tags: [String] = []
         elements.forEach { element in
-            tags.append(element.name ?? "")
+            self.elements.append(element.name ?? "")
         }
-        collectionView.reloadData()
     }
 }
 
 extension FiltersCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = elements[indexPath.item]
+        
+        if selectedElements.contains(item) {
+            selectedElements.remove(at: selectedElements.firstIndex(of: item) ?? -1)
+        } else {
+            selectedElements.append(item)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return elements.count
@@ -72,6 +80,19 @@ extension FiltersCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: FilterCollectionViewCell.self), for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell()}
         
+        cell.setupTitle(elements[indexPath.item])
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let tag = elements[indexPath.row]
+        let label = UILabel()
+        label.text = tag
+        label.sizeToFit()
+        
+        let isSelected = selectedElements.contains(tag)
+        return CGSize(width: label.frame.width + (isSelected ? 100 : 80), height: 46)
     }
 }

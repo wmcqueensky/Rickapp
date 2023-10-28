@@ -24,19 +24,19 @@ class SearchFiltersViewController: BaseViewController<SearchFiltersViewModel> {
     
     override func bindToViewModel() {
         super.bindToViewModel()
-        viewModel.characterPublisher
-            .sink { [weak self] characters in
-
-            }
-            .store(in: &viewModel.cancellables)
-        
+//        viewModel.characterPublisher
+//            .sink { [weak self] characters in
+//
+//            }
+//            .store(in: &viewModel.cancellables)
+//        
         viewModel.locationsPublisher
             .sink { [weak self] locations in
                 self?.locationSectionView.collectionViewReload(locations)
                 self?.originSectionView.collectionViewReload(locations)
             }
             .store(in: &viewModel.cancellables)
-        
+//        
 //        viewModel.episodesPublisher
 //            .sink { [weak self] locations in
 //                self?.locationSectionView.collectionViewReload()

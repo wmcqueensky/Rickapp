@@ -24,16 +24,7 @@ class SearchFiltersViewModel: BaseListViewModel {
         
     override func bindToData() {
         super.bindToData()
-        getCharacters()
         getLocations()
-    }
-    
-    func getCharacters() {
-        CharacterService.shared.getCharacters()
-            .sink(receiveCompletion: { _ in }) { [weak self] characters in
-                self?.characterPublisher.send(characters.results ?? [])
-            }
-            .store(in: &cancellables)
     }
     
     func getLocations() {
@@ -43,14 +34,23 @@ class SearchFiltersViewModel: BaseListViewModel {
             }
             .store(in: &cancellables)
     }
-    
-    func getEpisodes() {
-        CharacterService.shared.getEpisodes()
-            .sink(receiveCompletion: { _ in }) { [weak self] episodesList in
-                self?.episodesPublisher.send(episodesList.results ?? [])
-            }
-            .store(in: &cancellables)
-    }
+//
+//    func getCharacters() {
+//        CharacterService.shared.getCharacters()
+//            .sink(receiveCompletion: { _ in }) { [weak self] characters in
+//                self?.characterPublisher.send(characters.results ?? [])
+//            }
+//            .store(in: &cancellables)
+//    }
+//
+//
+//    func getEpisodes() {
+//        CharacterService.shared.getEpisodes()
+//            .sink(receiveCompletion: { _ in }) { [weak self] episodesList in
+//                self?.episodesPublisher.send(episodesList.results ?? [])
+//            }
+//            .store(in: &cancellables)
+//    }
     
     @objc func navigateToSearchController() {
         

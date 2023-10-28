@@ -30,7 +30,7 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    var style: FilterViewStyle = .round {
+    var style: FilterViewStyle = .square {
         didSet {
             setupStyle()
         }
@@ -42,18 +42,24 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        color = nil
-        customTitleLabel.font = .systemFont(ofSize: 16)
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        color = nil
+//        customTitleLabel.font = .systemFont(ofSize: 16)
+//    }
     
     override func setupViews() {
         super.setupViews()
         
+        setupStyle()
+        
         customTitleLabel.textAlignment = .center
         customTitleLabel.font = .systemFont(ofSize: 16)
         customTitleLabel.textColor = .white
+        
+        selectionImageView.image = UIImage.getImage(.plusIcon)
+        selectionImageView.tintColor = .white
+        selectionImageView.contentMode = .left
         
         stackView.spacing = 10
         stackView.axis = .horizontal
@@ -88,12 +94,13 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
     
     private func setupSelection() {
         layer.borderWidth = cellSelected ? 0 : 1
-        selectionImageView.isHidden = !cellSelected
+        selectionImageView.image = UIImage.getImage(cellSelected ? .checkmarkIcon : .plusIcon)
         backgroundColor = cellSelected ? (color ?? .white) : .clear
         customTitleLabel.textColor = cellSelected ? .gray : (color ?? titleColor ??  .white)
+        
     }
     
-    func setupTag(_ tag: String) {
-        customTitleLabel.text = tag
+    func setupTitle(_ title: String) {
+        customTitleLabel.text = title
     }
 }
