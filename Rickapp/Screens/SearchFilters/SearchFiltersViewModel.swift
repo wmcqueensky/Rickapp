@@ -20,8 +20,9 @@ class SearchFiltersViewModel: BaseListViewModel {
     var typeFilters: [String] = []
     var genderFilters: [String] = []
     var locationFilters: [String] = []
+    var originFilters: [String] = []
     var dateFilters: [String] = []
-        
+    
     override func bindToData() {
         super.bindToData()
         getLocations()
@@ -34,34 +35,39 @@ class SearchFiltersViewModel: BaseListViewModel {
             }
             .store(in: &cancellables)
     }
-//
-//    func getCharacters() {
-//        CharacterService.shared.getCharacters()
-//            .sink(receiveCompletion: { _ in }) { [weak self] characters in
-//                self?.characterPublisher.send(characters.results ?? [])
-//            }
-//            .store(in: &cancellables)
-//    }
-//
-//
-//    func getEpisodes() {
-//        CharacterService.shared.getEpisodes()
-//            .sink(receiveCompletion: { _ in }) { [weak self] episodesList in
-//                self?.episodesPublisher.send(episodesList.results ?? [])
-//            }
-//            .store(in: &cancellables)
-//    }
+    
+    func populateLocationFilters(_ locations: [Location]) {
+        locations.forEach { location in
+            self.locationFilters.append(location.name ?? "")
+        }
+    }
+    
+    func populateOriginFilters(_ origins: [Location]) {
+        origins.forEach { origin in
+            self.originFilters.append(origin.name ?? "")
+        }
+    }
     
     @objc func navigateToSearchController() {
         
     }
 }
 
-extension SearchFiltersViewModel: FiltersCollectionViewDelegate {
-    func cellSelected(filter: String) {
-        
+extension SearchFiltersViewModel: FiltersSectionDelegate {
+    func clearButtonTapped(_ filters: [String]) {
+        print("Cleared")
+    }
+    
+    func cellSelected(filter: String, isSelected: Bool) {
+
     }
 }
+
+//    func didTapFavouriteButton(for cell: CharacterTableViewCell, isSelected: Bool) {
+//        guard let indexPath = tableView.indexPath(for: cell) else { return }
+//        let character = viewModel.charactersPublisher.value[indexPath.row]
+//        viewModel.toggleFavoriteStatus(for: character, isSelected: isSelected)
+//    }
 
 //extension SearchFiltersViewModel: FilterSectionDelegate {
 //    func clearButtonTapped(_ tags: [Tag]) {
@@ -91,3 +97,23 @@ extension SearchFiltersViewModel: FiltersCollectionViewDelegate {
 //        return true
 //    }
 //}
+
+
+//
+//    func getCharacters() {
+//        CharacterService.shared.getCharacters()
+//            .sink(receiveCompletion: { _ in }) { [weak self] characters in
+//                self?.characterPublisher.send(characters.results ?? [])
+//            }
+//            .store(in: &cancellables)
+//    }
+//
+//
+//    func getEpisodes() {
+//        CharacterService.shared.getEpisodes()
+//            .sink(receiveCompletion: { _ in }) { [weak self] episodesList in
+//                self?.episodesPublisher.send(episodesList.results ?? [])
+//            }
+//            .store(in: &cancellables)
+//    }
+

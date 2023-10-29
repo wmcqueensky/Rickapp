@@ -13,17 +13,23 @@ enum FilterViewStyle {
     case square
 }
 
+protocol FilterCollectionViewCellDelegate: AnyObject {
+    func filterCell(_ cell: FilterCollectionViewCell, didChangeSelectionState selected: Bool)
+}
+
 class FilterCollectionViewCell: BaseCollectionViewCell {
     private let customTitleLabel = UILabel()
     private let selectionImageView = UIImageView()
     private let stackView = UIStackView()
+    
+    weak var delegate: FilterCollectionViewCellDelegate?
     
     var cellSelected = false {
         didSet {
             setupSelection()
         }
     }
-
+    
     var color: UIColor? {
         didSet {
             setupColor()
@@ -42,11 +48,7 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        color = nil
-//        customTitleLabel.font = .systemFont(ofSize: 16)
-//    }
+    var filter: String = ""
     
     override func setupViews() {
         super.setupViews()
@@ -65,7 +67,7 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
         stackView.axis = .horizontal
         stackView.alignment = .center
         stackView.addArrangedSubviews([selectionImageView, customTitleLabel])
-
+        
         layer.borderColor = UIColor.white.cgColor
         layer.borderWidth = 1
         
@@ -102,5 +104,13 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
     
     func setupTitle(_ title: String) {
         customTitleLabel.text = title
+        filter = title
+        delegate?.filterCell(self, didChangeSelectionState: cellSelected)
     }
 }
+
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        color = nil
+//        customTitleLabel.font = .systemFont(ofSize: 16)
+//    }

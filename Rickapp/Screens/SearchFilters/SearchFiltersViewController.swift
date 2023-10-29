@@ -24,25 +24,14 @@ class SearchFiltersViewController: BaseViewController<SearchFiltersViewModel> {
     
     override func bindToViewModel() {
         super.bindToViewModel()
-//        viewModel.characterPublisher
-//            .sink { [weak self] characters in
-//
-//            }
-//            .store(in: &viewModel.cancellables)
-//        
         viewModel.locationsPublisher
             .sink { [weak self] locations in
-                self?.locationSectionView.collectionViewReload(locations)
-                self?.originSectionView.collectionViewReload(locations)
+                self?.locationSectionView.collectionViewLoad(locations)
+                self?.originSectionView.collectionViewLoad(locations)
+                self?.viewModel.populateLocationFilters(locations)
+                self?.viewModel.populateOriginFilters(locations)
             }
             .store(in: &viewModel.cancellables)
-//        
-//        viewModel.episodesPublisher
-//            .sink { [weak self] locations in
-//                self?.locationSectionView.collectionViewReload()
-//                print(locations)
-//            }
-//            .store(in: &viewModel.cancellables)
     }
     
     override func setupViews() {
@@ -59,6 +48,10 @@ class SearchFiltersViewController: BaseViewController<SearchFiltersViewModel> {
         stackView.axis = .vertical
         stackView.spacing = 15
         stackView.addArrangedSubviews([statusSectionView, speciesSectionView, typeSectionView, genderSectionView, locationSectionView, originSectionView, dateSectionView])
+        
+        [statusSectionView, speciesSectionView, typeSectionView, genderSectionView, locationSectionView, originSectionView, dateSectionView].forEach { view in
+            view.delegate = viewModel
+        }
         
         scrollView.addSubview(stackView)
         view.addSubview(scrollView)
@@ -84,3 +77,18 @@ class SearchFiltersViewController: BaseViewController<SearchFiltersViewModel> {
         }
     }
 }
+
+//
+//        viewModel.episodesPublisher
+//            .sink { [weak self] locations in
+//                self?.locationSectionView.collectionViewReload()
+//                print(locations)
+//            }
+//            .store(in: &viewModel.cancellables)
+
+//        viewModel.characterPublisher
+//            .sink { [weak self] characters in
+//
+//            }
+//            .store(in: &viewModel.cancellables)
+//       
