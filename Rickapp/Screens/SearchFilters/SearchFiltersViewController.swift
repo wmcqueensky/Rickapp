@@ -43,15 +43,10 @@ class SearchFiltersViewController: BaseViewController<SearchFiltersViewModel> {
         genderSectionView.title = "Gender"
         locationSectionView.title = "Location"
         originSectionView.title = "Origin"
-        dateSectionView.title = "Date created"
         
         stackView.axis = .vertical
         stackView.spacing = 15
         stackView.addArrangedSubviews([statusSectionView, speciesSectionView, typeSectionView, genderSectionView, locationSectionView, originSectionView, dateSectionView])
-        
-        [statusSectionView, speciesSectionView, typeSectionView, genderSectionView, locationSectionView, originSectionView, dateSectionView].forEach { view in
-            view.delegate = viewModel
-        }
         
         scrollView.addSubview(stackView)
         view.addSubview(scrollView)

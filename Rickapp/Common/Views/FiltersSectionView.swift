@@ -9,13 +9,13 @@ import UIKit
 import SnapKit
 
 protocol FiltersSectionDelegate: AnyObject {
-    func clearButtonTapped(_ filters: [String])
-    func cellSelected(filter: String, isSelected: Bool)
+    func cellSelected(filter: String, section: String)
+    func clearButtonTapped(_ filters: [String], section: String)
 }
 
 class FiltersSectionView: BaseView {
     private let clearButton = UnderlinedButton()
-    private let titleLabel = UILabel()
+    private let titleButton = UIButton()
     private let dividerView = DividerView()
     private let collectionView = HeightCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let stackView = UIStackView()
@@ -25,38 +25,34 @@ class FiltersSectionView: BaseView {
         didSet {
             titleStackView.isHidden = title.isEmpty
             dividerView.isHidden = title.isEmpty
-            titleLabel.text = title
+            titleButton.setTitle(title, for: .normal)
         }
     }
     
-    var filters: [String] = [] {
+    private var filters: [String] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
-    
-    var selectedFilters: [String] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    
+
     weak var delegate: FiltersSectionDelegate?
     
     override func setupViews() {
         super.setupViews()
-        titleLabel.font = .boldSystemFont(ofSize: 25)
-        titleLabel.textColor = .white
-        titleLabel.numberOfLines = 0
+        titleButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
+        titleButton.titleLabel?.textColor = .white
+        titleButton.titleLabel?.numberOfLines = 0
+        titleButton.addTarget(self, action: #selector(titleButtonTapped), for: .touchUpInside)
         
         dividerView.isHidden = true
         
         clearButton.title = "Clear"
+        clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         
         titleStackView.isHidden = true
         titleStackView.spacing = 20
         titleStackView.axis = .horizontal
-        titleStackView.addArrangedSubviews([titleLabel, UIView(), clearButton])
+        titleStackView.addArrangedSubviews([titleButton, UIView(), clearButton])
         
         let layout = FiltersCollectionViewFlowLayout()
         layout.minimumLineSpacing = 15
@@ -67,6 +63,7 @@ class FiltersSectionView: BaseView {
         collectionView.register(FilterCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: FilterCollectionViewCell.self))
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.isHidden = true
         
         stackView.spacing = 10
         stackView.axis = .vertical
@@ -88,16 +85,22 @@ class FiltersSectionView: BaseView {
             self.filters.append(element.name ?? "")
         }
     }
+    
+    @objc private func titleButtonTapped() {
+        UIView.animate(withDuration: 0.3) {
+            self.collectionView.isHidden = !self.collectionView.isHidden
+        }
+    }
 }
 
-extension FiltersSectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, FilterCollectionViewCellDelegate {
+extension FiltersSectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return filters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: FilterCollectionViewCell.self), for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: FilterCollectionViewCell.self), for: indexPath) as? FilterCollectionViewCell else {return UICollectionViewCell()}
         
         cell.setupTitle(filters[indexPath.item])
         
@@ -111,42 +114,22 @@ extension FiltersSectionView: UICollectionViewDelegate, UICollectionViewDataSour
         label.text = tag
         label.sizeToFit()
         
-        let isSelected = selectedFilters.contains(tag)
-        return CGSize(width: label.frame.width + (isSelected ? 100 : 80), height: 46)
+        return CGSize(width: label.frame.width + 80, height: 46)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell else { return }
         let item = filters[indexPath.item]
-        
-        if selectedFilters.contains(item) {
-            selectedFilters.remove(at: selectedFilters.firstIndex(of: item) ?? -1)
-        } else {
-            selectedFilters.append(item)
-        }
-        
-        collectionView.reloadData() // Reload the collection view to update the cellSelected property.
-        
-        // Find the selected cell and update its cellSelected property.
-        for cell in collectionView.visibleCells {
-            if let filterCell = cell as? FilterCollectionViewCell, filterCell.filter == item {
-                filterCell.cellSelected = selectedFilters.contains(item)
-                break
-            }
-        }
+        delegate?.cellSelected(filter: item, section: self.title)
+        cell.cellSelected = !cell.cellSelected
     }
     
-    func filterCell(_ cell: FilterCollectionViewCell, didChangeSelectionState selected: Bool) {
-        let filter = cell.filter
-        if selected {
-            selectedFilters.append(filter)
-        } else {
-            if let index = selectedFilters.firstIndex(of: filter) {
-                selectedFilters.remove(at: index)
+    @objc private func clearButtonTapped() {
+        for indexPath in collectionView.indexPathsForVisibleItems {
+            if let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionViewCell {
+                cell.cellSelected = false
             }
         }
+        delegate?.clearButtonTapped(filters, section: self.title)
     }
 }
-
-//        delegate?.cellSelected(filter: filters[indexPath.item], isSelected: true)
-
-

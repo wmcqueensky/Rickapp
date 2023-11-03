@@ -13,17 +13,11 @@ enum FilterViewStyle {
     case square
 }
 
-protocol FilterCollectionViewCellDelegate: AnyObject {
-    func filterCell(_ cell: FilterCollectionViewCell, didChangeSelectionState selected: Bool)
-}
-
 class FilterCollectionViewCell: BaseCollectionViewCell {
     private let customTitleLabel = UILabel()
     private let selectionImageView = UIImageView()
     private let stackView = UIStackView()
-    
-    weak var delegate: FilterCollectionViewCellDelegate?
-    
+        
     var cellSelected = false {
         didSet {
             setupSelection()
@@ -97,15 +91,14 @@ class FilterCollectionViewCell: BaseCollectionViewCell {
     private func setupSelection() {
         layer.borderWidth = cellSelected ? 0 : 1
         selectionImageView.image = UIImage.getImage(cellSelected ? .checkmarkIcon : .plusIcon)
+        selectionImageView.tintColor = cellSelected ? .black : .white
         backgroundColor = cellSelected ? (color ?? .white) : .clear
-        customTitleLabel.textColor = cellSelected ? .gray : (color ?? titleColor ??  .white)
-        
+        customTitleLabel.textColor = cellSelected ? .black : (color ?? titleColor ??  .white)
     }
     
     func setupTitle(_ title: String) {
         customTitleLabel.text = title
         filter = title
-        delegate?.filterCell(self, didChangeSelectionState: cellSelected)
     }
 }
 

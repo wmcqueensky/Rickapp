@@ -23,6 +23,13 @@ class SearchFiltersViewModel: BaseListViewModel {
     var originFilters: [String] = []
     var dateFilters: [String] = []
     
+    var selectedStatusFilters: [String] = []
+    var selectedSpeciesFilters: [String] = []
+    var selectedTypeFilters: [String] = []
+    var selectedGenderFilters: [String] = []
+    var selectedLocationFilters: [String] = []
+    var selectedOriginFilters: [String] = []
+    
     override func bindToData() {
         super.bindToData()
         getLocations()
@@ -54,12 +61,27 @@ class SearchFiltersViewModel: BaseListViewModel {
 }
 
 extension SearchFiltersViewModel: FiltersSectionDelegate {
-    func clearButtonTapped(_ filters: [String]) {
-        print("Cleared")
+    
+    func clearButtonTapped(_ filters: [String], section: String) {
+        selectedLocationFilters.removeAll()
     }
     
-    func cellSelected(filter: String, isSelected: Bool) {
-
+    func cellSelected(filter: String, section: String) {
+        if section == "Location" {
+            if selectedLocationFilters.contains(filter) {
+                selectedLocationFilters.remove(at: selectedLocationFilters.firstIndex(of: filter) ?? -1)
+            } else {
+                selectedLocationFilters.append(filter)
+            }
+        }
+        
+        if section == "Origin" {
+            if selectedOriginFilters.contains(filter) {
+                selectedOriginFilters.remove(at: selectedOriginFilters.firstIndex(of: filter) ?? -1)
+            } else {
+                selectedOriginFilters.append(filter)
+            }
+        }
     }
 }
 
