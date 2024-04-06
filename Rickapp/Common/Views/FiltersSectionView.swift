@@ -19,7 +19,10 @@ class FiltersSectionView: BaseView {
     private let dividerView = DividerView()
     private let collectionView = HeightCollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let stackView = UIStackView()
+    private let titleButtonStackView = UIStackView()
     private let titleStackView = UIStackView()
+    
+    let counterView = CounterView()
     
     var title = "" {
         didSet {
@@ -34,7 +37,7 @@ class FiltersSectionView: BaseView {
             collectionView.reloadData()
         }
     }
-
+    
     weak var delegate: FiltersSectionDelegate?
     
     override func setupViews() {
@@ -49,10 +52,13 @@ class FiltersSectionView: BaseView {
         clearButton.title = "Clear"
         clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         
+        titleButtonStackView.spacing = 5
+        titleButtonStackView.addArrangedSubviews([titleButton, counterView])
+        
         titleStackView.isHidden = true
         titleStackView.spacing = 20
         titleStackView.axis = .horizontal
-        titleStackView.addArrangedSubviews([titleButton, UIView(), clearButton])
+        titleStackView.addArrangedSubviews([titleButtonStackView, UIView(), clearButton])
         
         let layout = FiltersCollectionViewFlowLayout()
         layout.minimumLineSpacing = 15

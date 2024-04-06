@@ -63,7 +63,13 @@ class SearchFiltersViewModel: BaseListViewModel {
 extension SearchFiltersViewModel: FiltersSectionDelegate {
     
     func clearButtonTapped(_ filters: [String], section: String) {
-        selectedLocationFilters.removeAll()
+        if section == "Location" && !filters.isEmpty {
+            selectedLocationFilters.removeAll()
+        }
+        
+        if section == "Origin" && !filters.isEmpty {
+            selectedOriginFilters.removeAll()
+        }
     }
     
     func cellSelected(filter: String, section: String) {
@@ -81,6 +87,16 @@ extension SearchFiltersViewModel: FiltersSectionDelegate {
             } else {
                 selectedOriginFilters.append(filter)
             }
+        }
+    }
+    
+    func counterValueChanged(numberOfFilters: Int, section: String) {
+        if section == "Location" {
+           
+        }
+        
+        if section == "Origin" {
+            
         }
     }
 }
