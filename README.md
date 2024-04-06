@@ -56,11 +56,12 @@ The app is structured into a MVVM design pattern.
 
 This project uses the following dependencies:
 
-UIKit: For building the user interface.
-SnapKit: For creating Auto Layout constraints programmatically.
-Combine: For reactive programming and handling asynchronous tasks.
-Moya: For simplifying network requests.
-Kingfisher: For image loading and caching.
+- UIKit: For building the user interface.
+- SnapKit: For creating Auto Layout constraints programmatically.
+- Combine: For reactive programming and handling asynchronous tasks.
+- Moya: For simplifying network requests.
+- Kingfisher: For image loading and caching.
+  
 Make sure to install these dependencies using CocoaPods or Swift Package Manager if they are not already installed.
 
 ## Acknowledgments
