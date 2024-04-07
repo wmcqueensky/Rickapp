@@ -17,11 +17,15 @@ class CharacterService: BaseNetworkService<CharacterResource> {
     }
     
     func getNextCharactersPage(url: String) -> AnyPublisher<CharacterList, Error> {
-        return request(for: .nextCharactersPage(url: url))
+        return request(for: .getElementbyUrl(url: url))
     }
     
     func getLocation(url: String) -> AnyPublisher<Location, Error> {
-        return request(for: .nextCharactersPage(url: url))
+        return request(for: .getElementbyUrl(url: url))
+    }
+    
+    func getEpisode(url: String) -> AnyPublisher<Episode, Error> {
+        return request(for: .getElementbyUrl(url: url))
     }
     
     func getCharacterById(_ characterId: Int) -> AnyPublisher<Character, Error> {
