@@ -24,7 +24,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     override func bindToViewModel() {
         super.bindToViewModel()
         
-        viewModel.fetchCharacters
+        viewModel.characters
             .sink { [weak self] characters in
                 self?.viewModel.characterList.results = characters
                 self?.tableView.reloadData()
@@ -44,8 +44,7 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard let characterId = viewModel.characterList.results?[indexPath.row].id else { return }
-        
-        AppNavigator.shared.navigate(to: MainRoutes.card(characterId: characterId), with: .push, animated: true)
+        viewModel.getCharacterById(characterId)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

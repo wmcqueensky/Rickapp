@@ -11,7 +11,7 @@ import Combine
 class CharacterListViewModel: BaseViewModel {
     private var isLoadingNextPage = false
     private var nextPage: String?
-    var fetchCharacters = PassthroughSubject<[Character], Never>()
+    var characters = PassthroughSubject<[Character], Never>()
     var characterList = CharacterList()
     
     override func bindToData() {
@@ -19,7 +19,7 @@ class CharacterListViewModel: BaseViewModel {
         CardService.shared.getCharacters()
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 self?.nextPage = characterList.info?.next ?? ""
-                self?.fetchCharacters.send(characterList.results ?? [])
+                self?.characters.send(characterList.results ?? [])
             }
             .store(in: &cancellables)
     }
@@ -33,9 +33,13 @@ class CharacterListViewModel: BaseViewModel {
                 guard let self = self else { return }
                 self.characterList.results?.append(contentsOf: characterList.results ?? [])
                 self.nextPage = characterList.info?.next ?? ""
-                self.fetchCharacters.send(self.characterList.results ?? [])
+                self.characters.send(self.characterList.results ?? [])
                 self.isLoadingNextPage = false
             }
             .store(in: &cancellables)
+    }
+    
+    func getCharacterById(_ characterId: Int) {
+        AppNavigator.shared.navigate(to: MainRoutes.card(characterId: characterId), with: .push, animated: true)
     }
 }
