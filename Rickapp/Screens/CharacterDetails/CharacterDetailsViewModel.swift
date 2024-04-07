@@ -1,5 +1,5 @@
 //
-//  CharacterCardViewModel.swift
+//  CharacterDetailsViewModel.swift
 //  Rickapp
 //
 //  Created by Wojciech Mokwiński on 27/08/2023.
@@ -8,19 +8,23 @@
 import Foundation
 import Combine
 
-class CharacterCardViewModel: BaseViewModel {
+class CharacterDetailsViewModel: BaseViewModel {
     var characterPublisher = CurrentValueSubject<Character, Never>(Character())
     
     init(_ characterId: Int) {
-        super.init()//
+        super.init()
         self.fetchCharacterById(characterId)
     }
     
     func fetchCharacterById(_ characterId: Int) {
-        CardService.shared.getCharacterById(characterId)
+        CharacterService.shared.getCharacterById(characterId)
             .sink(receiveCompletion: { _ in }) { [weak self] character in
                 self?.characterPublisher.send(character)
             }
             .store(in: &cancellables)
+    }
+    
+    func locationButtonTapped(_ locationUrl: String) {
+        AppNavigator.shared.navigate(to: MainRoutes.location(url: locationUrl), with: .push, animated: true)
     }
 }

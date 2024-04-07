@@ -1,5 +1,5 @@
 //
-//  CharacterCardViewController.swift
+//  CharacterDetailsViewController.swift
 //  Rickapp
 //
 //  Created by Wojciech Mokwiński on 27/08/2023.
@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import SnapKit
 
-class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
+class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewModel> {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
     private let favouriteButton = FavouriteButton()
@@ -18,7 +18,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private var statusView = UIView()
     private let statusStackView = UIStackView()
     private let locationLabel = UILabel()
-    private let actualLocationLabel = UILabel()
+    private let locationButton = UIButton()
     private let originLabel = UILabel()
     private let actualOriginLabel = UILabel()
     private let typeLabel = UILabel()
@@ -69,8 +69,12 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         
         episodesLabel.text = "Episodes:"
         
-        view.setFontForLabels([statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
-        view.setTextColorForLabels([statusLabel, actualLocationLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel, actualEpisodesLabel], color: .white)
+        locationButton.contentHorizontalAlignment = .left
+        locationButton.titleLabel?.font = .systemFont(ofSize: 20)
+        locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
+        
+        view.setFontForLabels([statusLabel, locationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
+        view.setTextColorForLabels([statusLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel, actualEpisodesLabel], color: .white)
         view.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodesLabel], color: .gray)
         
         actualEpisodesLabel.font = .systemFont(ofSize: 25)
@@ -81,9 +85,9 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel, actualEpisodesLabel])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationButton, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel, actualEpisodesLabel])
         characterStackView.setCustomSpacing(9, after: characterImageView)
-        characterStackView.setCustomSpacings(20, [statusStackView, actualLocationLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
+        characterStackView.setCustomSpacings(20, [statusStackView, locationButton, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         
         view.backgroundColor = .darkGray
@@ -126,7 +130,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
         nameLabel.text = character.name
         statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
-        actualLocationLabel.text = character.location?.name ?? ""
+        locationButton.setTitle(character.location?.name ?? "", for: .normal)
         actualOriginLabel.text = character.origin?.name ?? ""
         actualTypeLabel.text = character.type ?? ""
         actualGenderLabel.text = character.gender ?? ""
@@ -159,5 +163,9 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         favouriteButton.isSelected ?
         FavouritesManager.shared.addToFavourites(viewModel.characterPublisher.value.id ?? 0) :
         FavouritesManager.shared.removeFromFavourites(viewModel.characterPublisher.value.id ?? 0)
+    }
+    
+    @objc private func locationButtonTapped() {
+        viewModel.locationButtonTapped(viewModel.characterPublisher.value.location?.url ?? "")
     }
 }

@@ -9,8 +9,8 @@ import Foundation
 import Combine
 import Moya
 
-class CardService: BaseNetworkService<CardResource> {
-    static let shared = CardService()
+class CharacterService: BaseNetworkService<CharacterResource> {
+    static let shared = CharacterService()
     
     func getCharacters() -> AnyPublisher<CharacterList, Error> {
         return request(for: .character)
@@ -18,6 +18,14 @@ class CardService: BaseNetworkService<CardResource> {
     
     func getNextCharactersPage(url: String) -> AnyPublisher<CharacterList, Error> {
         return request(for: .nextCharactersPage(url: url))
+    }
+    
+    func getLocation(url: String) -> AnyPublisher<Location, Error> {
+        return request(for: .nextCharactersPage(url: url))
+    }
+    
+    func getCharacterById(_ characterId: Int) -> AnyPublisher<Character, Error> {
+        return request(for: .getCharacterById(characterId: characterId))
     }
     
     func getFavouritesById(characterIds: [Int]) -> AnyPublisher<[Character], Error> {
@@ -28,9 +36,5 @@ class CardService: BaseNetworkService<CardResource> {
         return Publishers.MergeMany(requests)
             .collect()
             .eraseToAnyPublisher()
-    }
-    
-    func getCharacterById(_ characterId: Int) -> AnyPublisher<Character, Error> {
-        return request(for: .getCharacterById(characterId: characterId))
     }
 }

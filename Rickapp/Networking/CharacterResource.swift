@@ -8,10 +8,11 @@
 import Foundation
 import Moya
 
-enum CardResource: TargetType {
+enum CharacterResource: TargetType {
     
     case character
     case nextCharactersPage(url: String)
+    case getLocation(url: String)
     case getCharacterById(characterId: Int)
     case getFavouritesById(characterIds: [Int])
     
@@ -28,6 +29,8 @@ enum CardResource: TargetType {
     
     var baseURL: URL {
         switch self {
+        case .getLocation(let url):
+            return URL(string: url)!
         case .nextCharactersPage(let url):
             return URL(string: url)!
         default:
@@ -38,14 +41,14 @@ enum CardResource: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .character, .nextCharactersPage, .getCharacterById, .getFavouritesById:
+        case .character, .nextCharactersPage, .getCharacterById, .getFavouritesById, .getLocation:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .character, .nextCharactersPage, .getCharacterById, .getFavouritesById:
+        case .character, .nextCharactersPage, .getCharacterById, .getFavouritesById, .getLocation:
             return .requestPlain
         }
     }
