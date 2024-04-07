@@ -12,10 +12,14 @@ class FavouriteListViewModel: BaseViewModel {
     var favouritesPublisher = CurrentValueSubject<[Character], Never>([])
     
     override func bindToData() {
-        CardService.shared.getCharactersById(FavouritesManager.shared.favourites)
-            .sink(receiveCompletion: { _ in }) { [weak self] characters in
-                self?.favouritesPublisher.send(characters)
-            }
-            .store(in: &cancellables)
+        reloadFavourites()
+    }
+    
+    func reloadFavourites() {        
+        CardService.shared.getFavouritesById(characterIds: FavouritesManager.shared.favourites)
+                .sink(receiveCompletion: { _ in }) { [weak self] characters in
+                    self?.favouritesPublisher.send(characters)
+                }
+                .store(in: &cancellables)
     }
 }
