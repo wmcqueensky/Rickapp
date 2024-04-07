@@ -19,4 +19,8 @@ class CharacterCardViewModel: BaseViewModel {
             }
             .store(in: &cancellables)
     }
+    
+    func fetchSelectedCharacter(_ character: Character) {
+        fetchCharacter.send(character)
+    }
 }
