@@ -10,6 +10,9 @@ import Moya
 import SnapKit
 
 class SearchViewController: BaseViewController<SearchViewModel> {
+    private let resultsView = UICollectionView()
+    private let searchView = SearchView()
+    
     
     override func bindToViewModel() {
         super.bindToViewModel()
@@ -17,6 +20,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     
     override func setupViews() {
         super.setupViews()
+        
     }
     
     override func setupConstraints() {
