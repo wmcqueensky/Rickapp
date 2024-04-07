@@ -29,6 +29,7 @@
 		F3A94BF92A8FBD850003F841 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BF82A8FBD850003F841 /* Character.swift */; };
 		F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFC2A90284A0003F841 /* SnapKit */; };
 		F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFF2A902C9F0003F841 /* Kingfisher */; };
+		F3C74B392A9F2C7C0008DC9F /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B382A9F2C7C0008DC9F /* UITableView+Ext.swift */; };
 		F3C9B2832A934C3F008AC1FF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2822A934C3F008AC1FF /* CombineMoya */; };
 		F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2842A934C3F008AC1FF /* Moya */; };
 		F3C9B2872A934C3F008AC1FF /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2862A934C3F008AC1FF /* ReactiveMoya */; };
@@ -62,6 +63,7 @@
 		F3A94BD12A8FA60E0003F841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A94BD32A8FA60E0003F841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A94BF82A8FBD850003F841 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		F3C74B382A9F2C7C0008DC9F /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F3CA00A22A9CE242003F219D /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		F3CA00A42A9CE2CD003F219D /* MainRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoutes.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */,
 				F39B894A2A9E027F00C2EE81 /* UILabel+Ext.swift */,
 				F3F85CF62A97703A00142443 /* TargetType+Ext.swift */,
+				F3C74B382A9F2C7C0008DC9F /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C74B392A9F2C7C0008DC9F /* UITableView+Ext.swift in Sources */,
 				F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */,
 				F390EA832A9BF8BE00DC4903 /* CharacterCardViewController.swift in Sources */,
 				F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */,

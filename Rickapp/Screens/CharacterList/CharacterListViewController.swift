@@ -26,7 +26,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         
         viewModel.charactersPublisher
             .sink { [weak self] characters in
-                self?.tableView.reloadData()
+                self?.tableView.reloadData(withCharacters: characters)
             }
             .store(in: &viewModel.cancellables)
     }
