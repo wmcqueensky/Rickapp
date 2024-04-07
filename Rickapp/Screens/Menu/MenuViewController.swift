@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuViewController: UITabBarController, UIGestureRecognizerDelegate {
+class MenuViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +35,6 @@ class MenuViewController: UITabBarController, UIGestureRecognizerDelegate {
     }
 
     private func configureTabBarNavigationBar() {
-        tabBar.backgroundColor = .backgroundGray
-        tabBar.isTranslucent = false
         tabBar.barTintColor = .backgroundGray
         tabBar.tintColor = .white
     }
