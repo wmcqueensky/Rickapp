@@ -8,5 +8,5 @@
 import Foundation
 
 class BaseViewModel: NSObject {
-    
+    func bindToData() {}
 }

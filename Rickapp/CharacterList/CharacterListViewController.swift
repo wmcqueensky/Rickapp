@@ -11,9 +11,6 @@ import SnapKit
 class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     private let titleLabel = UILabel()
     private let tableView = UITableView()
-    private let baseURL = "https://rickandmortyapi.com/api/character"
-    
-    var characters: [Character] = []
     
     override func setupViews() {
         titleLabel.text = "Rickapp"
@@ -30,6 +27,17 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         view.addSubview(tableView)
     }
     
+    override func bindToViewModel() {
+        viewModel.$characters
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] characters in
+                self?.tableView.reloadData()
+            }
+            .store(in: &viewModel.cancellables)
+        
+        viewModel.bindToData()
+    }
+    
     override func setupConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -42,41 +50,18 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
-//    override func setupData() {
-//        
-//        guard let url = URL(string: baseURL) else {
-//            return
-//        }
-//        
-//        URLSession.shared.dataTask(with: url) { data, _, error in
-//            if let error = error {
-//                print("Error fetching data: \(error)")
-//                return
-//            }
-//            
-//            if let data = data {
-//                do {
-//                    let response = try JSONDecoder().decode(CharacterResponse.self, from: data)
-//                    self.characters = response.results ?? []
-//                } catch {
-//                    print("Error decoding data: \(error)")
-//                }
-//            }
-//        }.resume()
-//    }
 }
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characters.count
+        return viewModel.characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        cell.character = characters[indexPath.row]
+        cell.character = viewModel.characters[indexPath.row]
         
         return cell
     }

@@ -21,11 +21,15 @@ class BaseViewController<T: BaseViewModel>: UIViewController, UIScrollViewDelega
         setupViews()
         setupConstraints()
         setupData()
+        bindToViewModel()
+
     }
     
     func setupData() {}
 
     func setupViews() {}
+    
+    func bindToViewModel() {}
     
     func setupConstraints() {}
     
