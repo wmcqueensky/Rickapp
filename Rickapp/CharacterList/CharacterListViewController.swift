@@ -77,7 +77,7 @@ import UIKit
          
          cell.textLabel?.removeFromSuperview()
          cell.isUserInteractionEnabled = false
-         cell.backgroundColor = .darkGray
+         cell.backgroundColor = .backgroundGray
          
          let characterStackView = UIStackView()
          let characterImageView = UIImageView()
@@ -85,6 +85,8 @@ import UIKit
          let statusLabel = UILabel()
          let locationLabel = UILabel()
          let originLabel = UILabel()
+         let actualLocationLabel = UILabel()
+         let actualOriginLabel = UILabel()
          
          characterImageView.kf.setImage(with: URL(string: character.image))
          
@@ -93,52 +95,33 @@ import UIKit
          nameLabel.font = .boldSystemFont(ofSize: 30)
          
          statusLabel.text = character.status + " - " + character.species
+         statusLabel.textColor = .white
          
-         locationLabel.text = "Last known location: \n\(character.location.name)"
-         locationLabel.numberOfLines = 0
+         locationLabel.text = "Last known location:"
+         locationLabel.textColor = .gray
          
-         originLabel.text = "First seen in: \n\(character.origin.name)"
-         originLabel.numberOfLines = 0
-
-         characterStackView.backgroundColor = .gray
+         actualLocationLabel.text = character.location.name
+         actualLocationLabel.textColor = .white
+         
+         originLabel.text = "First seen in:"
+         originLabel.textColor = .gray
+         
+         actualOriginLabel.text = character.origin.name
+         actualOriginLabel.textColor = .white
+         
+         characterStackView.backgroundColor = .darkGray
          characterStackView.axis = .vertical
-         characterStackView.spacing = 40
-         characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusLabel, locationLabel, originLabel])
-         characterStackView.setCustomSpacing(5, after: characterImageView)
-         characterStackView.setCustomSpacing(5, after: nameLabel)
+         characterStackView.spacing = 10
+         characterStackView.layer.cornerRadius = 10
+         characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel])
          
          cell.contentView.addSubview(characterStackView)
          
          characterStackView.snp.makeConstraints { make in
-             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 30, left: 20, bottom: 30, right: 20))
+             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25))
          }
          
          return cell
      }
 
- }
-
- struct Character: Codable {
-     let name: String
-     let status: String
-     let species: String
-     let location: Location
-     let origin: Origin
-     let image: String
-
-     enum CodingKeys: String, CodingKey {
-         case name, status, species, location, origin, image = "image"
-     }
- }
-
- struct Location: Codable {
-     let name: String
- }
-
- struct Origin: Codable {
-     let name: String
- }
-
- struct CharacterResponse: Codable {
-     let results: [Character]
  }
