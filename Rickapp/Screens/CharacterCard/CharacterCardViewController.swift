@@ -42,8 +42,6 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         nameLabel.font = .boldSystemFont(ofSize: 50)
         
         statusLabel.textColor = .white
-        statusLabel.setFontForLabels([statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
-        statusLabel.setTextColorForLabels([statusLabel, actualLocationLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel, actualEpisodesLabel], color: .white)
         
         statusView.layer.cornerRadius = 6
         
@@ -63,7 +61,10 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         speciesLabel.text = "Species:"
                 
         episodesLabel.text = "Episodes:"
-        episodesLabel.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodesLabel], color: .gray)
+        
+        view.setFontForLabels([statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
+        view.setTextColorForLabels([statusLabel, actualLocationLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel, actualEpisodesLabel], color: .white)
+        view.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodesLabel], color: .gray)
         
         actualEpisodesLabel.font = .systemFont(ofSize: 25)
         actualEpisodesLabel.numberOfLines = 0

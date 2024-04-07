@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-extension UILabel {
+extension UIView {
     func setFontForLabels(_ labels: [UILabel], font: UIFont) {
         labels.forEach { $0.font = font }
     }

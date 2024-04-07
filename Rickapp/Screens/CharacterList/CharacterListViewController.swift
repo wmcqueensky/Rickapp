@@ -26,7 +26,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         
         viewModel.charactersPublisher
             .sink { [weak self] characters in
-                self?.tableView.reloadData(withCharacters: characters)
+                self?.tableView.reloadData()
             }
             .store(in: &viewModel.cancellables)
     }
@@ -39,9 +39,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
 }
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         guard let characterId = viewModel.characters?[indexPath.row].id else { return }
         viewModel.getCharacterById(characterId)
     }
