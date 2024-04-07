@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "4AF022DE-38E8-4D6C-AAF3-717F15860E3E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F4A23CF-86CA-4FE9-B87E-B3FEDD03863B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rickapp/CharacterList/CharacterListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5F4A23CF-86CA-4FE9-B87E-B3FEDD03863B - a1228e0ada5ebf4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rickapp.CharacterListViewController.tableView(_: __C.UITableView, willDisplay: Rickapp.CharacterTableViewCell, forItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Rickapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/goodylabs/Desktop/programs/Rickapp/Rickapp/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "142">
+               </Location>
+               <Location
+                  uuid = "5F4A23CF-86CA-4FE9-B87E-B3FEDD03863B - dbc86ecafd3b9545"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rickapp.CharacterListViewController.tableView(_: __C.UITableView, willDisplay: Rickapp.CharacterTableViewCell, forRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Rickapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/goodylabs/Desktop/programs/Rickapp/Rickapp/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "142">
+               </Location>
+               <Location
+                  uuid = "5F4A23CF-86CA-4FE9-B87E-B3FEDD03863B - 1e7fb020ec2d3911"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rickapp.CharacterListViewController.tableView(_: __C.UITableView, willDisplay: __C.UITableViewCell, forRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Rickapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/goodylabs/Desktop/programs/Rickapp/Rickapp/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "175">
+               </Location>
+               <Location
+                  uuid = "5F4A23CF-86CA-4FE9-B87E-B3FEDD03863B - 1e7fb020ec2d3932"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rickapp.CharacterListViewController.tableView(_: __C.UITableView, willDisplay: __C.UITableViewCell, forRowAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Rickapp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/goodylabs/Desktop/programs/Rickapp/Rickapp/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "190">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2397FE60-5898-46B8-9CFA-25A98DD386AD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rickapp/Networking/CardResource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "baseURL"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

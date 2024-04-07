@@ -10,7 +10,7 @@
 		F37C9DB12A93CDF60073F58F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37C9DB02A93CDF60073F58F /* Assets.xcassets */; };
 		F390EA832A9BF8BE00DC4903 /* CharacterCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA822A9BF8BE00DC4903 /* CharacterCardViewController.swift */; };
 		F390EA852A9BF8D300DC4903 /* CharacterCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA842A9BF8D300DC4903 /* CharacterCardViewModel.swift */; };
-		F3928B172A9FE9FD0097E6E2 /* AddToFavouritesButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3928B162A9FE9FD0097E6E2 /* AddToFavouritesButton.swift */; };
+		F3928B172A9FE9FD0097E6E2 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */; };
 		F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */; };
 		F39B894D2A9E218300C2EE81 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B894C2A9E218300C2EE81 /* Location.swift */; };
 		F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E8F2A949677003D722E /* UIColor+Ext.swift */; };
@@ -31,7 +31,6 @@
 		F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFF2A902C9F0003F841 /* Kingfisher */; };
 		F3C74B3B2A9F48500008DC9F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B3A2A9F48500008DC9F /* UIView+Ext.swift */; };
 		F3C74B3E2A9F66090008DC9F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B3D2A9F66090008DC9F /* MenuViewController.swift */; };
-		F3C74B402A9F66180008DC9F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B3F2A9F66180008DC9F /* MenuViewModel.swift */; };
 		F3C74B422A9F662B0008DC9F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B412A9F662B0008DC9F /* BaseButton.swift */; };
 		F3C74B452A9F7A5C0008DC9F /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B442A9F7A5C0008DC9F /* MenuButton.swift */; };
 		F3C74B4A2A9F7AF30008DC9F /* FavouriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B492A9F7AF30008DC9F /* FavouriteListViewController.swift */; };
@@ -50,7 +49,7 @@
 		F37C9DB02A93CDF60073F58F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
 		F390EA822A9BF8BE00DC4903 /* CharacterCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewController.swift; sourceTree = "<group>"; };
 		F390EA842A9BF8D300DC4903 /* CharacterCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewModel.swift; sourceTree = "<group>"; };
-		F3928B162A9FE9FD0097E6E2 /* AddToFavouritesButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToFavouritesButton.swift; sourceTree = "<group>"; };
+		F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		F39B894C2A9E218300C2EE81 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F39E9E8F2A949677003D722E /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
@@ -71,7 +70,6 @@
 		F3A94BF82A8FBD850003F841 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		F3C74B3A2A9F48500008DC9F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		F3C74B3D2A9F66090008DC9F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		F3C74B3F2A9F66180008DC9F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		F3C74B412A9F662B0008DC9F /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		F3C74B442A9F7A5C0008DC9F /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		F3C74B492A9F7AF30008DC9F /* FavouriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				F3C74B3D2A9F66090008DC9F /* MenuViewController.swift */,
-				F3C74B3F2A9F66180008DC9F /* MenuViewModel.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -235,7 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				F3C74B442A9F7A5C0008DC9F /* MenuButton.swift */,
-				F3928B162A9FE9FD0097E6E2 /* AddToFavouritesButton.swift */,
+				F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -347,7 +344,7 @@
 				F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */,
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
-				F3928B172A9FE9FD0097E6E2 /* AddToFavouritesButton.swift in Sources */,
+				F3928B172A9FE9FD0097E6E2 /* FavouriteButton.swift in Sources */,
 				F3F85CF72A97703A00142443 /* TargetType+Ext.swift in Sources */,
 				F3A94BF92A8FBD850003F841 /* Character.swift in Sources */,
 				F3CA00A12A9CDC80003F219D /* UIImage+Ext.swift in Sources */,
@@ -359,7 +356,6 @@
 				F3C74B3B2A9F48500008DC9F /* UIView+Ext.swift in Sources */,
 				F39B894D2A9E218300C2EE81 /* Location.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,
-				F3C74B402A9F66180008DC9F /* MenuViewModel.swift in Sources */,
 				F3CA00A32A9CE242003F219D /* AppNavigator.swift in Sources */,
 				F3CA00A52A9CE2CD003F219D /* MainRoutes.swift in Sources */,
 				F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */,

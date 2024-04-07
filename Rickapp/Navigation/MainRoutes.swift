@@ -9,23 +9,16 @@ import Foundation
 import UIKit
 
 enum MainRoutes: Route {
-    case list
     case card(characterId: Int)
+    case menu
     
     var screen: UIViewController {
         switch self {
-        case .list:
-            return buildCharacterListViewController()
         case .card(let character):
             return buildCharacterCardViewController(characterId: character)
+        case .menu:
+            return buildMenuViewController()
         }
-    }
-    
-    private func buildCharacterListViewController() -> UIViewController {
-        let controller = CharacterListViewController()
-        let viewModel = CharacterListViewModel()
-        controller.viewModel = viewModel
-        return controller
     }
     
     private func buildCharacterCardViewController(characterId: Int) -> UIViewController {
@@ -33,6 +26,11 @@ enum MainRoutes: Route {
         let viewModel = CharacterCardViewModel()
         viewModel.fetchCharacterById(characterId)
         controller.viewModel = viewModel
+        return controller
+    }
+    
+    private func buildMenuViewController() -> UIViewController {
+        let controller = MenuViewController()
         return controller
     }
 }
