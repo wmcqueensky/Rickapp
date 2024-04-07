@@ -18,9 +18,9 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private var statusView = UIView()
     private let statusStackView = UIStackView()
     private let locationLabel = UILabel()
-    private let locationButton = UIButton()
+    private let locationButton = LocationButton()
     private let originLabel = UILabel()
-    private let originButton = UIButton()
+    private let originButton = LocationButton()
     private let typeLabel = UILabel()
     private let actualTypeLabel = UILabel()
     private let genderLabel = UILabel()
@@ -29,9 +29,9 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private let actualSpeciesLabel = UILabel()
     private let episodesLabel = UILabel()
     private let episodeButtonStackView = UIStackView()
-    private var episodeButtons: [UIButton] = []
     private let scrollView = UIScrollView()
-    
+    private var episodesNumbers = [String]()
+    private var episodesUrls = [String]()
     
     override func bindToViewModel() {
         super.bindToViewModel()
@@ -70,12 +70,8 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         
         episodesLabel.text = "Episodes:"
         
-        locationButton.contentHorizontalAlignment = .left
-        locationButton.titleLabel?.font = .systemFont(ofSize: 20)
         locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
-        
-        originButton.contentHorizontalAlignment = .left
-        originButton.titleLabel?.font = .systemFont(ofSize: 20)
+    
         originButton.addTarget(self, action: #selector(originButtonTapped), for: .touchUpInside)
         
         view.setFontForLabels([statusLabel, locationLabel, originLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
@@ -83,6 +79,8 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         view.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodesLabel], color: .gray)
         
         characterImageView.contentMode = .scaleAspectFill
+        
+        episodeButtonStackView.axis = .vertical
         
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
@@ -139,13 +137,22 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         actualSpeciesLabel.text = character.species ?? ""
         
         if let episodes = character.episode {
-            for episode in episodes {
+            
+            for episodeURL in episodes {
+                if let episodeNumber = episodeURL.split(separator: "/").last {
+                    episodesNumbers.append(String(episodeNumber))
+                }
+                
+                episodesUrls.append(episodeURL)
+            }
+            
+            for episode in episodesNumbers {
                 let episodeButton = UIButton()
                 episodeButton.setTitle("Episode: \(episode)", for: .normal)
                 episodeButton.titleLabel?.font = .systemFont(ofSize: 20)
                 episodeButton.setTitleColor(.white, for: .normal)
                 episodeButton.contentHorizontalAlignment = .left
-                episodeButton.addTarget(self, action: #selector(episodeButtonTapped), for: .touchUpInside)
+                episodeButton.addTarget(self, action: #selector(episodeButtonTapped(_:)), for: .touchUpInside)
                 
                 episodeButtonStackView.addArrangedSubview(episodeButton)
             }
@@ -154,6 +161,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         switch character.status {
         case "Alive":
             statusView.backgroundColor = .green
+            animateStatusView()
         case "Dead":
             statusView.backgroundColor = .red
         case "unknown":
@@ -163,6 +171,21 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         }
         
         favouriteButton.isSelected = FavouritesManager.shared.favourites.contains(character.id ?? 0)
+    }
+    
+    func animateStatusView() {
+        let scaleUpTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        let scaleDownTransform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
+            self.statusView.transform = scaleUpTransform
+            self.statusView.alpha = 0.9
+        }) { (finished) in
+            if finished {
+                self.statusView.transform = scaleDownTransform
+                self.statusView.alpha = 1.0
+            }
+        }
     }
     
     @objc private func favouriteButtonTapped() {
@@ -178,37 +201,22 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         let locationUrl = viewModel.characterPublisher.value.location?.url ?? ""
         if locationUrl == "" { return }
         
-        viewModel.locationButtonsTapped(locationUrl)
-        
-        UIView.animate(withDuration: 0.2) {
-            self.locationButton.setTitleColor(.gray, for: .normal)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            UIView.animate(withDuration: 2.0) {
-                self.locationButton.setTitleColor(.white, for: .normal)
-            }
-        }
+        viewModel.locationButtonTapped(locationUrl)
     }
     
     @objc private func originButtonTapped() {
         let originUrl = viewModel.characterPublisher.value.origin?.url ?? ""
         if originUrl == "" { return }
         
-        viewModel.locationButtonsTapped(originUrl)
-        
-        UIView.animate(withDuration: 0.2) {
-            self.originButton.setTitleColor(.gray, for: .normal)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            UIView.animate(withDuration: 2.0) {
-                self.originButton.setTitleColor(.white, for: .normal)
-            }
-        }
+        viewModel.locationButtonTapped(originUrl)
     }
     
-    @objc private func episodeButtonTapped() {
+    @objc private func episodeButtonTapped(_ sender: UIButton) {
+        guard let buttonIndex = episodeButtonStackView.arrangedSubviews.firstIndex(of: sender) else { return }
         
+        if buttonIndex < episodesUrls.count {
+            let episodeUrl = episodesUrls[buttonIndex]
+            viewModel.episodeButtonTapped(episodeUrl)
+        }
     }
 }
