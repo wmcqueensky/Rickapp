@@ -22,7 +22,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
         tableView.backgroundColor = .backgroundGray
         tableView.showsVerticalScrollIndicator = false
-        
+    
         view.addSubview(tableView)
     }
     
@@ -41,6 +41,11 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    @objc func scrollToTop() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 }
 
@@ -67,10 +72,11 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         let characterId = viewModel.charactersPublisher.value[indexPath.row].id
         let isSelected = viewModel.isCharacterSelectedAsFavorite(characterId ?? 0)
-
+        
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
         cell.setFavouriteButtonSelection(isSelected)
         cell.delegate = self
+        cell.animateStatusView()
         
         return cell
     }
@@ -79,6 +85,5 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let character = viewModel.charactersPublisher.value[indexPath.row]
         viewModel.toggleFavoriteStatus(for: character, isSelected: isSelected)
-        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

@@ -114,6 +114,31 @@ class CharacterTileTableViewCell: BaseTableViewCell {
         default:
             statusView.backgroundColor = .clear
         }
+        animateStatusView()
+    }
+    
+    func animateStatusView() {
+        self.statusView.transform = .identity
+        self.statusView.alpha = 1
+        
+        if let backgroundColor = statusView.backgroundColor {
+            switch backgroundColor {
+            case .green:
+                UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
+                    self.statusView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                    self.statusView.alpha = 0.8
+                })
+            case .red:
+                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
+                    self.statusView.transform = CGAffineTransform(scaleX: 1.0, y: 0.3)
+                    self.statusView.alpha = 0.8
+                })
+            default:
+                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
+                    self.statusView.alpha = 0.1
+                })
+            }
+        }
     }
 }
 

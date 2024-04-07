@@ -19,7 +19,8 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
     private let actualDimensionLabel = UILabel()
     private let residentsLabel = UILabel()
     private let actualResidentsLabel = UILabel()
-    private let backgroundImageView = UIImageView(image: UIImage.getImage(.starsImage))
+    private let backgroundImageView = UIImageView(image: UIImage.getImage(.galaxyImage))
+    private let scrollView = UIScrollView()
     
     override func bindToViewModel() {
         super.bindToViewModel()
@@ -51,8 +52,6 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
         
         backgroundImageView.contentMode = .scaleAspectFill
         
-        //        informationStackView.addSubview(backgroundImageView)
-        informationStackView.backgroundColor = .darkGray
         informationStackView.axis = .vertical
         informationStackView.spacing = 3
         informationStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
@@ -61,11 +60,11 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CharacterCircleViewCell.self, forCellReuseIdentifier: String(describing: CharacterCircleViewCell.self))
-        tableView.backgroundColor = .darkGray
+        tableView.tableHeaderView = informationStackView
+        tableView.backgroundView = backgroundImageView
+        tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
-
-        //        view.addSubview(backgroundImageView)
-        //        view.sendSubviewToBack(backgroundImageView)
+        tableView.separatorStyle = .none
         
         view.backgroundColor = .darkGray
         view.addSubview(tableView)
@@ -74,14 +73,13 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
     override func setupConstraints() {
         super.setupConstraints()
         informationStackView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.verticalEdges.equalTo(tableView)
+            make.horizontalEdges.equalTo(view)
         }
         
         tableView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(view)
-            make.top.equalTo(informationStackView.snp.bottom)
         }
     }
     

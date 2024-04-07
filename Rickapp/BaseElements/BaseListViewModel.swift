@@ -24,10 +24,6 @@ class BaseListViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
     
-    func isCharacterSelectedAsFavorite(_ characterId: Int) -> Bool {
-        return FavouritesManager.shared.favourites.contains(characterId)
-    }
-    
     func toggleFavoriteStatus(for character: Character, isSelected: Bool) {
         guard let characterId = character.id else { return }
         

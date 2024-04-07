@@ -12,4 +12,8 @@ class BaseViewModel: NSObject {
     var cancellables: Set<AnyCancellable> = []
     
     func bindToData() {}
+    
+    func isCharacterSelectedAsFavorite(_ characterId: Int) -> Bool {
+        return FavouritesManager.shared.favourites.contains(characterId)
+    }
 }

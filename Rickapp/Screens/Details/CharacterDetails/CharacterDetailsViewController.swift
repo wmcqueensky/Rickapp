@@ -33,6 +33,10 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private var episodesNumbers = [String]()
     private var episodesUrls = [String]()
     
+    override func viewWillAppear(_ animated: Bool) {
+        animateStatusView()
+    }
+    
     override func bindToViewModel() {
         super.bindToViewModel()
         viewModel.characterPublisher
@@ -57,7 +61,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         statusStackView.spacing = 6
         statusStackView.addArrangedSubviews([statusView, statusLabel])
         statusStackView.alignment = .center
-        
+                
         locationLabel.text = "Last known location:"
         
         originLabel.text = "First seen in:"
@@ -158,27 +162,37 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         switch character.status {
         case "Alive":
             statusView.backgroundColor = .green
-            animateStatusView()
         case "Dead":
             statusView.backgroundColor = .red
-            animateStatusView()
         case "unknown":
             statusView.backgroundColor = .gray
         default:
             statusView.backgroundColor = .clear
         }
-        
-        favouriteButton.isSelected = FavouritesManager.shared.favourites.contains(character.id ?? 0)
+        animateStatusView()
+        favouriteButton.isSelected = viewModel.isCharacterSelectedAsFavorite(character.id ?? 0)
     }
     
     func animateStatusView() {
-        UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-            self.statusView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            self.statusView.alpha = 0.9
-        }) { (finished) in
-            if finished {
-                self.statusView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                self.statusView.alpha = 1.0
+        self.statusView.transform = .identity
+        self.statusView.alpha = 1
+        
+        if let backgroundColor = statusView.backgroundColor {
+            switch backgroundColor {
+            case .green:
+                UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
+                    self.statusView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                    self.statusView.alpha = 0.8
+                })
+            case .red:
+                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
+                    self.statusView.transform = CGAffineTransform(scaleX: 1.0, y: 0.3)
+                    self.statusView.alpha = 0.8
+                })
+            default:
+                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
+                    self.statusView.alpha = 0.1
+                })
             }
         }
     }
@@ -196,7 +210,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         let locationUrl = viewModel.characterPublisher.value.location?.url ?? ""
         if locationUrl == "" { return }
         sender.animateTap()
-
+        
         viewModel.locationButtonTapped(locationUrl)
     }
     
@@ -204,7 +218,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         let originUrl = viewModel.characterPublisher.value.origin?.url ?? ""
         if originUrl == "" { return }
         sender.animateTap()
-
+        
         viewModel.locationButtonTapped(originUrl)
     }
     
