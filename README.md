@@ -12,9 +12,6 @@ This iOS app was created to learn and practice fundamental UIKit features, IOS d
 
 ## Features
 
-
-## Features
-
 - Display a list of Rick and Morty characters.
 - Load more characters when scrolling to the end of the list.
 - View character details by tapping on a character in the list.
