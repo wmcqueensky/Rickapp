@@ -15,3 +15,9 @@ struct Character: Codable {
     let origin: Origin?
     let image: String?
 }
+
+import Foundation
+
+struct CharacterResponse: Codable {
+    let results: [Character]?
+}
