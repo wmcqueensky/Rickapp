@@ -15,12 +15,14 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private let favouriteButton = FavouriteButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
-    private var statusView = UIView()
+    private var statusView = StatusView()
     private let statusStackView = UIStackView()
     private let locationLabel = UILabel()
-    private let locationButton = LocationButton()
+    private let locationInfoButton = LocationInfoButton()
+    private let locationDetailsButton = LocationDetailsButton()
     private let originLabel = UILabel()
-    private let originButton = LocationButton()
+    private let originInfoButton = LocationInfoButton()
+    private let originDetailsButton = LocationDetailsButton()
     private let typeLabel = UILabel()
     private let actualTypeLabel = UILabel()
     private let genderLabel = UILabel()
@@ -32,9 +34,11 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private let scrollView = UIScrollView()
     private var episodesNumbers = [String]()
     private var episodesUrls = [String]()
+    private let locationInfoView = LocationInfoView()
+    private let originInfoView = LocationInfoView()
     
     override func viewWillAppear(_ animated: Bool) {
-        animateStatusView()
+        statusView.animate()
     }
     
     override func bindToViewModel() {
@@ -42,6 +46,18 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         viewModel.characterPublisher
             .sink { [weak self] character in
                 self?.setupData(character)
+            }
+            .store(in: &viewModel.cancellables)
+        
+        viewModel.locationPublisher
+            .sink { [weak self] location in
+                self?.locationInfoView.location = location
+            }
+            .store(in: &viewModel.cancellables)
+        
+        viewModel.originPublisher
+            .sink { [weak self] location in
+                self?.originInfoView.location = location
             }
             .store(in: &viewModel.cancellables)
     }
@@ -55,28 +71,27 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         
         statusLabel.textColor = .white
         
-        statusView.layer.cornerRadius = 6
-        
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
         statusStackView.addArrangedSubviews([statusView, statusLabel])
         statusStackView.alignment = .center
-                
+        
         locationLabel.text = "Last known location:"
-        
         originLabel.text = "First seen in:"
-        
         typeLabel.text = "Type:"
-        
         genderLabel.text = "Gender:"
-        
         speciesLabel.text = "Species:"
-        
         episodeLabel.text = "Episodes:"
         
-        locationButton.addTarget(self, action: #selector(locationButtonTapped(_:)), for: .touchUpInside)
+        locationInfoButton.addTarget(self, action: #selector(infoButtonTapped(_:)), for: .touchUpInside)
+        locationInfoView.isHidden = true
+        locationInfoView.addSubview(locationDetailsButton)
+        locationDetailsButton.addTarget(self, action: #selector(locationDetailsButtonTapped(_:)), for: .touchUpInside)
         
-        originButton.addTarget(self, action: #selector(originButtonTapped(_:)), for: .touchUpInside)
+        originInfoButton.addTarget(self, action: #selector(infoButtonTapped(_:)), for: .touchUpInside)
+        originInfoView.isHidden = true
+        originInfoView.addSubview(originDetailsButton)
+        originDetailsButton.addTarget(self, action: #selector(originDetailsButtonTapped(_:)), for: .touchUpInside)
         
         view.setFontForLabels([statusLabel, locationLabel, originLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel], font: .systemFont(ofSize: 20))
         view.setTextColorForLabels([statusLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel], color: .white)
@@ -90,10 +105,10 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationButton, originLabel, originButton, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel, episodeButtonStackView])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationInfoButton, locationInfoView, originLabel, originInfoButton, originInfoView,typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel, episodeButtonStackView])
         characterStackView.setCustomSpacing(9, after: characterImageView)
         characterStackView.setCustomSpacing(12, after: episodeLabel)
-        characterStackView.setCustomSpacings(20, [statusStackView, locationButton, originButton, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
+        characterStackView.setCustomSpacings(20, [statusStackView, locationInfoButton, originInfoButton, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         
         view.backgroundColor = .darkGray
@@ -122,13 +137,19 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
-        statusView.snp.makeConstraints { make in
-            make.width.height.equalTo(12)
-        }
-        
         favouriteButton.snp.makeConstraints { make in
             make.top.equalTo(characterImageView).offset(10)
             make.trailing.equalTo(characterImageView).offset(-10)
+        }
+        
+        locationDetailsButton.snp.makeConstraints { make in
+            make.bottom.equalTo(locationInfoView).offset(-20)
+            make.trailing.equalTo(locationInfoView)
+        }
+        
+        originDetailsButton.snp.makeConstraints { make in
+            make.bottom.equalTo(originInfoView).offset(-20)
+            make.trailing.equalTo(originInfoView)
         }
     }
     
@@ -136,8 +157,8 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
         nameLabel.text = character.name
         statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
-        locationButton.setTitle(character.location?.name ?? "", for: .normal)
-        originButton.setTitle(character.origin?.name ?? "", for: .normal)
+        locationInfoButton.setTitle(character.location?.name ?? "", for: .normal)
+        originInfoButton.setTitle(character.origin?.name ?? "", for: .normal)
         actualTypeLabel.text = character.type ?? ""
         actualGenderLabel.text = character.gender ?? ""
         actualSpeciesLabel.text = character.species ?? ""
@@ -169,31 +190,24 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         default:
             statusView.backgroundColor = .clear
         }
-        animateStatusView()
+        statusView.animate()
         favouriteButton.isSelected = viewModel.isCharacterSelectedAsFavorite(character.id ?? 0)
     }
     
-    func animateStatusView() {
-        self.statusView.transform = .identity
-        self.statusView.alpha = 1
-        
-        if let backgroundColor = statusView.backgroundColor {
-            switch backgroundColor {
-            case .green:
-                UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                    self.statusView.alpha = 0.8
-                })
-            case .red:
-                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.transform = CGAffineTransform(scaleX: 1.0, y: 0.3)
-                    self.statusView.alpha = 0.8
-                })
-            default:
-                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.alpha = 0.1
-                })
-            }
+    private func toggleInfoView(_ infoView: UIView) {
+        infoView.isHidden.toggle()
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func infoButtonTapped(_ sender: LocationInfoButton) {
+        sender.isSelected.toggle()
+        if sender == locationInfoButton {
+            toggleInfoView(locationInfoView)
+        }
+        if sender == originInfoButton {
+            toggleInfoView(originInfoView)
         }
     }
     
@@ -202,24 +216,21 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         
         favouriteButton.isSelected.toggle()
         viewModel.manageFavourites(isSelected: favouriteButton.isSelected, characterId: characterId)
-        
         favouriteButton.animateHeartImage()
     }
     
-    @objc private func locationButtonTapped(_ sender: LocationButton) {
+    @objc private func locationDetailsButtonTapped(_ sender: LocationInfoButton) {
         let locationUrl = viewModel.characterPublisher.value.location?.url ?? ""
         if locationUrl == "" { return }
-        sender.animateTap()
         
-        viewModel.locationButtonTapped(locationUrl)
+        viewModel.locationDetailsButtonTapped(locationUrl)
     }
     
-    @objc private func originButtonTapped(_ sender: LocationButton) {
+    @objc private func originDetailsButtonTapped(_ sender: LocationInfoButton) {
         let originUrl = viewModel.characterPublisher.value.origin?.url ?? ""
         if originUrl == "" { return }
-        sender.animateTap()
         
-        viewModel.locationButtonTapped(originUrl)
+        viewModel.locationDetailsButtonTapped(originUrl)
     }
     
     @objc private func episodeButtonTapped(_ sender: EpisodeButton) {

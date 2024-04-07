@@ -40,12 +40,15 @@
 		F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFC2A90284A0003F841 /* SnapKit */; };
 		F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFF2A902C9F0003F841 /* Kingfisher */; };
 		F3B21C042AB5EE4100BCAE10 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = F3B21C032AB5EE4100BCAE10 /* Lottie */; };
+		F3BB62AC2AB9BA1400177DE0 /* StatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BB62AB2AB9BA1400177DE0 /* StatusView.swift */; };
+		F3BB62AE2AB9DEF000177DE0 /* LocationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BB62AD2AB9DEF000177DE0 /* LocationInfoView.swift */; };
+		F3BB62B02ABA3D9400177DE0 /* LocationDetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BB62AF2ABA3D9400177DE0 /* LocationDetailsButton.swift */; };
 		F3C74B3B2A9F48500008DC9F /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B3A2A9F48500008DC9F /* UIView+Ext.swift */; };
 		F3C74B3E2A9F66090008DC9F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B3D2A9F66090008DC9F /* MenuViewController.swift */; };
 		F3C74B422A9F662B0008DC9F /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B412A9F662B0008DC9F /* BaseButton.swift */; };
 		F3C74B4A2A9F7AF30008DC9F /* FavouriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B492A9F7AF30008DC9F /* FavouriteListViewController.swift */; };
 		F3C74B4C2A9F7B030008DC9F /* FavouriteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C74B4B2A9F7B030008DC9F /* FavouriteListViewModel.swift */; };
-		F3C7CFFE2AA68C7100F76AC5 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */; };
+		F3C7CFFE2AA68C7100F76AC5 /* LocationInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C7CFFD2AA68C7100F76AC5 /* LocationInfoButton.swift */; };
 		F3C9B2832A934C3F008AC1FF /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2822A934C3F008AC1FF /* CombineMoya */; };
 		F3C9B2852A934C3F008AC1FF /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2842A934C3F008AC1FF /* Moya */; };
 		F3C9B2872A934C3F008AC1FF /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F3C9B2862A934C3F008AC1FF /* ReactiveMoya */; };
@@ -92,12 +95,15 @@
 		F3A94BD12A8FA60E0003F841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A94BD32A8FA60E0003F841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A94BF82A8FBD850003F841 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		F3BB62AB2AB9BA1400177DE0 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
+		F3BB62AD2AB9DEF000177DE0 /* LocationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoView.swift; sourceTree = "<group>"; };
+		F3BB62AF2ABA3D9400177DE0 /* LocationDetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsButton.swift; sourceTree = "<group>"; };
 		F3C74B3A2A9F48500008DC9F /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		F3C74B3D2A9F66090008DC9F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F3C74B412A9F662B0008DC9F /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		F3C74B492A9F7AF30008DC9F /* FavouriteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewController.swift; sourceTree = "<group>"; };
 		F3C74B4B2A9F7B030008DC9F /* FavouriteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListViewModel.swift; sourceTree = "<group>"; };
-		F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
+		F3C7CFFD2AA68C7100F76AC5 /* LocationInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInfoButton.swift; sourceTree = "<group>"; };
 		F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F3CA00A22A9CE242003F219D /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		F3CA00A42A9CE2CD003F219D /* MainRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoutes.swift; sourceTree = "<group>"; };
@@ -129,7 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */,
-				F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */,
+				F3C7CFFD2AA68C7100F76AC5 /* LocationInfoButton.swift */,
+				F3BB62AF2ABA3D9400177DE0 /* LocationDetailsButton.swift */,
 				F31147672AA71CE5007A60D3 /* EpisodeButton.swift */,
 			);
 			path = Buttons;
@@ -289,6 +296,15 @@
 			path = "App files";
 			sourceTree = "<group>";
 		};
+		F3BB62AA2AB9B9F000177DE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F3BB62AB2AB9BA1400177DE0 /* StatusView.swift */,
+				F3BB62AD2AB9DEF000177DE0 /* LocationInfoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F3C74B3C2A9F65F20008DC9F /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +316,7 @@
 		F3C74B432A9F7A4C0008DC9F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F3BB62AA2AB9B9F000177DE0 /* Views */,
 				F31147692AA72622007A60D3 /* Buttons */,
 			);
 			path = Common;
@@ -438,6 +455,7 @@
 				F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */,
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
 				F35B93312AB1CEA400F97C53 /* BaseTableViewCell.swift in Sources */,
+				F3BB62B02ABA3D9400177DE0 /* LocationDetailsButton.swift in Sources */,
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
 				F3928B172A9FE9FD0097E6E2 /* FavouriteButton.swift in Sources */,
 				F35B932D2AB1C7A200F97C53 /* CharacterCircleViewCell.swift in Sources */,
@@ -451,7 +469,7 @@
 				F311476C2AA72671007A60D3 /* BaseView.swift in Sources */,
 				F3C74B4A2A9F7AF30008DC9F /* FavouriteListViewController.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
-				F3C7CFFE2AA68C7100F76AC5 /* LocationButton.swift in Sources */,
+				F3C7CFFE2AA68C7100F76AC5 /* LocationInfoButton.swift in Sources */,
 				F3C74B3B2A9F48500008DC9F /* UIView+Ext.swift in Sources */,
 				F39B894D2A9E218300C2EE81 /* Location.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,
@@ -461,8 +479,10 @@
 				F35B932F2AB1C87400F97C53 /* BaseCollectionViewCell.swift in Sources */,
 				F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */,
 				F3C74B4C2A9F7B030008DC9F /* FavouriteListViewModel.swift in Sources */,
+				F3BB62AC2AB9BA1400177DE0 /* StatusView.swift in Sources */,
 				F3A496332A96416800BE8298 /* CharacterService.swift in Sources */,
 				F3665A252AA37A0000B6EC92 /* LocationDetailsViewModel.swift in Sources */,
+				F3BB62AE2AB9DEF000177DE0 /* LocationInfoView.swift in Sources */,
 				F3665A232AA379F000B6EC92 /* LocationDetailsViewController.swift in Sources */,
 				F3A496282A96346900BE8298 /* BaseNavigator.swift in Sources */,
 				F3E9D4ED2AA51959001CACD6 /* Episode.swift in Sources */,

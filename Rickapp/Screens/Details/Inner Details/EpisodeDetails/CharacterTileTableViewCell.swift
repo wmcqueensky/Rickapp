@@ -16,7 +16,7 @@ class CharacterTileTableViewCell: BaseTableViewCell {
     private let speciesLabel = UILabel()
     private let speciesImageView = UIImageView()
     private let speciesStackView = UIStackView()
-    private var statusView = UIView()
+    private var statusView = StatusView()
     private let statusStackView = UIStackView()
     private let informationStackView = UIStackView()
     
@@ -34,15 +34,14 @@ class CharacterTileTableViewCell: BaseTableViewCell {
         statusLabel.font = .systemFont(ofSize: 18)
         statusLabel.numberOfLines = 2
         
-        statusView.layer.cornerRadius = 6
-        
         statusStackView.axis = .horizontal
         statusStackView.spacing = 12
         statusStackView.addArrangedSubviews([statusView, statusLabel])
         statusStackView.alignment = .center
         statusStackView.setEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
-
+        
         speciesImageView.image = UIImage.getImage(.atomIcon)
+        animateSpeciesImageView()
         
         speciesLabel.font = .systemFont(ofSize: 20)
         speciesLabel.numberOfLines = 2
@@ -76,10 +75,6 @@ class CharacterTileTableViewCell: BaseTableViewCell {
     
     override func setupConstraints() {
         super.setupConstraints()
-        statusView.snp.makeConstraints { make in
-            make.width.height.equalTo(12)
-        }
-        
         speciesImageView.snp.makeConstraints { make in
             make.width.height.equalTo(18)
         }
@@ -114,31 +109,17 @@ class CharacterTileTableViewCell: BaseTableViewCell {
         default:
             statusView.backgroundColor = .clear
         }
-        animateStatusView()
+        statusView.animate()
     }
     
-    func animateStatusView() {
-        self.statusView.transform = .identity
-        self.statusView.alpha = 1
+    private func animateSpeciesImageView() {
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        rotationAnimation.fromValue = 0.0
+        rotationAnimation.toValue = CGFloat.pi * 2.0 * 2.5
+        rotationAnimation.duration = 10.0
+        rotationAnimation.repeatCount = .infinity
         
-        if let backgroundColor = statusView.backgroundColor {
-            switch backgroundColor {
-            case .green:
-                UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                    self.statusView.alpha = 0.8
-                })
-            case .red:
-                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.transform = CGAffineTransform(scaleX: 1.0, y: 0.3)
-                    self.statusView.alpha = 0.8
-                })
-            default:
-                UIView.animate(withDuration: 0.9, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-                    self.statusView.alpha = 0.1
-                })
-            }
-        }
+        speciesImageView.layer.add(rotationAnimation, forKey: "rotationAnimation")
     }
 }
 
