@@ -166,20 +166,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         actualSpeciesLabel.text = character.species ?? ""
         
         if let episodes = character.episode {
-            for episodeURL in episodes {
-                if let episodeNumber = episodeURL.split(separator: "/").last {
-                    episodesNumbers.append(String(episodeNumber))
-                    episodesUrls.append(episodeURL)
-                }
-            }
-            
-            for episode in episodesNumbers {
-                let episodeButton = EpisodeButton()
-                episodeButton.setTitle("Episode: \(episode)", for: .normal)
-                episodeButton.addTarget(self, action: #selector(episodeButtonTapped(_:)), for: .touchUpInside)
-                
-                episodeButtonStackView.addArrangedSubviews([episodeButton])
-            }
+            addEpisodeButtons(for: episodes)
         }
         
         switch character.status {
@@ -192,8 +179,34 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         default:
             statusView.backgroundColor = .clear
         }
+        
+        if character.location?.name == "unknown" {
+            locationInfoButton.style = .unknown
+        }
+        
+        if character.origin?.name == "unknown" {
+            originInfoButton.style = .unknown
+        }
+        
         statusView.animate()
         favouriteButton.isSelected = viewModel.isCharacterSelectedAsFavorite(character.id ?? 0)
+    }
+    
+    private func addEpisodeButtons(for episodes: [String]) {
+        for episodeURL in episodes {
+            if let episodeNumber = episodeURL.split(separator: "/").last {
+                episodesNumbers.append(String(episodeNumber))
+                episodesUrls.append(episodeURL)
+            }
+        }
+        
+        for episode in episodesNumbers {
+            let episodeButton = EpisodeButton()
+            episodeButton.setTitle("Episode: \(episode)", for: .normal)
+            episodeButton.addTarget(self, action: #selector(episodeButtonTapped(_:)), for: .touchUpInside)
+            
+            episodeButtonStackView.addArrangedSubviews([episodeButton])
+        }
     }
     
     @objc private func locationInfoButtonTapped(_ sender: LocationInfoButton) {
