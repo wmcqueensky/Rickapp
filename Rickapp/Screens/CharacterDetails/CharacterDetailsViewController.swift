@@ -159,13 +159,28 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     }
     
     @objc private func favouriteButtonTapped() {
+        let characterId = viewModel.characterPublisher.value.id ?? 0
+        
         favouriteButton.isSelected.toggle()
+        
         favouriteButton.isSelected ?
-        FavouritesManager.shared.addToFavourites(viewModel.characterPublisher.value.id ?? 0) :
-        FavouritesManager.shared.removeFromFavourites(viewModel.characterPublisher.value.id ?? 0)
+        FavouritesManager.shared.addToFavourites(characterId) :
+        FavouritesManager.shared.removeFromFavourites(characterId)
     }
     
     @objc private func locationButtonTapped() {
-        viewModel.locationButtonTapped(viewModel.characterPublisher.value.location?.url ?? "")
+        let locationUrl = viewModel.characterPublisher.value.location?.url ?? ""
+        
+        UIView.animate(withDuration: 0.2) {
+            self.locationButton.setTitleColor(.gray, for: .normal)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            UIView.animate(withDuration: 2.0) {
+                self.locationButton.setTitleColor(.white, for: .normal)
+                
+            }
+        }
+        viewModel.locationButtonTapped(locationUrl)
     }
 }

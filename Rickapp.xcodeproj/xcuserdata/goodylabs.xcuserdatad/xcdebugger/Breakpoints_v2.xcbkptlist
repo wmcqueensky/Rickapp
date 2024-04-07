@@ -114,5 +114,21 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "633EBC13-C94A-4E3C-A166-82B5D74E535B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rickapp/Screens/CharacterDetails/CharacterDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "setupViews()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

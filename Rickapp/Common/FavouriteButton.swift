@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 
 class FavouriteButton: BaseButton {
     private let selectedImage = UIImage.getImage(.heartIconSelected)
@@ -19,4 +18,3 @@ class FavouriteButton: BaseButton {
         }
     }
 }
-

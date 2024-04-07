@@ -23,8 +23,4 @@ class CharacterDetailsViewModel: BaseViewModel {
             }
             .store(in: &cancellables)
     }
-    
-    func locationButtonTapped(_ locationUrl: String) {
-        AppNavigator.shared.navigate(to: MainRoutes.location(url: locationUrl), with: .push, animated: true)
-    }
 }
