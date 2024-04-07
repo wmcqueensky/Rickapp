@@ -12,17 +12,18 @@ import SnapKit
 class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewModel> {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
-    private let favouriteButton = FavouriteButton()
+    private let statusStackView = UIStackView()
+    private let episodeButtonStackView = UIStackView()
+    private var locationInfoButtonStackView = UIStackView()
+    private var originInfoButtonStackView = UIStackView()
+    private let scrollView = UIScrollView()
+    private var episodesNumbers = [String]()
+    private var episodesUrls = [String]()
+    
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
-    private var statusView = StatusView()
-    private let statusStackView = UIStackView()
     private let locationLabel = UILabel()
-    private let locationInfoButton = LocationInfoButton()
-    private let locationDetailsButton = LocationDetailsButton()
     private let originLabel = UILabel()
-    private let originInfoButton = LocationInfoButton()
-    private let originDetailsButton = LocationDetailsButton()
     private let typeLabel = UILabel()
     private let actualTypeLabel = UILabel()
     private let genderLabel = UILabel()
@@ -30,10 +31,13 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private let speciesLabel = UILabel()
     private let actualSpeciesLabel = UILabel()
     private let episodeLabel = UILabel()
-    private let episodeButtonStackView = UIStackView()
-    private let scrollView = UIScrollView()
-    private var episodesNumbers = [String]()
-    private var episodesUrls = [String]()
+    
+    private let favouriteButton = FavouriteButton()
+    private var statusView = StatusView()
+    private let locationInfoButton = LocationInfoButton()
+    private let locationDetailsButton = LocationDetailsButton()
+    private let originInfoButton = LocationInfoButton()
+    private let originDetailsButton = LocationDetailsButton()
     private let locationInfoView = LocationInfoView()
     private let originInfoView = LocationInfoView()
     
@@ -82,16 +86,18 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         genderLabel.text = "Gender:"
         speciesLabel.text = "Species:"
         episodeLabel.text = "Episodes:"
-        
-        locationInfoButton.addTarget(self, action: #selector(infoButtonTapped(_:)), for: .touchUpInside)
+                
+        locationInfoButton.addTarget(self, action: #selector(locationInfoButtonTapped(_:)), for: .touchUpInside)
         locationInfoView.isHidden = true
         locationInfoView.addSubview(locationDetailsButton)
         locationDetailsButton.addTarget(self, action: #selector(locationDetailsButtonTapped(_:)), for: .touchUpInside)
+        locationInfoButtonStackView.addArrangedSubviews([locationInfoButton, UIView()])
         
-        originInfoButton.addTarget(self, action: #selector(infoButtonTapped(_:)), for: .touchUpInside)
+        originInfoButton.addTarget(self, action: #selector(originInfoButtonTapped(_:)), for: .touchUpInside)
         originInfoView.isHidden = true
         originInfoView.addSubview(originDetailsButton)
         originDetailsButton.addTarget(self, action: #selector(originDetailsButtonTapped(_:)), for: .touchUpInside)
+        originInfoButtonStackView.addArrangedSubviews([originInfoButton, UIView()])
         
         view.setFontForLabels([statusLabel, locationLabel, originLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel], font: .systemFont(ofSize: 20))
         view.setTextColorForLabels([statusLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel], color: .white)
@@ -105,10 +111,10 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationInfoButton, locationInfoView, originLabel, originInfoButton, originInfoView,typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel, episodeButtonStackView])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationInfoButtonStackView, locationInfoView, originLabel, originInfoButtonStackView, originInfoView,typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel, episodeButtonStackView])
         characterStackView.setCustomSpacing(9, after: characterImageView)
         characterStackView.setCustomSpacing(12, after: episodeLabel)
-        characterStackView.setCustomSpacings(20, [statusStackView, locationInfoButton, originInfoButton, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
+        characterStackView.setCustomSpacings(20, [statusStackView, locationInfoButtonStackView, originInfoButtonStackView, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         
         view.backgroundColor = .darkGray
@@ -182,11 +188,11 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         
         switch character.status {
         case "Alive":
-            statusView.backgroundColor = .green
+            statusView.style = .alive
         case "Dead":
-            statusView.backgroundColor = .red
+            statusView.style = .dead
         case "unknown":
-            statusView.backgroundColor = .gray
+            statusView.style = .unknown
         default:
             statusView.backgroundColor = .clear
         }
@@ -194,21 +200,14 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         favouriteButton.isSelected = viewModel.isCharacterSelectedAsFavorite(character.id ?? 0)
     }
     
-    private func toggleInfoView(_ infoView: UIView) {
-        infoView.isHidden.toggle()
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
+    @objc private func locationInfoButtonTapped(_ sender: LocationInfoButton) {
+        sender.isSelected.toggle()
+        locationInfoView.toggle()
     }
     
-    @objc private func infoButtonTapped(_ sender: LocationInfoButton) {
+    @objc private func originInfoButtonTapped(_ sender: LocationInfoButton) {
         sender.isSelected.toggle()
-        if sender == locationInfoButton {
-            toggleInfoView(locationInfoView)
-        }
-        if sender == originInfoButton {
-            toggleInfoView(originInfoView)
-        }
+        originInfoView.toggle()
     }
     
     @objc private func favouriteButtonTapped() {

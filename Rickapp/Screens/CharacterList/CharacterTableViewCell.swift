@@ -39,9 +39,7 @@ class CharacterTableViewCell: BaseTableViewCell {
         nameLabel.numberOfLines = 0
         
         favouriteButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
-        
-        statusView.style = .small
-        
+                
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
         statusStackView.addArrangedSubviews([statusView, statusLabel])
@@ -109,11 +107,11 @@ class CharacterTableViewCell: BaseTableViewCell {
         
         switch character.status {
         case "Alive":
-            statusView.backgroundColor = .green
+            statusView.style = .alive
         case "Dead":
-            statusView.backgroundColor = .red
+            statusView.style = .dead
         case "unknown":
-            statusView.backgroundColor = .gray
+            statusView.style = .unknown
         default:
             statusView.backgroundColor = .clear
         }

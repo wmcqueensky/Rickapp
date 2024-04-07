@@ -12,6 +12,7 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     private let tableView = UITableView()
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
     
@@ -25,6 +26,7 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     }
     
     override func setupViews() {
+        super.setupViews()
         NotificationCenter.default.addObserver(self, selector: #selector(handleFavouritesUpdated), name: .favouritesUpdated, object: nil)
         tableView.dataSource = self
         tableView.delegate = self
@@ -36,6 +38,7 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     }
     
     override func setupConstraints() {
+        super.setupConstraints()
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }

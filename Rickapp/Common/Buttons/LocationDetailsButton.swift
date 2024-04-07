@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class LocationDetailsButton: BaseButton {
     
     override func setupViews() {
         super.setupViews()
-        backgroundColor = .kiwiGreen
+        backgroundColor = .gray
         setTitleColor(.white, for: .normal)
         setTitle("See more", for: .normal)
         layer.cornerRadius = 10

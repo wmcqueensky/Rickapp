@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class LocationInfoView: BaseView {
     private let informationStackView = UIStackView()
@@ -51,5 +52,11 @@ class LocationInfoView: BaseView {
         guard let location = location else { return }
         actualTypeLabel.text = location.type ?? ""
         actualDimensionLabel.text = location.dimension ?? ""
+    }
+    
+    func toggle() {
+        UIView.animate(withDuration: 0.3) {
+            self.isHidden.toggle()
+        }
     }
 }
