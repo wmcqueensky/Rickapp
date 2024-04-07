@@ -43,6 +43,8 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     }
     
     override func setupViews() {
+        configurePushNavigationBar(backButton: .getImage(.backButton))
+        
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 2

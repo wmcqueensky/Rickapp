@@ -9,17 +9,16 @@ import UIKit
 import SnapKit
 
 class CharacterListViewController: BaseViewController<CharacterListViewModel> {
-    private let navigationBar = UINavigationBar()
     private let tableView = UITableView()
     
-    init(viewModel: CharacterListViewModel) {
-        super.init(nibName: nil, bundle: nil)
-        self.viewModel = viewModel
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(viewModel: CharacterListViewModel) {
+//        super.init(nibName: nil, bundle: nil)
+//        self.viewModel = viewModel
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     override func setupViews() {
         tableView.dataSource = self
@@ -28,7 +27,6 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         tableView.backgroundColor = .backgroundGray
         tableView.showsVerticalScrollIndicator = false
         
-        view.addSubview(navigationBar)
         view.addSubview(tableView)
     }
     
@@ -44,13 +42,8 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
     
     override func setupConstraints() {
-        navigationBar.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.leading.trailing.equalTo(view)
-        }
-        
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(navigationBar.snp.bottom).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }

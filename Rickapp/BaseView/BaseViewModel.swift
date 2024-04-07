@@ -10,19 +10,25 @@ import Combine
 
 class BaseViewModel: NSObject {
     var cancellables: Set<AnyCancellable> = []
-//    var appNavigator: BaseNavigatorTestable = BaseNavigator.shared
-    
+    var appNavigator: BaseNavigatorTestable = AppNavigator.shared
+
     func bindToData() {}
+}
+
+extension BaseViewModel: CharacterCardDelegate {
+    func isDownloaded(_ episode: Episode) -> Bool {
+        return downloadingManager.isDownloaded(episode: episode)
+    }
     
-//    private func getNextCharactersPage(url: String, completion: @escaping ([Character])  -> Void) {
-//        CardService.shared.getNextCharactersPage(url: url)
-//            .sink { _ in } receiveValue: { [weak self] characterList in
-//                guard let self = self else { return }
-//                completion(characterList.results ?? [])
-//
-//                if let nextPage = characterList.info?.next {
-//                    getNextCharactersPage(url: nextPage, completion: completion)
-//                }
-//            }.store(in: &cancellables)
-//    }
+    func isSubscribedUser() -> Bool {
+        return !userNetworkManager.subscriptions.isEmpty
+    }
+    
+    func isFinished(_ episode: Episode) -> Bool {
+        audioProgressManager.isFinished(episode: episode)
+    }
+    
+    func episodeTapped(episode: Episode) {
+        appNavigator.navigate(to: PopupRoutes.episode(episode: episode), with: .modal)
+    }
 }
