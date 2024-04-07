@@ -9,13 +9,22 @@ import Foundation
 import Combine
 
 class CharacterListViewModel: BaseViewModel {
-    @Published var characters: [Character] = []
+    private var charactersSubject = PassthroughSubject<[Character], Never>()
+    
+    var charactersPublisher: AnyPublisher<[Character], Never> {
+        return charactersSubject.eraseToAnyPublisher()
+    }
+    
+    var characters: [Character] = [] {
+        didSet {
+            charactersSubject.send(characters)
+        }
+    }
     
     override func bindToData() {
         super.bindToData()
         
         CharacterService.shared.getCharacter()
-//            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:

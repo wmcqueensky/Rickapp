@@ -2,7 +2,7 @@
 //  CharacterListViewController.swift
 //  Rickapp
 //
-//  Created by Wojciech Mokwiński on 18/08/2023.
+//  Created by Goodylabs on 18/08/2023.
 //
 
 import UIKit
@@ -34,7 +34,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     override func bindToViewModel() {
         super.bindToViewModel()
         
-        viewModel.$characters
+        viewModel.charactersPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] characters in
                 self?.tableView.reloadData()
