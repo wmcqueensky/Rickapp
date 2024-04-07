@@ -65,4 +65,4 @@ Make sure to install these dependencies using CocoaPods or Swift Package Manager
 
 ## Acknowledgments
 
-The Rick and Morty API (https://rickandmortyapi.com) for provided the data used in this app.
+The Rick and Morty API (https://rickandmortyapi.com) for providing the data used in this app.
