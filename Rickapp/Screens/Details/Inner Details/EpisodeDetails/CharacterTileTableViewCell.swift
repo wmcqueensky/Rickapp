@@ -101,18 +101,21 @@ class CharacterTileTableViewCell: BaseTableViewCell {
         
         switch character.status {
         case "Alive":
-            statusView.backgroundColor = .green
+            statusView.style = .alive
         case "Dead":
-            statusView.backgroundColor = .red
+            statusView.style = .dead
         case "unknown":
-            statusView.backgroundColor = .gray
+            statusView.style = .unknown
         default:
             statusView.backgroundColor = .clear
         }
+    }
+    
+    func animateStatusView() {
         statusView.animate()
     }
     
-    private func animateSpeciesImageView() {
+    func animateSpeciesImageView() {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
         rotationAnimation.fromValue = 0.0
         rotationAnimation.toValue = CGFloat.pi * 2.0 * 2.5
