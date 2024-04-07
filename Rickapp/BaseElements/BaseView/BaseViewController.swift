@@ -34,16 +34,5 @@ class BaseViewController<T: BaseViewModel>: UIViewController {
     func bindToViewModel() {}
     
     func setupConstraints() {}
-    
-    func configurePushNavigationBar() {
-        guard let appearance = navigationController?.navigationBar.standardAppearance else { return }
-        
-        let app = UIBarButtonItemAppearance(style: .plain)
-        app.normal.backgroundImage = UIImage.getImage(.backButton)
-        appearance.backButtonAppearance = app
-        
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-    }
 }
 

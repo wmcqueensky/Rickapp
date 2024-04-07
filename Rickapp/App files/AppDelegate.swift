@@ -22,14 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureNavigationBar() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
+        let navigationBarAppearance = UINavigationBarAppearance()
+        let backButtonAppearance = UIBarButtonItemAppearance()
+        let backButtonImage = UIImage.getImage(.backButton).withRenderingMode(.alwaysTemplate)
 
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().standardAppearance = appearance
-      
-        //Voice over doesn't recognize back button if color set to .clesr
-        UINavigationBar.appearance().tintColor = .red.withAlphaComponent(0.0001)
+        backButtonAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.clear]
+        
+        navigationBarAppearance.configureWithTransparentBackground()
+        navigationBarAppearance.setBackIndicatorImage(backButtonImage, transitionMaskImage: backButtonImage)
+        navigationBarAppearance.backButtonAppearance = backButtonAppearance
+        
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        UINavigationBar.appearance().standardAppearance = navigationBarAppearance
+        UINavigationBar.appearance().tintColor = .gray
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
