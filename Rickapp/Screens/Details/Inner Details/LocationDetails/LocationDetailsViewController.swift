@@ -90,12 +90,12 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
     }
 }
 
-extension LocationDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+extension LocationDetailsViewController: UITableViewDataSource, UITableViewDelegate, CharacterCircleViewCellDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
-        viewModel.getCharacterById(characterId)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
+//        viewModel.getCharacterById(characterId)
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.charactersPublisher.value.count
@@ -105,7 +105,7 @@ extension LocationDetailsViewController: UITableViewDataSource, UITableViewDeleg
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterCircleViewCell.self)) as? CharacterCircleViewCell else { return UITableViewCell() }
         
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
-        
+        cell.delegate = self
         switch indexPath.row % 4 {
         case 0:
             cell.alignment = .centre
@@ -118,5 +118,11 @@ extension LocationDetailsViewController: UITableViewDataSource, UITableViewDeleg
         }
         
         return cell
+    }
+    
+    func didTapCharacterImage(for cell: CharacterCircleViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        guard let characterId = viewModel.charactersPublisher.value[indexPath.row].id else { return }
+        viewModel.getCharacterById(characterId)
     }
 }

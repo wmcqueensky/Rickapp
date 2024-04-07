@@ -9,6 +9,10 @@ import UIKit
 import Kingfisher
 import SnapKit
 
+protocol CharacterCircleViewCellDelegate: AnyObject {
+    func didTapCharacterImage(for cell: CharacterCircleViewCell)
+}
+
 enum Alignment {
     case left
     case centre
@@ -18,6 +22,8 @@ enum Alignment {
 class CharacterCircleViewCell: BaseTableViewCell {
     private let characterImageView = UIImageView()
     private let nameLabel = UILabel()
+    
+    weak var delegate: CharacterCircleViewCellDelegate?
   
     var character = Character() {
         didSet {
@@ -42,6 +48,8 @@ class CharacterCircleViewCell: BaseTableViewCell {
         characterImageView.contentMode = .scaleAspectFill
         characterImageView.clipsToBounds = true
         characterImageView.layer.borderWidth = 0
+        characterImageView.isUserInteractionEnabled = true
+        characterImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapImageView)))
         
         selectionStyle = .none
         backgroundColor = .clear
@@ -82,5 +90,9 @@ class CharacterCircleViewCell: BaseTableViewCell {
     private func setupCellContent() {
         characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
         nameLabel.text = character.name ?? ""
+    }
+    
+    @objc private func didTapImageView() {
+        delegate?.didTapCharacterImage(for: self)
     }
 }
