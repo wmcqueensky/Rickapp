@@ -8,5 +8,5 @@
 import Foundation
 
 struct CharacterResponse: Codable {
-    let results: [Character]
+    let results: [Character]?
 }

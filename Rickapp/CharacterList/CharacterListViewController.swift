@@ -63,7 +63,7 @@ class CharacterListViewController: UIViewController, UITableViewDelegate {
             if let data = data {
                 do {
                     let response = try JSONDecoder().decode(CharacterResponse.self, from: data)
-                    self.characters = response.results
+                    self.characters = response.results ?? []
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -86,11 +86,11 @@ extension CharacterListViewController: UITableViewDataSource {
         
         let character = characters[indexPath.row]
         
-        cell.characterImageView.kf.setImage(with: URL(string: character.image))
+        cell.characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
         cell.nameLabel.text = character.name
-        cell.statusLabel.text = character.status + " - " + character.species
-        cell.actualLocationLabel.text = character.location.name
-        cell.actualOriginLabel.text = character.origin.name
+        cell.statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
+        cell.actualLocationLabel.text = character.location?.name ?? ""
+        cell.actualOriginLabel.text = character.origin?.name ?? ""
         
         if character.status == "Alive" {
             cell.statusImage.image = .getImage(.greenStatus)
