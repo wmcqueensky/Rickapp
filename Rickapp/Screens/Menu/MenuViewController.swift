@@ -29,7 +29,7 @@ class MenuViewController: UITabBarController {
         let favouriteListViewController = FavouriteListViewController()
         let favouriteListViewModel = FavouriteListViewModel()
         favouriteListViewController.viewModel = favouriteListViewModel
-        favouriteListViewController.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage.getImage(.heartIconUnselected), tag: 1)
+        favouriteListViewController.tabBarItem = UITabBarItem(title: "Favourites", image: UIImage.getImage(.heartIcon), tag: 1)
         
         self.viewControllers = [characterListViewController, favouriteListViewController]
     }

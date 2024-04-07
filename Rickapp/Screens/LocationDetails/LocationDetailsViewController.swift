@@ -20,7 +20,6 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
     private let actualResidentsLabel = UILabel()
     private let scrollView = UIScrollView()
     
-    
     override func bindToViewModel() {
         super.bindToViewModel()
         viewModel.locationPublisher
@@ -31,6 +30,7 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
     }
     
     override func setupViews() {
+        super.setupViews()
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 0
         
@@ -56,6 +56,7 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
     }
     
     override func setupConstraints() {
+        super.setupConstraints()
         locationStackView.snp.makeConstraints { make in
             make.verticalEdges.equalTo(scrollView)
             make.horizontalEdges.equalTo(view)
@@ -70,12 +71,6 @@ class LocationDetailsViewController: BaseViewController<LocationDetailsViewModel
         nameLabel.text = location.name ?? ""
         actualTypeLabel.text = location.type ?? ""
         actualDimensionLabel.text = location.dimension ?? ""
-        let residentsNumbers = location.residents?.map { $0.components(separatedBy: "/").last ?? "" } ?? []
-        let residentsText = residentsNumbers.isEmpty ? "N/A" : residentsNumbers.joined(separator: ", ")
         
-        let formattedResidents = residentsNumbers.map { "Resident: \($0)" }
-        let formattedResidentText = formattedResidents.joined(separator: "\n")
-        
-        actualResidentsLabel.text = formattedResidentText
     }
 }

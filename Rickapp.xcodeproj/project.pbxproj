@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F31147682AA71CE5007A60D3 /* EpisodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31147672AA71CE5007A60D3 /* EpisodeButton.swift */; };
+		F311476C2AA72671007A60D3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311476B2AA72671007A60D3 /* BaseView.swift */; };
+		F311476E2AA726AC007A60D3 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311476D2AA726AC007A60D3 /* DividerView.swift */; };
 		F3665A232AA379F000B6EC92 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3665A222AA379F000B6EC92 /* LocationDetailsViewController.swift */; };
 		F3665A252AA37A0000B6EC92 /* LocationDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3665A242AA37A0000B6EC92 /* LocationDetailsViewModel.swift */; };
 		F37C9DB12A93CDF60073F58F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37C9DB02A93CDF60073F58F /* Assets.xcassets */; };
@@ -52,6 +55,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F31147672AA71CE5007A60D3 /* EpisodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeButton.swift; sourceTree = "<group>"; };
+		F311476B2AA72671007A60D3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F311476D2AA726AC007A60D3 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		F3665A222AA379F000B6EC92 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		F3665A242AA37A0000B6EC92 /* LocationDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewModel.swift; sourceTree = "<group>"; };
 		F37C9DB02A93CDF60073F58F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +115,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F31147692AA72622007A60D3 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */,
+				F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */,
+				F31147672AA71CE5007A60D3 /* EpisodeButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		F311476A2AA7263F007A60D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F311476D2AA726AC007A60D3 /* DividerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F3665A212AA369EF00B6EC92 /* LocationDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +181,7 @@
 			children = (
 				F3A496222A96296B00BE8298 /* BaseViewModel.swift */,
 				F3A496242A96297B00BE8298 /* BaseViewController.swift */,
+				F311476B2AA72671007A60D3 /* BaseView.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -256,8 +281,8 @@
 		F3C74B432A9F7A4C0008DC9F /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F3928B162A9FE9FD0097E6E2 /* FavouriteButton.swift */,
-				F3C7CFFD2AA68C7100F76AC5 /* LocationButton.swift */,
+				F311476A2AA7263F007A60D3 /* Views */,
+				F31147692AA72622007A60D3 /* Buttons */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -384,6 +409,7 @@
 				F390EA832A9BF8BE00DC4903 /* CharacterDetailsViewController.swift in Sources */,
 				F3CA970C2AA1E59200AEBE8E /* FavouritesManager.swift in Sources */,
 				F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */,
+				F31147682AA71CE5007A60D3 /* EpisodeButton.swift in Sources */,
 				F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */,
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
@@ -394,6 +420,7 @@
 				F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */,
 				F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */,
 				F3C74B422A9F662B0008DC9F /* BaseButton.swift in Sources */,
+				F311476C2AA72671007A60D3 /* BaseView.swift in Sources */,
 				F3C74B4A2A9F7AF30008DC9F /* FavouriteListViewController.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
 				F3C7CFFE2AA68C7100F76AC5 /* LocationButton.swift in Sources */,
@@ -407,6 +434,7 @@
 				F3E9D4F02AA521BA001CACD6 /* EpisodeDetailsViewController.swift in Sources */,
 				F3C74B4C2A9F7B030008DC9F /* FavouriteListViewModel.swift in Sources */,
 				F3A496332A96416800BE8298 /* CharacterService.swift in Sources */,
+				F311476E2AA726AC007A60D3 /* DividerView.swift in Sources */,
 				F3665A252AA37A0000B6EC92 /* LocationDetailsViewModel.swift in Sources */,
 				F3665A232AA379F000B6EC92 /* LocationDetailsViewController.swift in Sources */,
 				F3A496282A96346900BE8298 /* BaseNavigator.swift in Sources */,

@@ -27,7 +27,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private let actualGenderLabel = UILabel()
     private let speciesLabel = UILabel()
     private let actualSpeciesLabel = UILabel()
-    private let episodesLabel = UILabel()
+    private let episodeLabel = UILabel()
     private let episodeButtonStackView = UIStackView()
     private let scrollView = UIScrollView()
     private var episodesNumbers = [String]()
@@ -68,25 +68,27 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         
         speciesLabel.text = "Species:"
         
-        episodesLabel.text = "Episodes:"
+        episodeLabel.text = "Episodes:"
         
-        locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
-    
-        originButton.addTarget(self, action: #selector(originButtonTapped), for: .touchUpInside)
+        locationButton.addTarget(self, action: #selector(locationButtonTapped(_:)), for: .touchUpInside)
         
-        view.setFontForLabels([statusLabel, locationLabel, originLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
+        originButton.addTarget(self, action: #selector(originButtonTapped(_:)), for: .touchUpInside)
+        
+        view.setFontForLabels([statusLabel, locationLabel, originLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel], font: .systemFont(ofSize: 20))
         view.setTextColorForLabels([statusLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel], color: .white)
-        view.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodesLabel], color: .gray)
+        view.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodeLabel], color: .gray)
         
         characterImageView.contentMode = .scaleAspectFill
         
         episodeButtonStackView.axis = .vertical
+        episodeButtonStackView.spacing = 12
         
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationButton, originLabel, originButton, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel, episodeButtonStackView])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationButton, originLabel, originButton, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodeLabel, episodeButtonStackView])
         characterStackView.setCustomSpacing(9, after: characterImageView)
+        characterStackView.setCustomSpacing(12, after: episodeLabel)
         characterStackView.setCustomSpacings(20, [statusStackView, locationButton, originButton, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         
@@ -147,14 +149,11 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
             }
             
             for episode in episodesNumbers {
-                let episodeButton = UIButton()
+                let episodeButton = EpisodeButton()
                 episodeButton.setTitle("Episode: \(episode)", for: .normal)
-                episodeButton.titleLabel?.font = .systemFont(ofSize: 20)
-                episodeButton.setTitleColor(.white, for: .normal)
-                episodeButton.contentHorizontalAlignment = .left
                 episodeButton.addTarget(self, action: #selector(episodeButtonTapped(_:)), for: .touchUpInside)
                 
-                episodeButtonStackView.addArrangedSubview(episodeButton)
+                episodeButtonStackView.addArrangedSubviews([episodeButton, DividerView()])
             }
         }
         
@@ -164,6 +163,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
             animateStatusView()
         case "Dead":
             statusView.backgroundColor = .red
+            animateStatusView()
         case "unknown":
             statusView.backgroundColor = .gray
         default:
@@ -195,25 +195,30 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         favouriteButton.isSelected ?
         FavouritesManager.shared.addToFavourites(characterId) :
         FavouritesManager.shared.removeFromFavourites(characterId)
+        
+        favouriteButton.animateHeartImage()
     }
     
-    @objc private func locationButtonTapped() {
+    @objc private func locationButtonTapped(_ sender: LocationButton) {
         let locationUrl = viewModel.characterPublisher.value.location?.url ?? ""
         if locationUrl == "" { return }
-        
+        sender.animateTap()
+
         viewModel.locationButtonTapped(locationUrl)
     }
     
-    @objc private func originButtonTapped() {
+    @objc private func originButtonTapped(_ sender: LocationButton) {
         let originUrl = viewModel.characterPublisher.value.origin?.url ?? ""
         if originUrl == "" { return }
-        
+        sender.animateTap()
+
         viewModel.locationButtonTapped(originUrl)
     }
     
-    @objc private func episodeButtonTapped(_ sender: UIButton) {
+    @objc private func episodeButtonTapped(_ sender: EpisodeButton) {
         guard let buttonIndex = episodeButtonStackView.arrangedSubviews.firstIndex(of: sender) else { return }
         
+        sender.animateTap()
         if buttonIndex < episodesUrls.count {
             let episodeUrl = episodesUrls[buttonIndex]
             viewModel.episodeButtonTapped(episodeUrl)

@@ -9,10 +9,11 @@ import Foundation
 import Combine
 
 class LocationDetailsViewModel: BaseViewModel {
-    var locationPublisher = CurrentValueSubject<Location, Never>(Location())
+    var locationPublisher = PassthroughSubject<Location, Never>()
     var url = ""
     
     override func bindToData() {
+        super.bindToData()
         fetchLocation(url)
     }
     

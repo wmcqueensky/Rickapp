@@ -17,7 +17,7 @@ class CharacterTableViewCell: UITableViewCell {
     weak var delegate: CharacterTableViewCellDelegate?
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
-    let favouriteButton = FavouriteButton()
+    private let favouriteButton = FavouriteButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -127,10 +127,19 @@ class CharacterTableViewCell: UITableViewCell {
         default:
             statusView.backgroundColor = .clear
         }
-        favouriteButton.isSelected = FavouritesManager.shared.favourites.contains(character.id ?? 0)
+    }
+    
+    func isFavouriteButtonSelected() -> Bool {
+        return favouriteButton.isSelected
+    }
+    
+    func setFavouriteButtonSelected(_ isSelected: Bool) {
+        favouriteButton.isSelected = isSelected
     }
     
     @objc private func favouriteButtonTapped() {
+        print("Button tapped")
+        favouriteButton.animateHeartImage()
         delegate?.didTapFavouriteButton(for: self)
     }
 }

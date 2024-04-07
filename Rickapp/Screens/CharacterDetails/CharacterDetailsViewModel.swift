@@ -13,6 +13,7 @@ class CharacterDetailsViewModel: BaseViewModel {
     var id: Int = 0
     
     override func bindToData() {
+        super.bindToData()
         fetchCharacterById(id)
     }
     

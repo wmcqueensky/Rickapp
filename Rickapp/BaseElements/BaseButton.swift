@@ -14,4 +14,16 @@ class BaseButton: UIButton {
 
     func setupViews() {}
     func setupConstraints() {}
+    
+    func animateTap() {
+        UIView.animate(withDuration: 0.2) {
+            self.setTitleColor(.gray, for: .normal)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+            UIView.animate(withDuration: 0.2) {
+                self.setTitleColor(.white, for: .normal)
+            }
+        }
+    }
 }
