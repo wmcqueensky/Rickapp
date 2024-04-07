@@ -12,6 +12,7 @@
 		F390EA832A9BF8BE00DC4903 /* CharacterCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA822A9BF8BE00DC4903 /* CharacterCardViewController.swift */; };
 		F390EA852A9BF8D300DC4903 /* CharacterCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA842A9BF8D300DC4903 /* CharacterCardViewModel.swift */; };
 		F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */; };
+		F39B894B2A9E027F00C2EE81 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39B894A2A9E027F00C2EE81 /* UILabel+Ext.swift */; };
 		F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E8F2A949677003D722E /* UIColor+Ext.swift */; };
 		F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E922A949F3C003D722E /* CharacterListViewModel.swift */; };
 		F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */; };
@@ -44,6 +45,7 @@
 		F390EA822A9BF8BE00DC4903 /* CharacterCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewController.swift; sourceTree = "<group>"; };
 		F390EA842A9BF8D300DC4903 /* CharacterCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewModel.swift; sourceTree = "<group>"; };
 		F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		F39B894A2A9E027F00C2EE81 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		F39E9E8F2A949677003D722E /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		F39E9E922A949F3C003D722E /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
 		F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,13 +94,23 @@
 			path = CharacterCard;
 			sourceTree = "<group>";
 		};
+		F39B89492A9E01B200C2EE81 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F390EA812A9BF87E00DC4903 /* CharacterCard */,
+				F3A94BFA2A8FC1C90003F841 /* CharacterList */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		F39E9E8E2A94964B003D722E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */,
 				F39E9E8F2A949677003D722E /* UIColor+Ext.swift */,
-				F3F85CF62A97703A00142443 /* TargetType+Ext.swift */,
 				F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */,
+				F39B894A2A9E027F00C2EE81 /* UILabel+Ext.swift */,
+				F3F85CF62A97703A00142443 /* TargetType+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -151,15 +163,14 @@
 		F3A94BC42A8FA60C0003F841 /* Rickapp */ = {
 			isa = PBXGroup;
 			children = (
+				F39B89492A9E01B200C2EE81 /* Screens */,
 				F3CA00A82A9CF26A003F219D /* BaseElements */,
 				F3A94BD32A8FA60E0003F841 /* Info.plist */,
-				F390EA812A9BF87E00DC4903 /* CharacterCard */,
 				F39E9E8E2A94964B003D722E /* Extensions */,
 				F3A496292A96347500BE8298 /* Networking */,
 				F3A496262A9633EC00BE8298 /* Navigation */,
 				F3A94C012A902DA50003F841 /* App files */,
 				F3A94BF52A8FBB130003F841 /* Model */,
-				F3A94BFA2A8FC1C90003F841 /* CharacterList */,
 			);
 			path = Rickapp;
 			sourceTree = "<group>";
@@ -297,6 +308,7 @@
 				F3A4962F2A963DE100BE8298 /* CardResource.swift in Sources */,
 				F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
+				F39B894B2A9E027F00C2EE81 /* UILabel+Ext.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,
 				F3CA00A32A9CE242003F219D /* AppNavigator.swift in Sources */,
 				F3CA00A52A9CE2CD003F219D /* MainRoutes.swift in Sources */,

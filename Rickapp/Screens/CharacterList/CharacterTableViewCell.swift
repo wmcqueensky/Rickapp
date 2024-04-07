@@ -38,12 +38,9 @@ class CharacterTableViewCell: UITableViewCell {
     }
     
     private func setupViews() {
-        nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 30)
-        nameLabel.numberOfLines = 2
-        
-        statusLabel.textColor = .white
-        
+        nameLabel.numberOfLines = 0
+                
         statusView.layer.cornerRadius = 5
                 
         statusStackView.axis = .horizontal
@@ -52,15 +49,12 @@ class CharacterTableViewCell: UITableViewCell {
         statusStackView.alignment = .center
         
         locationLabel.text = "Last known location:"
-        locationLabel.textColor = .gray
-        
-        actualLocationLabel.textColor = .white
-        
+                
         originLabel.text = "First seen in:"
-        originLabel.textColor = .gray
         
-        actualOriginLabel.textColor = .white
-        
+        originLabel.setTextColorForLabels([locationLabel, originLabel], color: .gray)
+        actualOriginLabel.setTextColorForLabels([nameLabel, statusLabel, actualLocationLabel, actualOriginLabel], color: .white)
+                
         characterImageView.layer.cornerRadius = 10
         characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         characterImageView.clipsToBounds = true
@@ -69,15 +63,13 @@ class CharacterTableViewCell: UITableViewCell {
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.backgroundColor = .darkGray
         characterStackView.layer.cornerRadius = 10
         characterStackView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         characterStackView.clipsToBounds = true
         characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, UIView()])
         characterStackView.setCustomSpacing(9, after: characterImageView)
-        characterStackView.setCustomSpacing(23, after: statusStackView)
-        characterStackView.setCustomSpacing(23, after: actualLocationLabel)
         characterStackView.setCustomSpacing(16, after: actualOriginLabel)
+        characterStackView.setCustomSpacings(23, [statusStackView, actualLocationLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 0, right:15)
         
         backgroundColor = .backgroundGray
@@ -89,7 +81,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterImageView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalToSuperview().inset(18)
-            make.height.equalTo(characterImageView.snp.width).multipliedBy(1.1)
+            make.height.equalTo(characterImageView.snp.width)
         }
         
         characterStackView.snp.makeConstraints { make in

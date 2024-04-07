@@ -34,4 +34,10 @@ extension UIStackView {
             }
         }
     }
+    
+    func setCustomSpacings(_ spacing: CGFloat, _ subviews: [UIView]) {
+        arrangedSubviews
+            .filter { subviews.contains($0) }
+            .forEach { setCustomSpacing(spacing, after: $0) }
+    }
 }
