@@ -20,7 +20,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     private let locationLabel = UILabel()
     private let locationButton = UIButton()
     private let originLabel = UILabel()
-    private let actualOriginLabel = UILabel()
+    private let originButton = UIButton()
     private let typeLabel = UILabel()
     private let actualTypeLabel = UILabel()
     private let genderLabel = UILabel()
@@ -73,8 +73,12 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         locationButton.titleLabel?.font = .systemFont(ofSize: 20)
         locationButton.addTarget(self, action: #selector(locationButtonTapped), for: .touchUpInside)
         
-        view.setFontForLabels([statusLabel, locationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
-        view.setTextColorForLabels([statusLabel, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel, actualEpisodesLabel], color: .white)
+        originButton.contentHorizontalAlignment = .left
+        originButton.titleLabel?.font = .systemFont(ofSize: 20)
+        originButton.addTarget(self, action: #selector(originButtonTapped), for: .touchUpInside)
+        
+        view.setFontForLabels([statusLabel, locationLabel, originLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
+        view.setTextColorForLabels([statusLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel, actualEpisodesLabel], color: .white)
         view.setTextColorForLabels([locationLabel, originLabel, typeLabel, genderLabel, speciesLabel, episodesLabel], color: .gray)
         
         actualEpisodesLabel.font = .systemFont(ofSize: 25)
@@ -85,9 +89,9 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
-        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationButton, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel, actualEpisodesLabel])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, locationButton, originLabel, originButton, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel, actualEpisodesLabel])
         characterStackView.setCustomSpacing(9, after: characterImageView)
-        characterStackView.setCustomSpacings(20, [statusStackView, locationButton, actualOriginLabel, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
+        characterStackView.setCustomSpacings(20, [statusStackView, locationButton, originButton, actualTypeLabel, actualGenderLabel, actualSpeciesLabel])
         characterStackView.setEdgeInsets(top: 7, left: 15, bottom: 16, right:15)
         
         view.backgroundColor = .darkGray
@@ -131,7 +135,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         nameLabel.text = character.name
         statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
         locationButton.setTitle(character.location?.name ?? "", for: .normal)
-        actualOriginLabel.text = character.origin?.name ?? ""
+        originButton.setTitle(character.origin?.name ?? "", for: .normal)
         actualTypeLabel.text = character.type ?? ""
         actualGenderLabel.text = character.gender ?? ""
         actualSpeciesLabel.text = character.species ?? ""
@@ -162,7 +166,6 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         let characterId = viewModel.characterPublisher.value.id ?? 0
         
         favouriteButton.isSelected.toggle()
-        
         favouriteButton.isSelected ?
         FavouritesManager.shared.addToFavourites(characterId) :
         FavouritesManager.shared.removeFromFavourites(characterId)
@@ -170,6 +173,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     
     @objc private func locationButtonTapped() {
         let locationUrl = viewModel.characterPublisher.value.location?.url ?? ""
+        viewModel.locationButtonsTapped(locationUrl)
         
         UIView.animate(withDuration: 0.2) {
             self.locationButton.setTitleColor(.gray, for: .normal)
@@ -178,9 +182,22 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             UIView.animate(withDuration: 2.0) {
                 self.locationButton.setTitleColor(.white, for: .normal)
-                
             }
         }
-        viewModel.locationButtonTapped(locationUrl)
+    }
+    
+    @objc private func originButtonTapped() {
+        let originUrl = viewModel.characterPublisher.value.origin?.url ?? ""
+        viewModel.locationButtonsTapped(originUrl)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.originButton.setTitleColor(.gray, for: .normal)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            UIView.animate(withDuration: 2.0) {
+                self.originButton.setTitleColor(.white, for: .normal)
+            }
+        }
     }
 }
