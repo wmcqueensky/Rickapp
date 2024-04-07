@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F31147682AA71CE5007A60D3 /* EpisodeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31147672AA71CE5007A60D3 /* EpisodeButton.swift */; };
 		F311476C2AA72671007A60D3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F311476B2AA72671007A60D3 /* BaseView.swift */; };
+		F32E02802ABDAF3C006E7494 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E027F2ABDAF3C006E7494 /* SearchViewController.swift */; };
+		F32E02822ABDAF4A006E7494 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32E02812ABDAF4A006E7494 /* SearchViewModel.swift */; };
 		F33528CC2AAF37A700391ADE /* CharacterTileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33528CB2AAF37A700391ADE /* CharacterTileTableViewCell.swift */; };
 		F33528CE2AAF443600391ADE /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33528CD2AAF443600391ADE /* EpisodeDetailsViewController.swift */; };
 		F35B93292AB1AF9000F97C53 /* BaseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B93282AB1AF9000F97C53 /* BaseListViewModel.swift */; };
@@ -65,6 +67,8 @@
 /* Begin PBXFileReference section */
 		F31147672AA71CE5007A60D3 /* EpisodeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeButton.swift; sourceTree = "<group>"; };
 		F311476B2AA72671007A60D3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		F32E027F2ABDAF3C006E7494 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F32E02812ABDAF4A006E7494 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		F33528CB2AAF37A700391ADE /* CharacterTileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTileTableViewCell.swift; sourceTree = "<group>"; };
 		F33528CD2AAF443600391ADE /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
 		F35B93282AB1AF9000F97C53 /* BaseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListViewModel.swift; sourceTree = "<group>"; };
@@ -142,6 +146,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		F32E027E2ABDAED1006E7494 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F32E027F2ABDAF3C006E7494 /* SearchViewController.swift */,
+				F32E02812ABDAF4A006E7494 /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		F33528C92AAF373B00391ADE /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +195,7 @@
 		F39B89492A9E01B200C2EE81 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F32E027E2ABDAED1006E7494 /* Search */,
 				F33528C92AAF373B00391ADE /* Details */,
 				F3C74B482A9F7ADF0008DC9F /* FavouritesList */,
 				F3C74B3C2A9F65F20008DC9F /* Menu */,
@@ -460,6 +474,7 @@
 				F3928B172A9FE9FD0097E6E2 /* FavouriteButton.swift in Sources */,
 				F35B932D2AB1C7A200F97C53 /* CharacterCircleViewCell.swift in Sources */,
 				F3F85CF72A97703A00142443 /* TargetType+Ext.swift in Sources */,
+				F32E02822ABDAF4A006E7494 /* SearchViewModel.swift in Sources */,
 				F3A94BF92A8FBD850003F841 /* Character.swift in Sources */,
 				F3CA00A12A9CDC80003F219D /* UIImage+Ext.swift in Sources */,
 				F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */,
@@ -476,6 +491,7 @@
 				F3CA00A32A9CE242003F219D /* AppNavigator.swift in Sources */,
 				F3CA00A52A9CE2CD003F219D /* MainRoutes.swift in Sources */,
 				F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */,
+				F32E02802ABDAF3C006E7494 /* SearchViewController.swift in Sources */,
 				F35B932F2AB1C87400F97C53 /* BaseCollectionViewCell.swift in Sources */,
 				F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */,
 				F3C74B4C2A9F7B030008DC9F /* FavouriteListViewModel.swift in Sources */,

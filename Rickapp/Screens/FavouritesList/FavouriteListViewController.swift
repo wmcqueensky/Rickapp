@@ -83,3 +83,11 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
         viewModel.toggleFavoriteStatus(for: character, isSelected: isSelected)
     }
 }
+
+extension FavouriteListViewController: ScrollableToTop {
+    func scrollToTop() {
+        if tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
+    }
+}

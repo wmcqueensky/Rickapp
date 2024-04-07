@@ -43,11 +43,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    @objc func scrollToTop() {
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-    }
+
 }
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate, CharacterTableViewCellDelegate {
@@ -86,5 +82,13 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let character = viewModel.charactersPublisher.value[indexPath.row]
         viewModel.toggleFavoriteStatus(for: character, isSelected: isSelected)
+    }
+}
+
+extension CharacterListViewController: ScrollableToTop {
+    func scrollToTop() {
+        if tableView.numberOfRows(inSection: 0) > 0 {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        }
     }
 }
