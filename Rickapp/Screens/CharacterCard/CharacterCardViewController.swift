@@ -33,14 +33,20 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let scrollView = UIScrollView()
     
     override func setupViews() {
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureRecognizer))
+//        tapGesture.delegate = self
+//
+//        addToFavouritesButton.addGestureRecognizer(tapGesture)
+        
+        addToFavouritesButton.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        addToFavouritesButton.addTarget(self, action: #selector(addToFavouritesButtonTapped), for: .touchUpInside)
+        
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 0
                 
         statusLabel.textColor = .white
-        
-        addToFavouritesButton.isSelected = false
-        
+
         statusView.layer.cornerRadius = 6
         
         statusStackView.axis = .horizontal
@@ -152,4 +158,20 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
             statusView.backgroundColor = .clear
         }
     }
+    
+    @objc func addToFavouritesButtonTapped() {
+        print("Selected")
+        addToFavouritesButton.isSelected.toggle()
+    }
+    
+//    @objc private func tapGestureRecognizer(_ recognizer: UITapGestureRecognizer) {
+//        print("Tapped")
+//    }
 }
+
+//extension CharacterCardViewController: UIGestureRecognizerDelegate {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        return touch.view == gestureRecognizer.view
+//    }
+//}
+
