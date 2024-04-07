@@ -13,6 +13,7 @@ import SnapKit
 class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
+    private let addToFavouritesButton = UIButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -34,6 +35,9 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     override func setupViews() {
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
+        nameLabel.numberOfLines = 0
+        
+        addToFavouritesButton.setBackgroundImage(UIImage.getImage(.heartIconUnselected), for: .normal)
         
         statusLabel.textColor = .white
         
@@ -45,15 +49,15 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         statusStackView.alignment = .center
         
         locationLabel.text = "Last known location:"
-                
+        
         originLabel.text = "First seen in:"
-                
+        
         typeLabel.text = "Type:"
-                
+        
         genderLabel.text = "Gender:"
-                
+        
         speciesLabel.text = "Species:"
-                
+        
         episodesLabel.text = "Episodes:"
         
         view.setFontForLabels([statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, typeLabel, actualTypeLabel, genderLabel, actualGenderLabel, speciesLabel, actualSpeciesLabel, episodesLabel], font: .systemFont(ofSize: 20))
@@ -64,6 +68,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         actualEpisodesLabel.numberOfLines = 0
         
         characterImageView.contentMode = .scaleAspectFill
+        characterImageView.addSubview(addToFavouritesButton)
         
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
@@ -110,6 +115,11 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         
         statusView.snp.makeConstraints { make in
             make.width.height.equalTo(12)
+        }
+        
+        addToFavouritesButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
         }
     }
     
