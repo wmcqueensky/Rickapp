@@ -9,12 +9,15 @@ import Foundation
 import Combine
 
 class CharacterCardViewModel: BaseViewModel {
-    var fetchCharacter = PassthroughSubject<Character, Never>()
+    var characterPublisher = PassthroughSubject<Character, Never>()
+    var character = Character()
+
     
     func fetchCharacterById(_ characterId: Int) {
         CardService.shared.getCharacterById(characterId)
             .sink(receiveCompletion: { _ in }) { [weak self] character in
-                self?.fetchCharacter.send(character)
+                self?.character = character
+                self?.characterPublisher.send(self?.character ?? Character())
             }
             .store(in: &cancellables)
     }
