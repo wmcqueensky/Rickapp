@@ -52,8 +52,7 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let rowCount = viewModel.characterList.results?.count ?? 0
-        let triggerIndex = rowCount - 3
-        if indexPath.row >= triggerIndex {
+        if indexPath.row >= rowCount - 3 {
             viewModel.getNextCharactersPage()
         }
     }
