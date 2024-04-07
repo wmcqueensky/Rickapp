@@ -14,7 +14,7 @@ class CharacterCardViewModel: BaseViewModel {
     func fetchCharacterById(_ characterId: Int) {
         CardService.shared.getCharacterById(characterId)
             .sink(receiveCompletion: { _ in }) { [weak self] character in
-                self?.characterPublisher.send(character ?? Character())
+                self?.characterPublisher.send(character)
             }
             .store(in: &cancellables)
     }
