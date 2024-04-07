@@ -12,6 +12,7 @@ import Kingfisher
 class CharacterTableViewCell: UITableViewCell {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
+    private let addToFavouritesButton = UIButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -40,7 +41,11 @@ class CharacterTableViewCell: UITableViewCell {
     private func setupViews() {
         nameLabel.font = .boldSystemFont(ofSize: 30)
         nameLabel.numberOfLines = 0
-                
+        
+        addToFavouritesButton.addTarget(self, action: #selector(addToFavouritesButtonTapped), for: .touchUpInside)
+        addToFavouritesButton.setBackgroundImage(UIImage.getImage(.heartIconUnselected), for: .normal)
+        addToFavouritesButton.setImage(UIImage.getImage(.heartIconSelected), for: .selected)
+        addToFavouritesButton.isUserInteractionEnabled = true
         statusView.layer.cornerRadius = 5
                 
         statusStackView.axis = .horizontal
@@ -59,6 +64,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         characterImageView.clipsToBounds = true
         characterImageView.contentMode = .scaleAspectFill
+        characterImageView.addSubview(addToFavouritesButton)
         
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
@@ -94,6 +100,11 @@ class CharacterTableViewCell: UITableViewCell {
         statusView.snp.makeConstraints { make in
             make.width.height.equalTo(10)
         }
+        
+        addToFavouritesButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+        }
     }
     
     private func setupCellContent() {
@@ -113,6 +124,11 @@ class CharacterTableViewCell: UITableViewCell {
         default:
             statusView.backgroundColor = .clear
         }
+    }
+    
+    @objc private func addToFavouritesButtonTapped() {
+        addToFavouritesButton.isSelected.toggle()
+        // Add your logic here to handle the button click
     }
 }
 

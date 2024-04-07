@@ -1,14 +1,14 @@
 //
-//  CharacterListViewModel.swift
+//  FavouritesViewModel.swift
 //  Rickapp
 //
-//  Created by Wojciech Mokwiński on 22/08/2023.
+//  Created by Wojciech Mokwiński on 30/08/2023.
 //
 
 import Foundation
 import Combine
 
-class CharacterListViewModel: BaseViewModel {
+class FavouriteListViewModel: BaseViewModel {
     private var isLoadingNextPage = false
     private var nextPage: String?
     private var previousPage: String?
@@ -16,12 +16,7 @@ class CharacterListViewModel: BaseViewModel {
 
     override func bindToData() {
         super.bindToData()
-        CardService.shared.getCharacters()
-            .sink(receiveCompletion: { _ in }) { [weak self] characterList in
-                self?.nextPage = characterList.info?.next ?? ""
-                self?.charactersPublisher.send(characterList.results ?? [])
-            }
-            .store(in: &cancellables)
+        
     }
     
     func getNextCharactersPage() {

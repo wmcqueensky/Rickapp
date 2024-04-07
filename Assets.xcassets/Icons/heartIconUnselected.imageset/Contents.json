@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "heart-filled.svg",
+      "filename" : "heart-filled-white.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "heart-filled 1.svg",
+      "filename" : "heart-filled-white 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "heart-filled 2.svg",
+      "filename" : "heart-filled-white 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -13,7 +13,7 @@ import SnapKit
 class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
-    private let addToFavouritesButton = UIButton()
+    private let addToFavouritesButton = AddToFavouritesButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -36,10 +36,10 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 0
-        
-        addToFavouritesButton.setBackgroundImage(UIImage.getImage(.heartIconUnselected), for: .normal)
-        
+                
         statusLabel.textColor = .white
+        
+        addToFavouritesButton.isSelected = false
         
         statusView.layer.cornerRadius = 6
         
@@ -119,7 +119,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         
         addToFavouritesButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
+            make.trailing.equalToSuperview().offset(-20)
         }
     }
     

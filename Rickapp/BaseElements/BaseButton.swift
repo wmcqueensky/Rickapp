@@ -2,7 +2,7 @@ import UIKit
 
 class BaseButton: UIButton {
     
-    var tapAreaInscreased = false
+    var tapAreaIncreased = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -11,7 +11,7 @@ class BaseButton: UIButton {
     }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        return bounds.insetBy(dx: tapAreaInscreased ? -20 : 0, dy: tapAreaInscreased ? -20 : 0).contains(point)
+        return bounds.insetBy(dx: tapAreaIncreased ? -20 : 0, dy: tapAreaIncreased ? -20 : 0).contains(point)
     }
     
     required init?(coder: NSCoder) {
