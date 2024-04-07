@@ -14,7 +14,8 @@ class CharacterTableViewCell: UITableViewCell {
     private let characterImageView = UIImageView()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
-    private var statusImage = UIImageView()
+    private var statusView = UIView()
+    private var statusWrappingView = UIView()
     private let statusStackView = UIStackView()
     private let locationLabel = UILabel()
     private let originLabel = UILabel()
@@ -31,39 +32,43 @@ class CharacterTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
-    func configure(with character: Character) {
-        characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
-        nameLabel.text = character.name
-        statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
-        actualLocationLabel.text = character.location?.name ?? ""
-        actualOriginLabel.text = character.origin?.name ?? ""
-        
-        if character.status == "Alive" {
-            statusImage.image = .getImage(.greenStatus)
-        }
-        
-        if character.status == "Dead" {
-            statusImage.image = .getImage(.redStatus)
+    var character = Character() {
+        didSet {
+            characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
+            nameLabel.text = character.name
+            statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
+            actualLocationLabel.text = character.location?.name ?? ""
+            actualOriginLabel.text = character.origin?.name ?? ""
             
-        }
-        
-        if character.status == "unknown" {
-            statusImage.image = .getImage(.grayStatus)
+            switch character.status {
+            case "Alive":
+                statusView.backgroundColor = .green
+            case "Dead":
+                statusView.backgroundColor = .red
+            case "unknown":
+                statusView.backgroundColor = .gray
+            default:
+                statusView.backgroundColor = .clear
+            }
+            
         }
     }
     
-    func setupViews() {
+    private func setupViews() {
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 30)
         nameLabel.numberOfLines = 2
         
         statusLabel.textColor = .white
         
-        statusImage.contentMode = .scaleAspectFit
+        statusView.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
+        statusView.layer.cornerRadius = 5
+        
+        statusWrappingView.addSubview(statusView)
         
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
-        statusStackView.addArrangedSubviews([statusImage, statusLabel])
+        statusStackView.addArrangedSubviews([statusWrappingView, statusLabel])
         
         locationLabel.text = "Last known location:"
         locationLabel.textColor = .gray
@@ -75,26 +80,41 @@ class CharacterTableViewCell: UITableViewCell {
         
         actualOriginLabel.textColor = .white
         
-        characterStackView.backgroundColor = .cellGray
+        characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
         characterStackView.layer.cornerRadius = 10
         characterStackView.clipsToBounds = true
-        characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel])
+        characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, UIView()])
+        characterStackView.setCustomSpacing(9, after: characterImageView)
+        characterStackView.setCustomSpacing(23, after: statusStackView)
+        characterStackView.setCustomSpacing(23, after: actualLocationLabel)
+        characterStackView.setCustomSpacing(16, after: actualOriginLabel)
         
         isUserInteractionEnabled = false
         backgroundColor = .backgroundGray
-        contentView.addSubview(characterStackView)
+        addSubview(characterStackView)
     }
     
-    func setupConstraints() {
+    private func setupConstraints() {
         characterStackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 15, left: 28, bottom: 15, right: 28))
+            make.leading.equalToSuperview().inset(-15)
+            make.verticalEdges.equalToSuperview().inset(15)
+            make.horizontalEdges.equalToSuperview().inset(28)
         }
         
         characterImageView.snp.makeConstraints { make in
             make.width.equalTo(characterStackView)
             make.height.equalTo(310)
+        }
+        
+        statusView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(10)
+        }
+        
+        statusWrappingView.snp.makeConstraints { make in
+            make.width.equalTo(10)
         }
         
         nameLabel.snp.makeConstraints { make in
@@ -103,11 +123,6 @@ class CharacterTableViewCell: UITableViewCell {
         
         statusStackView.snp.makeConstraints { make in
             make.leading.equalTo(characterStackView.snp.leading).offset(12)
-            make.height.equalTo(13)
-        }
-        
-        statusImage.snp.makeConstraints { make in
-            make.width.height.equalTo(10)
         }
         
         locationLabel.snp.makeConstraints { make in
