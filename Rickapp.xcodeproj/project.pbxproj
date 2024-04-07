@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F37C9DB12A93CDF60073F58F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37C9DB02A93CDF60073F58F /* Assets.xcassets */; };
-		F38EF5EB2A95004E00C279A9 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38EF5EA2A95004E00C279A9 /* UIImage+Ext.swift */; };
 		F392C3F02A9373A6004F8CB1 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3EF2A9373A6004F8CB1 /* Origin.swift */; };
 		F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F12A9373B1004F8CB1 /* Location.swift */; };
 		F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */; };
@@ -21,6 +20,8 @@
 		F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4962E2A963DE100BE8298 /* CharacterResource.swift */; };
 		F3A496332A96416800BE8298 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496322A96416800BE8298 /* CharacterService.swift */; };
 		F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496342A96421A00BE8298 /* BaseNetworkService.swift */; };
+		F3A496392A96B16B00BE8298 /* CharacterListRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496382A96B16B00BE8298 /* CharacterListRoutes.swift */; };
+		F3A4963B2A96B6F600BE8298 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4963A2A96B6F600BE8298 /* AppNavigator.swift */; };
 		F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */; };
 		F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */; };
 		F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */; };
@@ -36,7 +37,6 @@
 
 /* Begin PBXFileReference section */
 		F37C9DB02A93CDF60073F58F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
-		F38EF5EA2A95004E00C279A9 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F392C3EF2A9373A6004F8CB1 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 		F392C3F12A9373B1004F8CB1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
@@ -49,6 +49,8 @@
 		F3A4962E2A963DE100BE8298 /* CharacterResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResource.swift; sourceTree = "<group>"; };
 		F3A496322A96416800BE8298 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
 		F3A496342A96421A00BE8298 /* BaseNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
+		F3A496382A96B16B00BE8298 /* CharacterListRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListRoutes.swift; sourceTree = "<group>"; };
+		F3A4963A2A96B6F600BE8298 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		F3A94BC22A8FA60C0003F841 /* Rickapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rickapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,7 +82,6 @@
 			children = (
 				F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */,
 				F39E9E8F2A949677003D722E /* UIColor+Ext.swift */,
-				F38EF5EA2A95004E00C279A9 /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -98,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				F3A496272A96346900BE8298 /* BaseNavigator.swift */,
+				F3A4963A2A96B6F600BE8298 /* AppNavigator.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -159,6 +161,7 @@
 				F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */,
 				F39E9E922A949F3C003D722E /* CharacterListViewModel.swift */,
 				F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */,
+				F3A496382A96B16B00BE8298 /* CharacterListRoutes.swift */,
 			);
 			path = CharacterList;
 			sourceTree = "<group>";
@@ -258,8 +261,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */,
+				F3A496392A96B16B00BE8298 /* CharacterListRoutes.swift in Sources */,
 				F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */,
 				F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */,
+				F3A4963B2A96B6F600BE8298 /* AppNavigator.swift in Sources */,
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
 				F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */,
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
@@ -268,7 +273,6 @@
 				F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,
-				F38EF5EB2A95004E00C279A9 /* UIImage+Ext.swift in Sources */,
 				F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */,
 				F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */,
 				F3A496332A96416800BE8298 /* CharacterService.swift in Sources */,

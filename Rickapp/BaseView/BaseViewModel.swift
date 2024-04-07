@@ -10,6 +10,7 @@ import Combine
 
 class BaseViewModel: NSObject {
     var cancellables: Set<AnyCancellable> = []
+//    var appNavigator: BaseNavigatorTestable = BaseNavigator.shared
     
     func bindToData() {}
 }
