@@ -18,20 +18,36 @@ class SearchFiltersViewController: BaseViewController<SearchFiltersViewModel> {
     private let locationSectionView = FiltersSectionView()
     private let originSectionView = FiltersSectionView()
     private let dateSectionView = FiltersSectionView()
-//    private let moreButton = Button()
     private let scrollView = UIScrollView()
     private let stackView = UIStackView()
-//    private let applyButton = Button()
     
     
     override func bindToViewModel() {
         super.bindToViewModel()
+        viewModel.characterPublisher
+            .sink { [weak self] characters in
+
+            }
+            .store(in: &viewModel.cancellables)
         
+        viewModel.locationsPublisher
+            .sink { [weak self] locations in
+                self?.locationSectionView.collectionViewReload(locations)
+                self?.originSectionView.collectionViewReload(locations)
+            }
+            .store(in: &viewModel.cancellables)
+        
+//        viewModel.episodesPublisher
+//            .sink { [weak self] locations in
+//                self?.locationSectionView.collectionViewReload()
+//                print(locations)
+//            }
+//            .store(in: &viewModel.cancellables)
     }
     
     override func setupViews() {
         super.setupViews()
-
+        
         statusSectionView.title = "Status"
         speciesSectionView.title = "Species"
         typeSectionView.title = "Type"
@@ -39,20 +55,6 @@ class SearchFiltersViewController: BaseViewController<SearchFiltersViewModel> {
         locationSectionView.title = "Location"
         originSectionView.title = "Origin"
         dateSectionView.title = "Date created"
-                
-//        applyButton.title = "Apply filters"
-//        applyButton.style = .main
-//        applyButton.color = .green
-//        applyButton.addTarget(viewModel, action: #selector(viewModel.navigateToSearchController), for: .touchUpInside)
-
-//        moreButton.style = .secondary
-//        moreButton.color = .gray
-//        moreButton.setTitleColor(.green, for: .normal)
-//        moreButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
-//        moreButton.title = "View more"
-        
-//        searchView.delegate = viewModel
-//        searchView.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         stackView.axis = .vertical
         stackView.spacing = 15

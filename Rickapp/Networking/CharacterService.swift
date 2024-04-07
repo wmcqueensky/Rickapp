@@ -16,11 +16,11 @@ class CharacterService: BaseNetworkService<CharacterResource> {
         return request(for: .characters)
     }
     
-    func getLocations() -> AnyPublisher<[Location], Error> {
+    func getLocations() -> AnyPublisher<LocationList, Error> {
         return request(for: .locations)
     }
     
-    func getEpisodes() -> AnyPublisher<[Episode], Error> {
+    func getEpisodes() -> AnyPublisher<EpisodeList, Error> {
         return request(for: .episodes)
     }
     

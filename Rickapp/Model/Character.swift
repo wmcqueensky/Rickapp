@@ -36,8 +36,3 @@ struct Character: Codable, Equatable {
         return lhs.id == rhs.id
     }
 }
-
-struct Origin: Codable {
-    var name: String?
-    var url: String?
-}

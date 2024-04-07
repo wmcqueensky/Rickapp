@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class FiltersSectionView: BaseView {
     private let clearButton = UnderlinedButton()
@@ -28,11 +29,10 @@ class FiltersSectionView: BaseView {
         titleLabel.font = .boldSystemFont(ofSize: 25)
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 0
-        
+                
         dividerView.isHidden = true
         
         clearButton.title = "Clear"
-//        clearButton.addTarget(self, action: #selector(clearButtonTapped), for: .touchUpInside)
         
         titleStackView.isHidden = true
         titleStackView.spacing = 20
@@ -52,5 +52,9 @@ class FiltersSectionView: BaseView {
         stackView.snp.makeConstraints { make in
             make.edges.equalTo(self)
         }
+    }
+    
+    func collectionViewReload(_ elements: [Location]) {
+        collectionView.reload(elements)
     }
 }
