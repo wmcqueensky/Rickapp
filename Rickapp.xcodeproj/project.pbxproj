@@ -12,9 +12,10 @@
 		F392C3EE2A9367F3004F8CB1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3ED2A9367F3004F8CB1 /* NetworkManager.swift */; };
 		F392C3F02A9373A6004F8CB1 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3EF2A9373A6004F8CB1 /* Origin.swift */; };
 		F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F12A9373B1004F8CB1 /* Location.swift */; };
+		F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */; };
 		F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */; };
 		F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */; };
-		F3A94BCA2A8FA60C0003F841 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* BaseViewController.swift */; };
+		F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */; };
 		F3A94BD22A8FA60E0003F841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */; };
 		F3A94BDD2A8FA60E0003F841 /* RickappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BDC2A8FA60E0003F841 /* RickappTests.swift */; };
 		F3A94BE72A8FA60E0003F841 /* RickappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BE62A8FA60E0003F841 /* RickappUITests.swift */; };
@@ -52,10 +53,11 @@
 		F392C3ED2A9367F3004F8CB1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F392C3EF2A9373A6004F8CB1 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 		F392C3F12A9373B1004F8CB1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		F3A94BC22A8FA60C0003F841 /* Rickapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rickapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F3A94BC92A8FA60C0003F841 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		F3A94BD12A8FA60E0003F841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A94BD32A8FA60E0003F841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A94BD82A8FA60E0003F841 /* RickappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,7 +180,7 @@
 		F3A94BFA2A8FC1C90003F841 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F3A94BC92A8FA60C0003F841 /* BaseViewController.swift */,
+				F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -190,6 +192,7 @@
 				F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */,
 				F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */,
 				F3A94C022A9032010003F841 /* Assets.xcassets */,
+				F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */,
 			);
 			path = "App files";
 			sourceTree = "<group>";
@@ -338,7 +341,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F392C3EA2A9356CD004F8CB1 /* CharacterResults.swift in Sources */,
-				F3A94BCA2A8FA60C0003F841 /* BaseViewController.swift in Sources */,
+				F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */,
+				F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */,
 				F392C3EC2A935A9B004F8CB1 /* CharacterAPI.swift in Sources */,
 				F392C3EE2A9367F3004F8CB1 /* NetworkManager.swift in Sources */,
 				F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */,
@@ -443,7 +447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -497,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -519,8 +523,8 @@
 				INFOPLIST_FILE = Rickapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -546,8 +550,8 @@
 				INFOPLIST_FILE = Rickapp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
