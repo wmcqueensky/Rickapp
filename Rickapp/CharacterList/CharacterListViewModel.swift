@@ -12,6 +12,8 @@ class CharacterListViewModel: BaseViewModel {
     @Published var characters: [Character] = []
     
     override func bindToData() {
+        super.bindToData()
+        
         CharacterService.shared.getCharacter()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }) { [weak self] characters in

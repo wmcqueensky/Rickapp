@@ -28,14 +28,14 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
     
     override func bindToViewModel() {
-        viewModel.$characters 
+        super.bindToViewModel()
+        
+        viewModel.$characters
             .receive(on: DispatchQueue.main)
             .sink { [weak self] characters in
                 self?.tableView.reloadData()
             }
             .store(in: &viewModel.cancellables)
-        
-        viewModel.bindToData()
     }
     
     override func setupConstraints() {

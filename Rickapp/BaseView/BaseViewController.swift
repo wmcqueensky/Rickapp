@@ -8,9 +8,11 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class BaseViewController<T: BaseViewModel>: UIViewController, UIScrollViewDelegate {
     var viewModel: T!
+    var cancellables = Set<AnyCancellable>()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,9 +20,9 @@ class BaseViewController<T: BaseViewModel>: UIViewController, UIScrollViewDelega
         
         setupViews()
         setupConstraints()
-        setupData()
         bindToViewModel()
-
+        viewModel.bindToData()
+        setupData()
     }
     
     func setupData() {}
