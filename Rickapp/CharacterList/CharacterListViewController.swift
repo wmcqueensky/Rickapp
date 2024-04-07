@@ -45,12 +45,9 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let character = viewModel.characterList.results?[indexPath.row] else {
-            return
-        }
+        guard let characterId = viewModel.characterList.results?[indexPath.row].id else { return }
         
-        let characterCardRoute = MainRoutes.card(character: character)
-        AppNavigator.shared.navigate(to: characterCardRoute, with: .push, animated: true)
+        AppNavigator.shared.navigate(to: MainRoutes.card(characterId: characterId), with: .push, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

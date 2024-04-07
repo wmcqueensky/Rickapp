@@ -12,11 +12,14 @@ enum CardResource: TargetType {
     
     case character
     case nextCharactersPage(url: String)
+    case getCharacterById(characterId: Int)
     
     var path: String {
         switch self {
         case .character:
             return "/character"
+        case .getCharacterById(let characterId):
+            return "/character/\(characterId)"
         default:
             return ""
         }
@@ -34,14 +37,14 @@ enum CardResource: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .character, .nextCharactersPage:
+        case .character, .nextCharactersPage, .getCharacterById:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .character, .nextCharactersPage:
+        case .character, .nextCharactersPage, .getCharacterById:
             return .requestPlain
         }
     }

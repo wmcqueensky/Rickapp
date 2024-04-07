@@ -10,14 +10,14 @@ import UIKit
 
 enum MainRoutes: Route {
     case list
-    case card(character: Character)
+    case card(characterId: Int)
     
     var screen: UIViewController {
         switch self {
         case .list:
             return buildCharacterListViewController()
         case .card(let character):
-            return buildCharacterCardViewController(character: character)
+            return buildCharacterCardViewController(characterId: character)
         }
     }
     
@@ -28,10 +28,10 @@ enum MainRoutes: Route {
         return controller
     }
     
-    private func buildCharacterCardViewController(character: Character) -> UIViewController {
+    private func buildCharacterCardViewController(characterId: Int) -> UIViewController {
         let controller = CharacterCardViewController()
         let viewModel = CharacterCardViewModel()
-        viewModel.fetchSelectedCharacter(character)
+        viewModel.fetchCharacterById(characterId)
         controller.viewModel = viewModel
         return controller
     }
