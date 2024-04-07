@@ -34,23 +34,7 @@ class CharacterTableViewCell: UITableViewCell {
     
     var character = Character() {
         didSet {
-            characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
-            nameLabel.text = character.name
-            statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
-            actualLocationLabel.text = character.location?.name ?? ""
-            actualOriginLabel.text = character.origin?.name ?? ""
-            
-            switch character.status {
-            case "Alive":
-                statusView.backgroundColor = .green
-            case "Dead":
-                statusView.backgroundColor = .red
-            case "unknown":
-                statusView.backgroundColor = .gray
-            default:
-                statusView.backgroundColor = .clear
-            }
-            
+            setupCellContent()
         }
     }
     
@@ -79,32 +63,41 @@ class CharacterTableViewCell: UITableViewCell {
         
         actualOriginLabel.textColor = .white
         
+        characterImageView.layer.cornerRadius = 10
+        characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        characterImageView.clipsToBounds = true
+        
         characterStackView.backgroundColor = .darkGray
         characterStackView.axis = .vertical
         characterStackView.spacing = 3
+        characterStackView.backgroundColor = .darkGray
         characterStackView.layer.cornerRadius = 10
+        characterStackView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         characterStackView.clipsToBounds = true
-        characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, UIView()])
+        characterStackView.addArrangedSubviews([nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel, UIView()])
         characterStackView.setCustomSpacing(9, after: characterImageView)
         characterStackView.setCustomSpacing(23, after: statusStackView)
         characterStackView.setCustomSpacing(23, after: actualLocationLabel)
         characterStackView.setCustomSpacing(16, after: actualOriginLabel)
+        characterStackView.alignment = .leading
         
         isUserInteractionEnabled = false
         backgroundColor = .backgroundGray
+        addSubview(characterImageView)
         addSubview(characterStackView)
     }
     
     private func setupConstraints() {
-        characterStackView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(15)
-            make.verticalEdges.equalToSuperview().inset(15)
-            make.horizontalEdges.equalToSuperview().inset(28)
+        characterImageView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.top.equalToSuperview().inset(18)
+            make.height.equalTo(310)
         }
         
-        characterImageView.snp.makeConstraints { make in
-            make.width.equalTo(characterStackView)
-            make.height.equalTo(310)
+        characterStackView.snp.makeConstraints { make in
+            make.top.equalTo(characterImageView.snp.bottom)
+            make.leading.trailing.equalToSuperview().inset(15)
+            make.bottom.equalToSuperview().inset(18)
         }
         
         statusView.snp.makeConstraints { make in
@@ -115,29 +108,24 @@ class CharacterTableViewCell: UITableViewCell {
         statusWrappingView.snp.makeConstraints { make in
             make.width.equalTo(10)
         }
+    }
+    
+    func setupCellContent() {
+        characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
+        nameLabel.text = character.name
+        statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
+        actualLocationLabel.text = character.location?.name ?? ""
+        actualOriginLabel.text = character.origin?.name ?? ""
         
-        nameLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView.snp.leading).offset(12)
-        }
-        
-        statusStackView.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView.snp.leading).offset(12)
-        }
-        
-        locationLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView.snp.leading).offset(12)
-        }
-        
-        actualLocationLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView.snp.leading).offset(12)
-        }
-        
-        originLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView.snp.leading).offset(12)
-        }
-        
-        actualOriginLabel.snp.makeConstraints { make in
-            make.leading.equalTo(characterStackView.snp.leading).offset(12)
+        switch character.status {
+        case "Alive":
+            statusView.backgroundColor = .green
+        case "Dead":
+            statusView.backgroundColor = .red
+        case "unknown":
+            statusView.backgroundColor = .gray
+        default:
+            statusView.backgroundColor = .clear
         }
     }
 }

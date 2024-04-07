@@ -8,8 +8,8 @@
 import UIKit
 import SnapKit
 
-class CharacterListViewController: BaseViewController<CharacterListViewModel> {
-    private let titleLabel = UILabel()
+class CharacterListViewController: BaseViewController<CharacterListViewModel>, UIScrollViewDelegate {
+    private let navigationBar = UINavigationBar()
     private let tableView = UITableView()
     
     init(viewModel: CharacterListViewModel) {
@@ -22,17 +22,12 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
     
     override func setupViews() {
-        titleLabel.text = "Rickapp"
-        titleLabel.textColor = .white
-        titleLabel.textAlignment = .center
-        titleLabel.font = .italicSystemFont(ofSize: CGFloat(30))
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
         tableView.backgroundColor = .backgroundGray
         
-        view.addSubview(titleLabel)
+        view.addSubview(navigationBar)
         view.addSubview(tableView)
     }
     
@@ -48,14 +43,15 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     }
     
     override func setupConstraints() {
-        titleLabel.snp.makeConstraints { make in
+        navigationBar.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.leading.trailing.equalTo(view)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(navigationBar.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
