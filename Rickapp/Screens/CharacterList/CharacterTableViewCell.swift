@@ -12,7 +12,6 @@ import Kingfisher
 class CharacterTableViewCell: UITableViewCell {
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
-    private let addToFavouritesButton = UIButton()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
     private var statusView = UIView()
@@ -41,21 +40,21 @@ class CharacterTableViewCell: UITableViewCell {
     private func setupViews() {
         nameLabel.font = .boldSystemFont(ofSize: 30)
         nameLabel.numberOfLines = 0
-
+        
         statusView.layer.cornerRadius = 5
-                
+        
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
         statusStackView.addArrangedSubviews([statusView, statusLabel])
         statusStackView.alignment = .center
         
         locationLabel.text = "Last known location:"
-                
+        
         originLabel.text = "First seen in:"
         
         setTextColorForLabels([locationLabel, originLabel], color: .gray)
         setTextColorForLabels([nameLabel, statusLabel, actualLocationLabel, actualOriginLabel], color: .white)
-                
+        
         characterImageView.layer.cornerRadius = 10
         characterImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         characterImageView.clipsToBounds = true
@@ -77,7 +76,6 @@ class CharacterTableViewCell: UITableViewCell {
         backgroundColor = .backgroundGray
         addSubview(characterImageView)
         addSubview(characterStackView)
-        addSubview(addToFavouritesButton)
     }
     
     private func setupConstraints() {
@@ -95,11 +93,6 @@ class CharacterTableViewCell: UITableViewCell {
         
         statusView.snp.makeConstraints { make in
             make.width.height.equalTo(10)
-        }
-        
-        addToFavouritesButton.snp.makeConstraints { make in
-            make.top.equalTo(characterImageView).offset(10)
-            make.trailing.equalTo(characterImageView).offset(-10)
         }
     }
     

@@ -38,8 +38,4 @@ class CharacterListViewModel: BaseViewModel {
             }
             .store(in: &cancellables)
     }
-    
-    func getCharacterById(_ characterId: Int) {
-        AppNavigator.shared.navigate(to: MainRoutes.card(characterId: characterId), with: .push, animated: true)
-    }
 }
