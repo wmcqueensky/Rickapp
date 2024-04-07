@@ -21,6 +21,14 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
         view.addSubview(tableView)
     }
     
+    override func bindToViewModel() {
+        viewModel.favouritesPublisher
+            .sink { [weak self] characters in
+                self?.tableView.reloadData()
+            }
+            .store(in: &viewModel.cancellables)
+    }
+    
     override func setupConstraints() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
@@ -30,19 +38,21 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
 
 extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let characterId = CharacterManager.shared.favourites[indexPath.row]
+        let characterId = viewModel.favouritesPublisher.value[indexPath.row].id ?? 0
         viewModel.getCharacterById(characterId)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CharacterManager.shared.favourites.count
+        return viewModel.favouritesPublisher.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        //        cell.character = viewModel.charactersPublisher.value[indexPath.row]
+        if indexPath.row < viewModel.favouritesPublisher.value.count {
+            cell.character = viewModel.favouritesPublisher.value[indexPath.row]
+        }
         
         return cell
     }

@@ -11,7 +11,7 @@ import Combine
 class CharacterCardViewModel: BaseViewModel {
     
     init(_ characterId: Int) {
-        super.init()
+        super.init()//
         self.fetchCharacterById(characterId)
     }
     

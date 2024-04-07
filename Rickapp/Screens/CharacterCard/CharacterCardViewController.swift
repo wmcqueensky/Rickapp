@@ -151,16 +151,16 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
             statusView.backgroundColor = .clear
         }
         
-        favouriteButton.isSelected = CharacterManager.shared.favourites.contains(character.id ?? 0)
+        favouriteButton.isSelected = FavouritesManager.shared.favourites.contains(character.id ?? 0)
     }
     
     @objc private func favouriteButtonTapped() {
         favouriteButton.isSelected.toggle()
         favouriteButton.isSelected ?
-        CharacterManager.shared.addToFavourites(viewModel.characterPublisher.value.id ?? 0) :
-        CharacterManager.shared.removeFromFavourites(viewModel.characterPublisher.value.id ?? 0)
-        print(CharacterManager.shared.favourites)
-        let idsString = CharacterManager.shared.favourites.map(String.init).joined(separator: ",")
+        FavouritesManager.shared.addToFavourites(viewModel.characterPublisher.value.id ?? 0) :
+        FavouritesManager.shared.removeFromFavourites(viewModel.characterPublisher.value.id ?? 0)
+        print(FavouritesManager.shared.favourites)
+        let idsString = FavouritesManager.shared.favourites.map(String.init).joined(separator: ",")
         print(idsString)
     }
 }

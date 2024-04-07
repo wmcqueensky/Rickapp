@@ -1,5 +1,5 @@
 //
-//  CharacterManager.swift
+//  FavouritesManager.swift
 //  Rickapp
 //
 //  Created by Wojciech Mokwiński on 01/09/2023.
@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-class CharacterManager {
-    static let shared = CharacterManager()
-    var favouritesPasser = PassthroughSubject<[Character], Error>()
+class FavouritesManager {
+    static let shared = FavouritesManager()
+    
     var favourites: [Int] {
         get {
             return UserDefaults.standard.array(forKey: "favoriteCharacterIds") as? [Int] ?? []
@@ -25,6 +25,8 @@ class CharacterManager {
     }
     
     func removeFromFavourites(_ characterId: Int) {
-        favourites.removeAll { $0 == characterId }
+        if let index = favourites.firstIndex(of: characterId) {
+            favourites.remove(at: index)
+        }
     }
 }
