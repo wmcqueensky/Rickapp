@@ -8,8 +8,8 @@
 import Foundation
 import Moya
 
-enum CharacterResource: TargetType {
-    case character
+enum CardResource: TargetType {
+    case character(page: Int)
     
     var path: String {
         switch self {
@@ -27,8 +27,8 @@ enum CharacterResource: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .character:
-            return .requestPlain
+        case let .character(page):
+            return .requestParameters(parameters: ["page": page], encoding: URLEncoding.queryString)
         }
     }
 }

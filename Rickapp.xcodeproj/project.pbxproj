@@ -17,8 +17,8 @@
 		F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496222A96296B00BE8298 /* BaseViewModel.swift */; };
 		F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496242A96297B00BE8298 /* BaseViewController.swift */; };
 		F3A496282A96346900BE8298 /* BaseNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496272A96346900BE8298 /* BaseNavigator.swift */; };
-		F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4962E2A963DE100BE8298 /* CharacterResource.swift */; };
-		F3A496332A96416800BE8298 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496322A96416800BE8298 /* CharacterService.swift */; };
+		F3A4962F2A963DE100BE8298 /* CardResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4962E2A963DE100BE8298 /* CardResource.swift */; };
+		F3A496332A96416800BE8298 /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496322A96416800BE8298 /* CardService.swift */; };
 		F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496342A96421A00BE8298 /* BaseNetworkService.swift */; };
 		F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */; };
 		F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */; };
@@ -45,8 +45,8 @@
 		F3A496222A96296B00BE8298 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		F3A496242A96297B00BE8298 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F3A496272A96346900BE8298 /* BaseNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigator.swift; sourceTree = "<group>"; };
-		F3A4962E2A963DE100BE8298 /* CharacterResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResource.swift; sourceTree = "<group>"; };
-		F3A496322A96416800BE8298 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
+		F3A4962E2A963DE100BE8298 /* CardResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardResource.swift; sourceTree = "<group>"; };
+		F3A496322A96416800BE8298 /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
 		F3A496342A96421A00BE8298 /* BaseNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
 		F3A94BC22A8FA60C0003F841 /* Rickapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rickapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,8 +105,8 @@
 		F3A496292A96347500BE8298 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F3A4962E2A963DE100BE8298 /* CharacterResource.swift */,
-				F3A496322A96416800BE8298 /* CharacterService.swift */,
+				F3A4962E2A963DE100BE8298 /* CardResource.swift */,
+				F3A496322A96416800BE8298 /* CardService.swift */,
 				F3A496342A96421A00BE8298 /* BaseNetworkService.swift */,
 			);
 			path = Networking;
@@ -265,13 +265,13 @@
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
 				F3F85CF72A97703A00142443 /* TargetType+Ext.swift in Sources */,
 				F3A94BF92A8FBD850003F841 /* Character.swift in Sources */,
-				F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */,
+				F3A4962F2A963DE100BE8298 /* CardResource.swift in Sources */,
 				F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,
 				F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */,
 				F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */,
-				F3A496332A96416800BE8298 /* CharacterService.swift in Sources */,
+				F3A496332A96416800BE8298 /* CardService.swift in Sources */,
 				F3A496282A96346900BE8298 /* BaseNavigator.swift in Sources */,
 				F392C3F02A9373A6004F8CB1 /* Origin.swift in Sources */,
 			);

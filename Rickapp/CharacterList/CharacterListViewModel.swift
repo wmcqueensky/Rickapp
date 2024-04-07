@@ -10,6 +10,9 @@ import Combine
 
 class CharacterListViewModel: BaseViewModel {
     private var charactersSubject = PassthroughSubject<[Character], Never>()
+    private var currentPage = 1
+    
+    var isLoadingNextPage = false
     
     var charactersPublisher: AnyPublisher<[Character], Never> {
         return charactersSubject.eraseToAnyPublisher()
@@ -23,18 +26,25 @@ class CharacterListViewModel: BaseViewModel {
     
     override func bindToData() {
         super.bindToData()
+        getCharacters(pageNumber: currentPage)
+    }
+    
+    private func getCharacters(pageNumber: Int) {
         
-        CharacterService.shared.getCharacter()
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("Network error: \(error)")
-                }
-            }) { [weak self] characters in
-                self?.characters = characters
+        CardService.shared.getCharacter(page: pageNumber)
+            .sink(receiveCompletion: { _ in }) { [weak self] characters in
+                self?.isLoadingNextPage = false
+                self?.characters.append(contentsOf: characters)
             }
             .store(in: &cancellables)
+    }
+    
+    func getNextPage() {
+        guard isLoadingNextPage else {
+            return
+        }
+        
+        currentPage += 1
+        getCharacters(pageNumber: currentPage)
     }
 }

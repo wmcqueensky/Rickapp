@@ -26,6 +26,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
         tableView.backgroundColor = .backgroundGray
+        tableView.showsVerticalScrollIndicator = false
         
         view.addSubview(navigationBar)
         view.addSubview(tableView)
@@ -35,7 +36,6 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
         super.bindToViewModel()
         
         viewModel.charactersPublisher
-            .receive(on: DispatchQueue.main)
             .sink { [weak self] characters in
                 self?.tableView.reloadData()
             }
@@ -57,6 +57,14 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
 }
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        if indexPath.row >= viewModel.characters.count - 3 {
+            viewModel.isLoadingNextPage = true
+            viewModel.getNextPage()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.characters.count
     }
