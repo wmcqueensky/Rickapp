@@ -10,7 +10,6 @@ import Combine
 
 class CharacterListViewModel: BaseViewModel {
     @Published var characters: [Character] = []
-    var cancellables: Set<AnyCancellable> = []
     
     override func bindToData() {
         CharacterService.shared.getCharacter()

@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 class BaseViewModel: NSObject {
+    var cancellables: Set<AnyCancellable> = []
+    
     func bindToData() {}
 }

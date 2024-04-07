@@ -27,13 +27,5 @@ class BaseNetworkService<T: TargetType> {
             })
             .eraseToAnyPublisher()
     }
-    
-    func requestStatusCode(for type: T) -> AnyPublisher<Bool, MoyaError> {
-        return provider.requestPublisher(type)
-            .map { data in
-                return (200...299).contains(data.statusCode)
-            }
-            .eraseToAnyPublisher()
-    }
 }
 
