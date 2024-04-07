@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CharacterTileTableViewCell: UITableViewCell {
+class CharacterTileTableViewCell: BaseTableViewCell {
     private let characterImageView = UIImageView()
     private let nameLabel = UILabel()
     private let statusLabel = UILabel()
@@ -20,23 +20,14 @@ class CharacterTileTableViewCell: UITableViewCell {
     private let statusStackView = UIStackView()
     private let informationStackView = UIStackView()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-        setupConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     var character = Character() {
         didSet {
             setupCellContent()
         }
     }
     
-    private func setupViews() {
+    override func setupViews() {
+        super.setupViews()
         nameLabel.font = .boldSystemFont(ofSize: 28)
         nameLabel.numberOfLines = 2
         
@@ -83,7 +74,8 @@ class CharacterTileTableViewCell: UITableViewCell {
         contentView.addSubview(characterImageView)
     }
     
-    private func setupConstraints() {
+    override func setupConstraints() {
+        super.setupConstraints()
         statusView.snp.makeConstraints { make in
             make.width.height.equalTo(12)
         }
@@ -93,15 +85,15 @@ class CharacterTileTableViewCell: UITableViewCell {
         }
         
         informationStackView.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview().inset(10)
-            make.trailing.equalToSuperview().inset(18)
+            make.verticalEdges.equalTo(contentView).inset(10)
+            make.trailing.equalTo(contentView).inset(18)
             make.leading.equalTo(characterImageView.snp.trailing)
             make.height.equalTo(characterImageView)
         }
         
         characterImageView.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview().inset(10)
-            make.leading.equalToSuperview().inset(18)
+            make.verticalEdges.equalTo(contentView).inset(10)
+            make.leading.equalTo(contentView).inset(18)
             make.width.height.equalTo(130)
         }
     }

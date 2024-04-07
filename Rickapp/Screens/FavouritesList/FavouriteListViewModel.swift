@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class FavouriteListViewModel: BaseViewModel {
+class FavouriteListViewModel: BaseListViewModel {
     
     override func bindToData() {
         super.bindToData()

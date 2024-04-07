@@ -66,27 +66,19 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         let characterId = viewModel.charactersPublisher.value[indexPath.row].id
-        let isSelected = FavouritesManager.shared.favourites.contains(characterId ?? 0)
-        
+        let isSelected = viewModel.isCharacterSelectedAsFavorite(characterId ?? 0)
+
         cell.character = viewModel.charactersPublisher.value[indexPath.row]
-        cell.setFavouriteButtonSelected(isSelected)
+        cell.setFavouriteButtonSelection(isSelected)
         cell.delegate = self
         
         return cell
     }
     
-    func didTapFavouriteButton(for cell: CharacterTableViewCell) {
+    func didTapFavouriteButton(for cell: CharacterTableViewCell, isSelected: Bool) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         let character = viewModel.charactersPublisher.value[indexPath.row]
-        
-        
-        if cell.isFavouriteButtonSelected() {
-            FavouritesManager.shared.removeFromFavourites(character.id ?? 0)
-        } else {
-            FavouritesManager.shared.addToFavourites(character.id ?? 0)
-        }
-        
-        cell.setFavouriteButtonSelected(!cell.isFavouriteButtonSelected())
-        tableView.reloadData()
+        viewModel.toggleFavoriteStatus(for: character, isSelected: isSelected)
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }

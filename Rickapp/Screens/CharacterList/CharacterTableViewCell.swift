@@ -10,10 +10,10 @@ import SnapKit
 import Kingfisher
 
 protocol CharacterTableViewCellDelegate: AnyObject {
-    func didTapFavouriteButton(for cell: CharacterTableViewCell)
+    func didTapFavouriteButton(for cell: CharacterTableViewCell, isSelected: Bool)
 }
 
-class CharacterTableViewCell: UITableViewCell {
+class CharacterTableViewCell: BaseTableViewCell {
     weak var delegate: CharacterTableViewCellDelegate?
     private let characterStackView = UIStackView()
     private let characterImageView = UIImageView()
@@ -27,23 +27,14 @@ class CharacterTableViewCell: UITableViewCell {
     private let actualLocationLabel = UILabel()
     private let actualOriginLabel = UILabel()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-        setupConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     var character = Character() {
         didSet {
             setupCellContent()
         }
     }
     
-    private func setupViews() {
+    override func setupViews() {
+        super.setupViews()
         nameLabel.font = .boldSystemFont(ofSize: 30)
         nameLabel.numberOfLines = 0
         
@@ -87,17 +78,18 @@ class CharacterTableViewCell: UITableViewCell {
         contentView.addSubview(characterStackView)
     }
     
-    private func setupConstraints() {
+    override func setupConstraints() {
+        super.setupConstraints()
         characterImageView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.top.equalToSuperview().inset(18)
+            make.horizontalEdges.equalTo(contentView).inset(15)
+            make.top.equalTo(contentView).inset(18)
             make.height.equalTo(characterImageView.snp.width)
         }
         
         characterStackView.snp.makeConstraints { make in
             make.top.equalTo(characterImageView.snp.bottom)
-            make.leading.trailing.equalToSuperview().inset(15)
-            make.bottom.equalToSuperview().inset(18)
+            make.horizontalEdges.equalTo(contentView).inset(15)
+            make.bottom.equalTo(contentView).inset(18)
         }
         
         favouriteButton.snp.makeConstraints { make in
@@ -129,17 +121,13 @@ class CharacterTableViewCell: UITableViewCell {
         }
     }
     
-    func isFavouriteButtonSelected() -> Bool {
-        return favouriteButton.isSelected
-    }
-    
-    func setFavouriteButtonSelected(_ isSelected: Bool) {
+    func setFavouriteButtonSelection(_ isSelected: Bool) {
         favouriteButton.isSelected = isSelected
     }
     
     @objc private func favouriteButtonTapped() {
         favouriteButton.animateHeartImage()
-        delegate?.didTapFavouriteButton(for: self)
+        delegate?.didTapFavouriteButton(for: self, isSelected: !favouriteButton.isSelected)
     }
 }
 

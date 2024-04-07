@@ -187,9 +187,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         let characterId = viewModel.characterPublisher.value.id ?? 0
         
         favouriteButton.isSelected.toggle()
-        favouriteButton.isSelected ?
-        FavouritesManager.shared.addToFavourites(characterId) :
-        FavouritesManager.shared.removeFromFavourites(characterId)
+        viewModel.manageFavourites(isSelected: favouriteButton.isSelected, characterId: characterId)
         
         favouriteButton.animateHeartImage()
     }
