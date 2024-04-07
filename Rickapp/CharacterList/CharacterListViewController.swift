@@ -93,6 +93,19 @@ extension CharacterListViewController: UITableViewDataSource {
         cell.actualLocationLabel.text = character.location.name
         cell.actualOriginLabel.text = character.origin.name
         
+        if character.status == "Alive" {
+            cell.statusImage.image = .getImage(.greenStatus)
+        }
+        
+        if character.status == "Dead" {
+            cell.statusImage.image = .getImage(.redStatus)
+            
+        }
+        
+        if character.status == "unknown" {
+            cell.statusImage.image = .getImage(.grayStatus)
+        }
+        
         return cell
     }
 }

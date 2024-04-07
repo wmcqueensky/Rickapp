@@ -13,6 +13,8 @@ class CharacterTableViewCell: UITableViewCell {
     let characterImageView = UIImageView()
     let nameLabel = UILabel()
     let statusLabel = UILabel()
+    var statusImage = UIImageView()
+    let statusStackView = UIStackView()
     let locationLabel = UILabel()
     let originLabel = UILabel()
     let actualLocationLabel = UILabel()
@@ -31,8 +33,14 @@ class CharacterTableViewCell: UITableViewCell {
     func setupViews() {
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 30)
+        nameLabel.numberOfLines = 2
         
         statusLabel.textColor = .white
+        
+        statusImage.contentMode = .scaleAspectFit  // Resize the image to fit within the view
+        
+        statusStackView.axis = .horizontal
+        statusStackView.addArrangedSubviews([statusImage, statusLabel])
         
         locationLabel.text = "Last known location:"
         locationLabel.textColor = .gray
@@ -49,7 +57,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterStackView.spacing = 3
         characterStackView.layer.cornerRadius = 10
         characterStackView.clipsToBounds = true
-        characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusLabel, locationLabel, actualLocationLabel, originLabel, actualOriginLabel])
+        characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel])
         characterStackView.setCustomSpacing(7, after: characterImageView)
         
         isUserInteractionEnabled = false
@@ -67,27 +75,27 @@ class CharacterTableViewCell: UITableViewCell {
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.left.equalTo(characterStackView.snp.left).offset(12)
+            make.leading.equalTo(characterStackView).offset(12)
         }
         
         statusLabel.snp.makeConstraints { make in
-            make.left.equalTo(characterStackView.snp.left).offset(12)
+            make.leading.equalTo(characterStackView).offset(12)
         }
         
         locationLabel.snp.makeConstraints { make in
-            make.left.equalTo(characterStackView.snp.left).offset(12)
+            make.leading.equalTo(characterStackView).offset(12)
         }
         
         actualLocationLabel.snp.makeConstraints { make in
-            make.left.equalTo(characterStackView.snp.left).offset(12)
+            make.leading.equalTo(characterStackView).offset(12)
         }
         
         originLabel.snp.makeConstraints { make in
-            make.left.equalTo(characterStackView.snp.left).offset(12)
+            make.leading.equalTo(characterStackView).offset(12)
         }
         
         actualOriginLabel.snp.makeConstraints { make in
-            make.left.equalTo(characterStackView.snp.left).offset(12)
+            make.leading.equalTo(characterStackView).offset(12)
         }
     }
 }
