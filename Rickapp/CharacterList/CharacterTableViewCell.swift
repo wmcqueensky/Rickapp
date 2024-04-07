@@ -37,9 +37,10 @@ class CharacterTableViewCell: UITableViewCell {
         
         statusLabel.textColor = .white
         
-        statusImage.contentMode = .scaleAspectFit  // Resize the image to fit within the view
-        
+        statusImage.contentMode = .scaleAspectFit
+                
         statusStackView.axis = .horizontal
+        statusStackView.spacing = 6
         statusStackView.addArrangedSubviews([statusImage, statusLabel])
         
         locationLabel.text = "Last known location:"
@@ -59,6 +60,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterStackView.clipsToBounds = true
         characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel])
         characterStackView.setCustomSpacing(7, after: characterImageView)
+        characterStackView.setCustomSpacing(2, after: nameLabel)
         
         isUserInteractionEnabled = false
         backgroundColor = .backgroundGray
@@ -72,14 +74,20 @@ class CharacterTableViewCell: UITableViewCell {
         
         characterImageView.snp.makeConstraints { make in
             make.width.equalTo(characterStackView)
+            make.height.equalTo(310)
         }
         
         nameLabel.snp.makeConstraints { make in
             make.leading.equalTo(characterStackView).offset(12)
         }
         
-        statusLabel.snp.makeConstraints { make in
+        statusStackView.snp.makeConstraints { make in
             make.leading.equalTo(characterStackView).offset(12)
+            make.height.equalTo(13)
+        }
+        
+        statusImage.snp.makeConstraints { make in
+            make.width.height.equalTo(10)
         }
         
         locationLabel.snp.makeConstraints { make in
