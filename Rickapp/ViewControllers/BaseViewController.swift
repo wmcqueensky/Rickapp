@@ -33,6 +33,7 @@ class BaseViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 200
         
+        
         self.view.addSubview(label)
         self.view.addSubview(tableView)
     }
@@ -90,29 +91,4 @@ class BaseViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
-}
-
-struct Character: Decodable {
-    let name: String
-    let status: String
-    let species: String
-    let location: Location
-    let origin: Origin
-    let image: String
-    
-    enum CodingKeys: String, CodingKey {
-        case name, status, species, location, origin, image = "image"
-    }
-}
-
-struct Location: Decodable {
-    let name: String
-}
-
-struct Origin: Decodable {
-    let name: String
-}
-
-struct CharacterResponse: Decodable {
-    let results: [Character]
 }
