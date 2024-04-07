@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */; };
 		F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */; };
-		F3A94BCA2A8FA60C0003F841 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* ViewController.swift */; };
-		F3A94BCF2A8FA60E0003F841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A94BCE2A8FA60E0003F841 /* Assets.xcassets */; };
+		F3A94BCA2A8FA60C0003F841 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* BaseViewController.swift */; };
 		F3A94BD22A8FA60E0003F841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */; };
 		F3A94BDD2A8FA60E0003F841 /* RickappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BDC2A8FA60E0003F841 /* RickappTests.swift */; };
 		F3A94BE72A8FA60E0003F841 /* RickappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BE62A8FA60E0003F841 /* RickappUITests.swift */; };
 		F3A94BE92A8FA60E0003F841 /* RickappUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BE82A8FA60E0003F841 /* RickappUITestsLaunchTests.swift */; };
+		F3A94BF92A8FBD850003F841 /* EpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BF82A8FBD850003F841 /* EpisodeModel.swift */; };
+		F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFC2A90284A0003F841 /* SnapKit */; };
+		F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F3A94BFF2A902C9F0003F841 /* Kingfisher */; };
+		F3A94C032A9032010003F841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A94C022A9032010003F841 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +41,7 @@
 		F3A94BC22A8FA60C0003F841 /* Rickapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rickapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F3A94BC92A8FA60C0003F841 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F3A94BCE2A8FA60E0003F841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F3A94BC92A8FA60C0003F841 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F3A94BD12A8FA60E0003F841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A94BD32A8FA60E0003F841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A94BD82A8FA60E0003F841 /* RickappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,8 @@
 		F3A94BE22A8FA60E0003F841 /* RickappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A94BE62A8FA60E0003F841 /* RickappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickappUITests.swift; sourceTree = "<group>"; };
 		F3A94BE82A8FA60E0003F841 /* RickappUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickappUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F3A94BF82A8FBD850003F841 /* EpisodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModel.swift; sourceTree = "<group>"; };
+		F3A94C022A9032010003F841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../../../Downloads/AppIcons-4/Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A94C002A902C9F0003F841 /* Kingfisher in Frameworks */,
+				F3A94BFD2A90284A0003F841 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,11 +103,11 @@
 		F3A94BC42A8FA60C0003F841 /* Rickapp */ = {
 			isa = PBXGroup;
 			children = (
-				F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */,
-				F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */,
-				F3A94BC92A8FA60C0003F841 /* ViewController.swift */,
-				F3A94BCE2A8FA60E0003F841 /* Assets.xcassets */,
-				F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */,
+				F3A94C012A902DA50003F841 /* App files */,
+				F3A94BF52A8FBB130003F841 /* Model */,
+				F3A94BF72A8FBB970003F841 /* ViewModels */,
+				F3A94BFA2A8FC1C90003F841 /* ViewControllers */,
+				F3A94BF62A8FBB250003F841 /* Views */,
 				F3A94BD32A8FA60E0003F841 /* Info.plist */,
 			);
 			path = Rickapp;
@@ -124,6 +130,47 @@
 			path = RickappUITests;
 			sourceTree = "<group>";
 		};
+		F3A94BF52A8FBB130003F841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3A94BF82A8FBD850003F841 /* EpisodeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F3A94BF62A8FBB250003F841 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F3A94BF72A8FBB970003F841 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F3A94BFA2A8FC1C90003F841 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F3A94BC92A8FA60C0003F841 /* BaseViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F3A94C012A902DA50003F841 /* App files */ = {
+			isa = PBXGroup;
+			children = (
+				F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */,
+				F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */,
+				F3A94BD02A8FA60E0003F841 /* LaunchScreen.storyboard */,
+				F3A94C022A9032010003F841 /* Assets.xcassets */,
+			);
+			path = "App files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +187,10 @@
 			dependencies = (
 			);
 			name = Rickapp;
+			packageProductDependencies = (
+				F3A94BFC2A90284A0003F841 /* SnapKit */,
+				F3A94BFF2A902C9F0003F841 /* Kingfisher */,
+			);
 			productName = Rickapp;
 			productReference = F3A94BC22A8FA60C0003F841 /* Rickapp.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +263,10 @@
 				Base,
 			);
 			mainGroup = F3A94BB92A8FA60C0003F841;
+			packageReferences = (
+				F3A94BFB2A90284A0003F841 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				F3A94BFE2A902C9F0003F841 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = F3A94BC32A8FA60C0003F841 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -228,8 +283,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3A94C032A9032010003F841 /* Assets.xcassets in Resources */,
 				F3A94BD22A8FA60E0003F841 /* LaunchScreen.storyboard in Resources */,
-				F3A94BCF2A8FA60E0003F841 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3A94BCA2A8FA60C0003F841 /* ViewController.swift in Sources */,
+				F3A94BCA2A8FA60C0003F841 /* BaseViewController.swift in Sources */,
+				F3A94BF92A8FBD850003F841 /* EpisodeModel.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,
 			);
@@ -588,6 +644,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F3A94BFB2A90284A0003F841 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		F3A94BFE2A902C9F0003F841 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.6.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F3A94BFC2A90284A0003F841 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3A94BFB2A90284A0003F841 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		F3A94BFF2A902C9F0003F841 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3A94BFE2A902C9F0003F841 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F3A94BBA2A8FA60C0003F841 /* Project object */;
 }
