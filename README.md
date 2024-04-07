@@ -3,11 +3,13 @@
 This iOS app was created to learn and practice fundamental UIKit features, IOS development, MVVM design pattern while using the [Rick and Morty API](https://rickandmortyapi.com).
 
 ## Photos
-![Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 28](https://github.com/wmcqueensky/Rickapp/assets/79480681/171bad50-e5d0-4e77-ae4b-ce8868114779)
-![Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24](https://github.com/wmcqueensky/Rickapp/assets/79480681/aa015326-aa43-4dbb-ac4a-8603ec7e8daa)
-![Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 16](https://github.com/wmcqueensky/Rickapp/assets/79480681/7eefc7a9-b1b4-45e6-8f77-b0b98df310c6)
-![Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 46 51](https://github.com/wmcqueensky/Rickapp/assets/79480681/b51d1a89-6d1a-4cbb-822b-497bb5da0cdc)
-![Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 50](https://github.com/wmcqueensky/Rickapp/assets/79480681/a374e700-ed12-427a-975c-85d085a409c8)
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/171bad50-e5d0-4e77-ae4b-ce8868114779" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 28">
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/aa015326-aa43-4dbb-ac4a-8603ec7e8daa" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24">
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/7eefc7a9-b1b4-45e6-8f77-b0b98df310c6" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 16">
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/b51d1a89-6d1a-4cbb-822b-497bb5da0cdc" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 46 51">
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/a374e700-ed12-427a-975c-85d085a409c8" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 50">
+
+## Features
 
 
 ## Features
