@@ -23,8 +23,7 @@ enum MainRoutes: Route {
     
     private func buildCharacterCardViewController(characterId: Int) -> UIViewController {
         let controller = CharacterCardViewController()
-        let viewModel = CharacterCardViewModel()
-        viewModel.fetchCharacterById(characterId)
+        let viewModel = CharacterCardViewModel(characterId)
         controller.viewModel = viewModel
         return controller
     }

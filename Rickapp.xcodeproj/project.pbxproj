@@ -41,6 +41,7 @@
 		F3CA00A12A9CDC80003F219D /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */; };
 		F3CA00A32A9CE242003F219D /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CA00A22A9CE242003F219D /* AppNavigator.swift */; };
 		F3CA00A52A9CE2CD003F219D /* MainRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CA00A42A9CE2CD003F219D /* MainRoutes.swift */; };
+		F3CA970C2AA1E59200AEBE8E /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CA970B2AA1E59200AEBE8E /* CharacterManager.swift */; };
 		F3F85CF72A97703A00142443 /* TargetType+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F85CF62A97703A00142443 /* TargetType+Ext.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		F3CA00A02A9CDC80003F219D /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
 		F3CA00A22A9CE242003F219D /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		F3CA00A42A9CE2CD003F219D /* MainRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRoutes.swift; sourceTree = "<group>"; };
+		F3CA970B2AA1E59200AEBE8E /* CharacterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterManager.swift; sourceTree = "<group>"; };
 		F3F85CF62A97703A00142443 /* TargetType+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetType+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 		F3A94BC42A8FA60C0003F841 /* Rickapp */ = {
 			isa = PBXGroup;
 			children = (
+				F3CA970A2AA1E56900AEBE8E /* Managers */,
 				F3C74B432A9F7A4C0008DC9F /* Common */,
 				F39B89492A9E01B200C2EE81 /* Screens */,
 				F3CA00A82A9CF26A003F219D /* BaseElements */,
@@ -250,6 +253,14 @@
 				F3C74B412A9F662B0008DC9F /* BaseButton.swift */,
 			);
 			path = BaseElements;
+			sourceTree = "<group>";
+		};
+		F3CA970A2AA1E56900AEBE8E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F3CA970B2AA1E59200AEBE8E /* CharacterManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 			files = (
 				F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */,
 				F390EA832A9BF8BE00DC4903 /* CharacterCardViewController.swift in Sources */,
+				F3CA970C2AA1E59200AEBE8E /* CharacterManager.swift in Sources */,
 				F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */,
 				F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */,
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,

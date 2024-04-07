@@ -15,19 +15,8 @@ class FavouriteButton: BaseButton {
     override var isSelected: Bool {
         didSet {
             setImage(isSelected ? selectedImage : unselectedImage, for: .normal)
+            tintColor = isSelected ? UIColor.red : UIColor.white
         }
-    }
-    
-    override func setupViews() {
-        super.setupViews()
-        setImage(isSelected ? selectedImage : unselectedImage, for: .normal)
-    }
-    
-    override func setupConstraints() {
-        super.setupConstraints()
-        self.snp.makeConstraints({ make in
-            make.width.height.equalTo(40)
-        })
     }
 }
 

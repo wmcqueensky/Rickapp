@@ -46,7 +46,7 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
         nameLabel.font = .boldSystemFont(ofSize: 50)
         nameLabel.numberOfLines = 0
         
-        favouriteButton.addTarget(self, action: #selector(FavouriteButtonTapped), for: .touchUpInside)
+        favouriteButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
         
         statusLabel.textColor = .white
         
@@ -151,12 +151,16 @@ class CharacterCardViewController: BaseViewController<CharacterCardViewModel> {
             statusView.backgroundColor = .clear
         }
         
-        favouriteButton.isSelected = BaseViewModel.favourites.value.contains(character)
+        favouriteButton.isSelected = CharacterManager.shared.favourites.contains(character.id ?? 0)
     }
     
-    @objc func FavouriteButtonTapped() {
+    @objc private func favouriteButtonTapped() {
         favouriteButton.isSelected.toggle()
-        
-        favouriteButton.isSelected ? viewModel.addToFavourites(viewModel.characterPublisher.value) : viewModel.removeFromFavourites(viewModel.characterPublisher.value)
+        favouriteButton.isSelected ?
+        CharacterManager.shared.addToFavourites(viewModel.characterPublisher.value.id ?? 0) :
+        CharacterManager.shared.removeFromFavourites(viewModel.characterPublisher.value.id ?? 0)
+        print(CharacterManager.shared.favourites)
+        let idsString = CharacterManager.shared.favourites.map(String.init).joined(separator: ",")
+        print(idsString)
     }
 }

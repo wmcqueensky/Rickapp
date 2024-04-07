@@ -9,6 +9,12 @@ import Foundation
 import Combine
 
 class CharacterCardViewModel: BaseViewModel {
+    
+    init(_ characterId: Int) {
+        super.init()
+        self.fetchCharacterById(characterId)
+    }
+    
     func fetchCharacterById(_ characterId: Int) {
         CardService.shared.getCharacterById(characterId)
             .sink(receiveCompletion: { _ in }) { [weak self] character in
