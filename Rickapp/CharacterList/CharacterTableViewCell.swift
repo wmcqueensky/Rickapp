@@ -7,18 +7,19 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class CharacterTableViewCell: UITableViewCell {
-    let characterStackView = UIStackView()
-    let characterImageView = UIImageView()
-    let nameLabel = UILabel()
-    let statusLabel = UILabel()
-    var statusImage = UIImageView()
-    let statusStackView = UIStackView()
-    let locationLabel = UILabel()
-    let originLabel = UILabel()
-    let actualLocationLabel = UILabel()
-    let actualOriginLabel = UILabel()
+    private let characterStackView = UIStackView()
+    private let characterImageView = UIImageView()
+    private let nameLabel = UILabel()
+    private let statusLabel = UILabel()
+    private var statusImage = UIImageView()
+    private let statusStackView = UIStackView()
+    private let locationLabel = UILabel()
+    private let originLabel = UILabel()
+    private let actualLocationLabel = UILabel()
+    private let actualOriginLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,6 +31,27 @@ class CharacterTableViewCell: UITableViewCell {
         super.init(coder: coder)
     }
     
+    func configure(with character: Character) {
+        characterImageView.kf.setImage(with: URL(string: character.image ?? ""))
+        nameLabel.text = character.name
+        statusLabel.text = (character.status ?? "") + " - " + (character.species ?? "")
+        actualLocationLabel.text = character.location?.name ?? ""
+        actualOriginLabel.text = character.origin?.name ?? ""
+        
+        if character.status == "Alive" {
+            statusImage.image = .getImage(.greenStatus)
+        }
+        
+        if character.status == "Dead" {
+            statusImage.image = .getImage(.redStatus)
+            
+        }
+        
+        if character.status == "unknown" {
+            statusImage.image = .getImage(.grayStatus)
+        }
+    }
+    
     func setupViews() {
         nameLabel.textColor = .white
         nameLabel.font = .boldSystemFont(ofSize: 30)
@@ -38,7 +60,7 @@ class CharacterTableViewCell: UITableViewCell {
         statusLabel.textColor = .white
         
         statusImage.contentMode = .scaleAspectFit
-                
+        
         statusStackView.axis = .horizontal
         statusStackView.spacing = 6
         statusStackView.addArrangedSubviews([statusImage, statusLabel])
@@ -59,8 +81,6 @@ class CharacterTableViewCell: UITableViewCell {
         characterStackView.layer.cornerRadius = 10
         characterStackView.clipsToBounds = true
         characterStackView.addArrangedSubviews([characterImageView, nameLabel, statusStackView, locationLabel, actualLocationLabel, originLabel, actualOriginLabel])
-        characterStackView.setCustomSpacing(7, after: characterImageView)
-        characterStackView.setCustomSpacing(2, after: nameLabel)
         
         isUserInteractionEnabled = false
         backgroundColor = .backgroundGray
@@ -104,7 +124,6 @@ class CharacterTableViewCell: UITableViewCell {
         
         actualOriginLabel.snp.makeConstraints { make in
             make.leading.equalTo(characterStackView.snp.leading).offset(12)
-            make.bottom.equalTo(characterStackView.snp.bottom).offset(20)
         }
     }
 }
