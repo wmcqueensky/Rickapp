@@ -34,7 +34,7 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     
     override func setupConstraints() {
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }

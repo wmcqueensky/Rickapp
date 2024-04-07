@@ -89,7 +89,7 @@ class CharacterTableViewCell: UITableViewCell {
         characterImageView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)
             make.top.equalToSuperview().inset(18)
-            make.height.equalTo(310)
+            make.height.equalTo(characterImageView.snp.width).multipliedBy(1.1)
         }
         
         characterStackView.snp.makeConstraints { make in
