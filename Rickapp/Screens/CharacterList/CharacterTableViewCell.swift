@@ -138,7 +138,6 @@ class CharacterTableViewCell: UITableViewCell {
     }
     
     @objc private func favouriteButtonTapped() {
-        print("Button tapped")
         favouriteButton.animateHeartImage()
         delegate?.didTapFavouriteButton(for: self)
     }

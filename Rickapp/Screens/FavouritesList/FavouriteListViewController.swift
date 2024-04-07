@@ -13,7 +13,7 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     
     override func bindToViewModel() {
         super.bindToViewModel()
-        viewModel.favouritesPublisher
+        viewModel.charactersPublisher
             .sink { [weak self] characters in
                 self?.tableView.reloadData()
             }
@@ -48,20 +48,20 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
 
 extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegate, CharacterTableViewCellDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let characterId = viewModel.favouritesPublisher.value[indexPath.row].id ?? 0
+        let characterId = viewModel.charactersPublisher.value[indexPath.row].id ?? 0
         viewModel.getCharacterById(characterId)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.favouritesPublisher.value.count
+        return viewModel.charactersPublisher.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
-        let characterId = viewModel.favouritesPublisher.value[indexPath.row].id
+        let characterId = viewModel.charactersPublisher.value[indexPath.row].id
         
-        cell.character = viewModel.favouritesPublisher.value[indexPath.row]
+        cell.character = viewModel.charactersPublisher.value[indexPath.row]
         cell.setFavouriteButtonSelected(FavouritesManager.shared.favourites.contains(characterId ?? 0))
         cell.delegate = self
         
@@ -70,7 +70,7 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
     
     func didTapFavouriteButton(for cell: CharacterTableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        let character = viewModel.favouritesPublisher.value[indexPath.row]
+        let character = viewModel.charactersPublisher.value[indexPath.row]
         
         if cell.isFavouriteButtonSelected() {
             FavouritesManager.shared.removeFromFavourites(character.id ?? 0)

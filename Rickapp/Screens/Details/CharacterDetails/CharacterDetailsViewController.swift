@@ -139,13 +139,11 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
         actualSpeciesLabel.text = character.species ?? ""
         
         if let episodes = character.episode {
-            
             for episodeURL in episodes {
                 if let episodeNumber = episodeURL.split(separator: "/").last {
                     episodesNumbers.append(String(episodeNumber))
+                    episodesUrls.append(episodeURL)
                 }
-                
-                episodesUrls.append(episodeURL)
             }
             
             for episode in episodesNumbers {
@@ -153,7 +151,7 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
                 episodeButton.setTitle("Episode: \(episode)", for: .normal)
                 episodeButton.addTarget(self, action: #selector(episodeButtonTapped(_:)), for: .touchUpInside)
                 
-                episodeButtonStackView.addArrangedSubviews([episodeButton, DividerView()])
+                episodeButtonStackView.addArrangedSubviews([episodeButton])
             }
         }
         
@@ -174,15 +172,12 @@ class CharacterDetailsViewController: BaseViewController<CharacterDetailsViewMod
     }
     
     func animateStatusView() {
-        let scaleUpTransform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        let scaleDownTransform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        
         UIView.animate(withDuration: 0.5, delay: 0.2, options: [.autoreverse, .repeat], animations: {
-            self.statusView.transform = scaleUpTransform
+            self.statusView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             self.statusView.alpha = 0.9
         }) { (finished) in
             if finished {
-                self.statusView.transform = scaleDownTransform
+                self.statusView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
                 self.statusView.alpha = 1.0
             }
         }
