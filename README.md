@@ -5,8 +5,9 @@ This iOS app was created to learn and practice fundamental UIKit features, IOS d
 ## Photos
 <img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/171bad50-e5d0-4e77-ae4b-ce8868114779" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 28">
 <img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/aa015326-aa43-4dbb-ac4a-8603ec7e8daa" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24">
-<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/7eefc7a9-b1b4-45e6-8f77-b0b98df310c6" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 16">
-<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/b51d1a89-6d1a-4cbb-822b-497bb5da0cdc" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 46 51">
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/a718bc0f-c361-4921-bd3d-c5e3ca36c50d" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24">
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/5ba23f9a-6f93-48de-acc0-a802426cf72d" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24">
+<img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/a0632cbd-cbdc-40d7-9b37-5a1b3438501b" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24">
 <img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/a374e700-ed12-427a-975c-85d085a409c8" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 50">
 
 ## Features
@@ -68,4 +69,3 @@ Make sure to install these dependencies using CocoaPods or Swift Package Manager
 ## Acknowledgments
 
 The Rick and Morty API (https://rickandmortyapi.com) for providing the data used in this app.
-UIKit, SnapKit, Combine, and Moya for enabling the development of this iOS app.
