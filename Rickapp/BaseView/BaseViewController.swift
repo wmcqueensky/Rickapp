@@ -12,8 +12,7 @@ import Combine
 
 class BaseViewController<T: BaseViewModel>: UIViewController, UIScrollViewDelegate {
     var viewModel: T!
-    var cancellables = Set<AnyCancellable>()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundGray

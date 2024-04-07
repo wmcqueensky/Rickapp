@@ -13,6 +13,6 @@ class CharacterService: BaseNetworkService<CharacterResource> {
     static let shared = CharacterService()
     
     func getCharacter() -> AnyPublisher<[Character], Error> {
-        return request(for: .character)
+        return request(for: .character, atKeyPath: "results")
     }
 }

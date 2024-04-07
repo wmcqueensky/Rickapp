@@ -11,15 +11,6 @@ import Moya
 enum CharacterResource: TargetType {
     case character
     
-    var baseURL: URL {
-        let baseUrlString = Bundle.main.object(forInfoDictionaryKey: "Base URL") as? String ?? ""
-        return URL(string: baseUrlString)!
-    }
-    
-    var headers: [String : String]? {
-        return nil
-    }
-    
     var path: String {
         switch self {
         case .character:
@@ -39,10 +30,6 @@ enum CharacterResource: TargetType {
         case .character:
             return .requestPlain
         }
-    }
-    
-    var sampleData: Data {
-        return Data()
     }
 }
 

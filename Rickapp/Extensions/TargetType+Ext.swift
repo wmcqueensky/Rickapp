@@ -9,7 +9,9 @@ extension TargetType {
         return URL(string: baseUrlString)!
     }
     
-    var headers: [String: String]? { return nil }
+    var headers: [String : String]? {
+        return nil
+    }
     
     var sampleData: Data { return Data() }
 }

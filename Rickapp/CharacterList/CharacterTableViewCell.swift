@@ -61,7 +61,6 @@ class CharacterTableViewCell: UITableViewCell {
         
         statusLabel.textColor = .white
         
-        statusView.bounds = CGRect(x: 0, y: 0, width: 10, height: 10)
         statusView.layer.cornerRadius = 5
         
         statusWrappingView.addSubview(statusView)
@@ -98,7 +97,7 @@ class CharacterTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         characterStackView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(-15)
+            make.leading.equalToSuperview().offset(15)
             make.verticalEdges.equalToSuperview().inset(15)
             make.horizontalEdges.equalToSuperview().inset(28)
         }

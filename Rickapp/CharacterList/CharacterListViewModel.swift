@@ -16,7 +16,14 @@ class CharacterListViewModel: BaseViewModel {
         
         CharacterService.shared.getCharacter()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }) { [weak self] characters in
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("Network error: \(error)")
+                }
+            }) { [weak self] characters in
                 self?.characters = characters
             }
             .store(in: &cancellables)
