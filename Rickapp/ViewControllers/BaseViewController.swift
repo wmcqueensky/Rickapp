@@ -14,13 +14,30 @@ class BaseViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let label = UILabel()
     let tableView = UITableView()
     
-    var characters: [Character] = []
+    var characters: [Character] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var networkProvider: Networkable!
+    
+    init(networkProvider: Networkable) {
+        super.init(nibName: nil, bundle: nil)
+        self.networkProvider = networkProvider
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setUpConstraints()
-        fetchCharacterData()
+        networkProvider.getNewCharacters(page: 5) { [weak self] characters in
+            self?.characters = characters
+        }
     }
     
     func setupViews() {
@@ -50,40 +67,24 @@ class BaseViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func fetchCharacterData() {
-        guard let url = URL(string: baseURL) else {
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                print("Error fetching data: \(error)")
-                return
-            }
-            
-            if let data = data {
-                do {
-                    let response = try JSONDecoder().decode(CharacterResponse.self, from: data)
-                    self.characters = response.results
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                } catch {
-                    print("Error decoding data: \(error)")
-                }
-            }
-        }.resume()
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         let character = characters[indexPath.row]
         
-        cell.textLabel?.text = character.name + "\n\(character.status) - \(character.species) \nLast known location:\n\(character.location.name) \nFirst seen in:\n\(character.origin.name)"
+        cell.textLabel?.text = character.name
+        
+        var detailText = "\(character.status) - \(character.species)"
+        
+        detailText += "\nLast known location:\n\(character.location.name)"
+        detailText += "\nFirst seen in:\n\(character.origin.name)"
+        
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.detailTextLabel?.text = detailText
         
         if let imageURL = URL(string: character.image) {
             cell.imageView?.kf.setImage(with: imageURL)
