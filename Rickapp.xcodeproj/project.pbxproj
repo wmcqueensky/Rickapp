@@ -17,6 +17,10 @@
 		F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */; };
 		F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496222A96296B00BE8298 /* BaseViewModel.swift */; };
 		F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496242A96297B00BE8298 /* BaseViewController.swift */; };
+		F3A496282A96346900BE8298 /* BaseNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496272A96346900BE8298 /* BaseNavigator.swift */; };
+		F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A4962E2A963DE100BE8298 /* CharacterResource.swift */; };
+		F3A496332A96416800BE8298 /* CharacterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496322A96416800BE8298 /* CharacterService.swift */; };
+		F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A496342A96421A00BE8298 /* BaseNetworkService.swift */; };
 		F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */; };
 		F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */; };
 		F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A94BC92A8FA60C0003F841 /* CharacterListViewController.swift */; };
@@ -41,6 +45,10 @@
 		F39E9E942A94A0E4003D722E /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		F3A496222A96296B00BE8298 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		F3A496242A96297B00BE8298 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F3A496272A96346900BE8298 /* BaseNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigator.swift; sourceTree = "<group>"; };
+		F3A4962E2A963DE100BE8298 /* CharacterResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterResource.swift; sourceTree = "<group>"; };
+		F3A496322A96416800BE8298 /* CharacterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterService.swift; sourceTree = "<group>"; };
+		F3A496342A96421A00BE8298 /* BaseNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkService.swift; sourceTree = "<group>"; };
 		F3A94BC22A8FA60C0003F841 /* Rickapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rickapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A94BC52A8FA60C0003F841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A94BC72A8FA60C0003F841 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,11 +94,22 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
-		F3A496262A9633EC00BE8298 /* Navigator */ = {
+		F3A496262A9633EC00BE8298 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				F3A496272A96346900BE8298 /* BaseNavigator.swift */,
 			);
-			path = Navigator;
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		F3A496292A96347500BE8298 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F3A4962E2A963DE100BE8298 /* CharacterResource.swift */,
+				F3A496322A96416800BE8298 /* CharacterService.swift */,
+				F3A496342A96421A00BE8298 /* BaseNetworkService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		F3A94BB92A8FA60C0003F841 = {
@@ -112,13 +131,14 @@
 		F3A94BC42A8FA60C0003F841 /* Rickapp */ = {
 			isa = PBXGroup;
 			children = (
-				F3A496262A9633EC00BE8298 /* Navigator */,
-				F3A496212A96294D00BE8298 /* BaseView */,
+				F3A94BD32A8FA60E0003F841 /* Info.plist */,
 				F39E9E8E2A94964B003D722E /* Extensions */,
+				F3A496292A96347500BE8298 /* Networking */,
+				F3A496262A9633EC00BE8298 /* Navigation */,
 				F3A94C012A902DA50003F841 /* App files */,
 				F3A94BF52A8FBB130003F841 /* Model */,
 				F3A94BFA2A8FC1C90003F841 /* CharacterList */,
-				F3A94BD32A8FA60E0003F841 /* Info.plist */,
+				F3A496212A96294D00BE8298 /* BaseView */,
 			);
 			path = Rickapp;
 			sourceTree = "<group>";
@@ -244,11 +264,15 @@
 				F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */,
 				F3A496232A96296B00BE8298 /* BaseViewModel.swift in Sources */,
 				F3A94BF92A8FBD850003F841 /* Character.swift in Sources */,
+				F3A4962F2A963DE100BE8298 /* CharacterResource.swift in Sources */,
 				F3A496252A96297B00BE8298 /* BaseViewController.swift in Sources */,
 				F3A94BC62A8FA60C0003F841 /* AppDelegate.swift in Sources */,
 				F3A94BC82A8FA60C0003F841 /* SceneDelegate.swift in Sources */,
 				F38EF5EB2A95004E00C279A9 /* UIImage+Ext.swift in Sources */,
 				F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */,
+				F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */,
+				F3A496332A96416800BE8298 /* CharacterService.swift in Sources */,
+				F3A496282A96346900BE8298 /* BaseNavigator.swift in Sources */,
 				F392C3F02A9373A6004F8CB1 /* Origin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +418,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,6 +445,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
