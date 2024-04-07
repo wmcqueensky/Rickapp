@@ -13,6 +13,7 @@ class FavouriteListViewModel: BaseViewModel {
     private var nextPage: String?
     private var previousPage: String?
     var charactersPublisher = CurrentValueSubject<[Character], Never>([])
+    var isFollowed = PassthroughSubject<Bool, Never>()
 
     override func bindToData() {
         super.bindToData()

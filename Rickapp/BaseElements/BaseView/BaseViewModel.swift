@@ -10,6 +10,7 @@ import Combine
 
 class BaseViewModel: NSObject {
     var cancellables: Set<AnyCancellable> = []
+    var favourites: [Character] = []
     
     func bindToData() {}
 }

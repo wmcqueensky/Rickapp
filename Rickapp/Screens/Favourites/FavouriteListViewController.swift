@@ -38,13 +38,6 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
         viewModel.getCharacterById(characterId)
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let rowCount = viewModel.charactersPublisher.value.count
-        if indexPath.row == rowCount - 3 {
-            viewModel.getNextCharactersPage()
-        }
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.charactersPublisher.value.count
     }
