@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CharacterListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CharacterListViewController: UIViewController, UITableViewDelegate {
     let baseURL = "https://rickandmortyapi.com/api/character"
-    let label = UILabel()
+    let titleLabel = UILabel()
     let tableView = UITableView()
     
     var characters: [Character] = []
@@ -24,27 +24,28 @@ class CharacterListViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func setupViews() {
-        label.text = "Rickapp"
-        label.textColor = .white
-        label.font = .italicSystemFont(ofSize: CGFloat(30))
+        titleLabel.text = "Rickapp"
+        titleLabel.textColor = .white
+        titleLabel.font = .italicSystemFont(ofSize: CGFloat(30))
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 500
+        tableView.backgroundColor = .backgroundGray
         
-        self.view.addSubview(label)
-        self.view.addSubview(tableView)
+        view.addSubview(titleLabel)
+        view.addSubview(tableView)
     }
     
     func setUpConstraints() {
-        label.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(label.snp.bottom).offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
@@ -73,7 +74,9 @@ class CharacterListViewController: UIViewController, UITableViewDataSource, UITa
             }
         }.resume()
     }
-    
+}
+
+extension CharacterListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
     }
@@ -84,9 +87,6 @@ class CharacterListViewController: UIViewController, UITableViewDataSource, UITa
         
         let character = characters[indexPath.row]
         
-        cell.textLabel?.removeFromSuperview()
-        cell.isUserInteractionEnabled = false
-        cell.backgroundColor = .backgroundGray
         cell.characterImageView.kf.setImage(with: URL(string: character.image))
         cell.nameLabel.text = character.name
         cell.statusLabel.text = character.status + " - " + character.species
@@ -95,5 +95,4 @@ class CharacterListViewController: UIViewController, UITableViewDataSource, UITa
         
         return cell
     }
-    
 }
