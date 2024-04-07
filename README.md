@@ -3,6 +3,7 @@
 This iOS app was created to learn and practice fundamental UIKit features, IOS development, MVVM design pattern while using the [Rick and Morty API](https://rickandmortyapi.com).
 
 ## Photos
+
 <img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/171bad50-e5d0-4e77-ae4b-ce8868114779" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 28">
 <img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/aa015326-aa43-4dbb-ac4a-8603ec7e8daa" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24">
 <img src="https://github.com/wmcqueensky/Rickapp/assets/79480681/a718bc0f-c361-4921-bd3d-c5e3ca36c50d" width="200" alt="Simulator Screenshot - iPhone 14 - 2023-09-24 at 22 50 24">
@@ -16,7 +17,7 @@ This iOS app was created to learn and practice fundamental UIKit features, IOS d
 - Load more characters when scrolling to the end of the list.
 - View character details by tapping on a character in the list.
 - Mark characters as favorites.
-- Search for characters
+- Search for characters.
 
 ## Prerequisites
 
@@ -34,9 +35,11 @@ Follow these steps to run the Rick and Morty iOS app:
 
    ```bash
    git clone <repository_url>
+   ```
+
 2. Open the project in Xcode by double-clicking the .xcodeproj file.
 3. Configure the Base URL:
-Open the Info.plist file in your Xcode project and add a new key-value pair for "Base URL" with the value https://rickandmortyapi.com/api. This URL is used for API requests.
+   Open the Info.plist file in your Xcode project and add a new key-value pair for "Base URL" with the value https://rickandmortyapi.com/api. This URL is used for API requests.
 4. Build and run the app on the iOS Simulator or a physical iOS device. You can choose the target device from the dropdown menu in Xcode.
 
 ## How to Use
@@ -51,7 +54,7 @@ Open the Info.plist file in your Xcode project and add a new key-value pair for 
 ## Code Structure
 
 The app is structured into a MVVM design pattern.
-   
+
 ## Dependencies
 
 This project uses the following dependencies:
@@ -61,7 +64,7 @@ This project uses the following dependencies:
 - Combine: For reactive programming and handling asynchronous tasks.
 - Moya: For simplifying network requests.
 - Kingfisher: For image loading and caching.
-  
+
 Make sure to install these dependencies using CocoaPods or Swift Package Manager if they are not already installed.
 
 ## Acknowledgments
