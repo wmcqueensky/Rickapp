@@ -10,10 +10,10 @@ import Combine
 
 class EpisodeDetailsViewModel: BaseViewModel {
     var episodePublisher = CurrentValueSubject<Episode, Never>(Episode())
+    var url = ""
     
-    init(_ episodeUrl: String) {
-        super.init()
-        self.fetchLocation(episodeUrl)
+    override func bindToData() {
+        fetchLocation(url)
     }
     
     func fetchLocation(_ episodeUrl: String) {

@@ -11,25 +11,16 @@ import SnapKit
 class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     private let tableView = UITableView()
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(handleFavouritesUpdated), name: .favouritesUpdated, object: nil)
-    }
-    
     override func bindToViewModel() {
-            viewModel.favouritesPublisher
-                .sink { [weak self] characters in
-                    self?.tableView.reloadData()
-                }
-                .store(in: &viewModel.cancellables)
-
+        viewModel.favouritesPublisher
+            .sink { [weak self] characters in
+                self?.tableView.reloadData()
+            }
+            .store(in: &viewModel.cancellables)
     }
     
     override func setupViews() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleFavouritesUpdated), name: .favouritesUpdated, object: nil)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: String(describing: CharacterTableViewCell.self))
@@ -47,7 +38,6 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     
     @objc func handleFavouritesUpdated() {
         viewModel.reloadFavourites()
-        tableView.reloadData()
     }
     
     deinit {
@@ -55,7 +45,7 @@ class FavouriteListViewController: BaseViewController<FavouriteListViewModel> {
     }
 }
 
-extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegate {
+extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegate, CharacterTableViewCellDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let characterId = viewModel.favouritesPublisher.value[indexPath.row].id ?? 0
         viewModel.getCharacterById(characterId)
@@ -69,10 +59,21 @@ extension FavouriteListViewController: UITableViewDataSource, UITableViewDelegat
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        if indexPath.row < viewModel.favouritesPublisher.value.count {
-            cell.character = viewModel.favouritesPublisher.value[indexPath.row]
-        }
+        cell.character = viewModel.favouritesPublisher.value[indexPath.row]
+        cell.delegate = self
         
         return cell
+    }
+    
+    func didTapFavouriteButton(for cell: CharacterTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let character = viewModel.favouritesPublisher.value[indexPath.row]
+        
+        if cell.favouriteButton.isSelected {
+            FavouritesManager.shared.removeFromFavourites(character.id ?? 0)
+        } else {
+            FavouritesManager.shared.addToFavourites(character.id ?? 0)
+        }
+        tableView.reloadData()
     }
 }

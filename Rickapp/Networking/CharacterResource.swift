@@ -12,15 +12,19 @@ enum CharacterResource: TargetType {
     
     case character
     case getElementbyUrl(url: String)
-    case getCharacterById(characterId: Int)
+    case getSingleCharacterById(characterId: Int)
     case getFavouritesById(characterIds: [Int])
+    case getManyCharactersById(characterIds: [Int])
     
     var path: String {
         switch self {
         case .character:
             return "/character"
-        case .getCharacterById(let characterId):
+        case .getSingleCharacterById(let characterId):
             return "/character/\(characterId)"
+        case .getManyCharactersById(let characterIds):
+            let idsString = characterIds.map{ String($0) }.joined(separator: ",")
+            return "/character/\(idsString)"
         default:
             return ""
         }
@@ -38,14 +42,14 @@ enum CharacterResource: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .character, .getCharacterById, .getFavouritesById, .getElementbyUrl:
+        case .character, .getSingleCharacterById, .getManyCharactersById, .getFavouritesById, .getElementbyUrl:
             return .get
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .character, .getCharacterById, .getFavouritesById, .getElementbyUrl:
+        case .character, .getSingleCharacterById, .getManyCharactersById, .getFavouritesById, .getElementbyUrl:
             return .requestPlain
         }
     }
