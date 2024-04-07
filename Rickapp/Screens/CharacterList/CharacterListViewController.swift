@@ -24,9 +24,9 @@ class CharacterListViewController: BaseViewController<CharacterListViewModel> {
     override func bindToViewModel() {
         super.bindToViewModel()
         
-        viewModel.characters
+        viewModel.charactersPublisher
             .sink { [weak self] characters in
-                self?.viewModel.characterList.results = characters
+                self?.viewModel.characters = characters
                 self?.tableView.reloadData()
             }
             .store(in: &viewModel.cancellables)
@@ -43,26 +43,26 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let characterId = viewModel.characterList.results?[indexPath.row].id else { return }
+        guard let characterId = viewModel.characters?[indexPath.row].id else { return }
         viewModel.getCharacterById(characterId)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let rowCount = viewModel.characterList.results?.count ?? 0
+        let rowCount = viewModel.characters?.count ?? 0
         if indexPath.row >= rowCount - 3 {
             viewModel.getNextCharactersPage()
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.characterList.results?.count ?? 0
+        return viewModel.characters?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CharacterTableViewCell.self)) as? CharacterTableViewCell else { return UITableViewCell() }
         
-        cell.character = viewModel.characterList.results?[indexPath.row] ?? Character()
+        cell.character = viewModel.characters?[indexPath.row] ?? Character()
         
         return cell
     }
