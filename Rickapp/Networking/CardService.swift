@@ -12,7 +12,11 @@ import Moya
 class CardService: BaseNetworkService<CardResource> {
     static let shared = CardService()
     
-    func getCharacter(page: Int) -> AnyPublisher<[Character], Error> {
-        return request(for: .character(page: page), atKeyPath: "results")
+    func getCharacters() -> AnyPublisher<CharacterList, Error> {
+        return request(for: .character)
+    }
+    
+    func getNextCharactersPage(url: String) -> AnyPublisher<CharacterList, Error> {
+        return request(for: .nextCharactersPage(url: url))
     }
 }

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Location: Codable {
-    var name: String?
-}
+//struct Location: Codable {
+//    var name: String?
+//}

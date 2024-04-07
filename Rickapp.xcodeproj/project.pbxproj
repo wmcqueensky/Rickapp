@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F375AAF92A9A4F9000ECC68B /* CharacterList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F375AAF82A9A4F9000ECC68B /* CharacterList.swift */; };
 		F37C9DB12A93CDF60073F58F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F37C9DB02A93CDF60073F58F /* Assets.xcassets */; };
+		F390EA832A9BF8BE00DC4903 /* CharacterCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA822A9BF8BE00DC4903 /* CharacterCardViewController.swift */; };
+		F390EA852A9BF8D300DC4903 /* CharacterCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390EA842A9BF8D300DC4903 /* CharacterCardViewModel.swift */; };
 		F392C3F02A9373A6004F8CB1 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3EF2A9373A6004F8CB1 /* Origin.swift */; };
 		F392C3F22A9373B1004F8CB1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F12A9373B1004F8CB1 /* Location.swift */; };
 		F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */; };
@@ -35,7 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F375AAF82A9A4F9000ECC68B /* CharacterList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterList.swift; sourceTree = "<group>"; };
 		F37C9DB02A93CDF60073F58F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
+		F390EA822A9BF8BE00DC4903 /* CharacterCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewController.swift; sourceTree = "<group>"; };
+		F390EA842A9BF8D300DC4903 /* CharacterCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCardViewModel.swift; sourceTree = "<group>"; };
 		F392C3EF2A9373A6004F8CB1 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 		F392C3F12A9373B1004F8CB1 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F392C3F32A93B653004F8CB1 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
@@ -75,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F390EA812A9BF87E00DC4903 /* CharacterCard */ = {
+			isa = PBXGroup;
+			children = (
+				F390EA822A9BF8BE00DC4903 /* CharacterCardViewController.swift */,
+				F390EA842A9BF8D300DC4903 /* CharacterCardViewModel.swift */,
+			);
+			path = CharacterCard;
+			sourceTree = "<group>";
+		};
 		F39E9E8E2A94964B003D722E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				F3A94BD32A8FA60E0003F841 /* Info.plist */,
+				F390EA812A9BF87E00DC4903 /* CharacterCard */,
 				F39E9E8E2A94964B003D722E /* Extensions */,
 				F3A496292A96347500BE8298 /* Networking */,
 				F3A496262A9633EC00BE8298 /* Navigation */,
@@ -149,6 +165,7 @@
 				F3A94BF82A8FBD850003F841 /* Character.swift */,
 				F392C3EF2A9373A6004F8CB1 /* Origin.swift */,
 				F392C3F12A9373B1004F8CB1 /* Location.swift */,
+				F375AAF82A9A4F9000ECC68B /* CharacterList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -258,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F392C3F42A93B653004F8CB1 /* UIStackView+Ext.swift in Sources */,
+				F390EA832A9BF8BE00DC4903 /* CharacterCardViewController.swift in Sources */,
 				F3A94BCA2A8FA60C0003F841 /* CharacterListViewController.swift in Sources */,
 				F39E9E952A94A0E4003D722E /* CharacterTableViewCell.swift in Sources */,
 				F39E9E902A949677003D722E /* UIColor+Ext.swift in Sources */,
@@ -272,7 +290,9 @@
 				F39E9E932A949F3C003D722E /* CharacterListViewModel.swift in Sources */,
 				F3A496352A96421A00BE8298 /* BaseNetworkService.swift in Sources */,
 				F3A496332A96416800BE8298 /* CardService.swift in Sources */,
+				F375AAF92A9A4F9000ECC68B /* CharacterList.swift in Sources */,
 				F3A496282A96346900BE8298 /* BaseNavigator.swift in Sources */,
+				F390EA852A9BF8D300DC4903 /* CharacterCardViewModel.swift in Sources */,
 				F392C3F02A9373A6004F8CB1 /* Origin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
