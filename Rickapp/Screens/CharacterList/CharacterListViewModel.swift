@@ -19,7 +19,8 @@ class CharacterListViewModel: BaseViewModel {
         CardService.shared.getCharacters()
             .sink(receiveCompletion: { _ in }) { [weak self] characterList in
                 self?.nextPage = characterList.info?.next ?? ""
-                self?.charactersPublisher.send(characterList.results ?? [])
+                self?.characters = characterList.results ?? []
+                self?.charactersPublisher.send(self?.characters ?? [])
             }
             .store(in: &cancellables)
     }
